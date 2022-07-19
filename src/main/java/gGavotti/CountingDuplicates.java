@@ -24,6 +24,10 @@ package gGavotti;
 public class CountingDuplicates {
     public static int duplicateCount(String text) {
 
+        //Pogo todas las letras en minuscula.
+        //Hago un array que guarde las letras ya suamdas.
+        //Recorro text hasta lenght - 1 para no salir de rango.
+
         text.toLowerCase();
         char [] LetrasContadas = new char[text.length()];
         int contador=0;
@@ -32,6 +36,7 @@ public class CountingDuplicates {
 
             for(int j=i+1; j<text.length();j++){
 
+                //Creo la funcion "fueContada" que devuelve si la letra ya se encuentra en el array de LetrasContadas.
                 if(text.charAt(i)==text.charAt(j) && !fueContada(text.charAt(i), LetrasContadas)){
 
                     contador++;
