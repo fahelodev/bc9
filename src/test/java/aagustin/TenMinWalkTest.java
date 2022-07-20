@@ -1,8 +1,9 @@
-package earaya;
+package aagustin;
 
+import earaya.TenMinWalk;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
 Vives en una ciudad,
