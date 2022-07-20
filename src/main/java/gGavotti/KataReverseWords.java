@@ -7,7 +7,7 @@ Complete the function that accepts a string parameter, and reverses each word in
 All spaces in the string should be retained.
  */
 
-public class Kata {
+public class KataReverseWords {
 
     public static void main(String[] args) {
 
