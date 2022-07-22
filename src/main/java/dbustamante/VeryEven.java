@@ -1,7 +1,5 @@
 package dbustamante;
 
-import java.util.Scanner;
-
 public class VeryEven {
     public static boolean isVeryEvenNumber(int number) {
         String numeroString;
