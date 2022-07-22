@@ -21,36 +21,31 @@ public class CountingDuplicates {
      * "aA11" -> 2 # 'a' y '1'
      * "ABBA" -> 2 # 'A' y 'B' ocurren dos veces
      */
-    public class countingDuplicates {
 
-        //Contar el número de duplicados
-        public static int duplicateCount(String text) {
-            //toma el String y guarda en un array de chard
-            char[] arrayList= text.toCharArray();
-            int cont=0;
+    public static int duplicateCount(String text) {
+        String textoAlfanum = text.replaceAll("[^A-Za-z\\d]", ""); //limita solo a un texto alfanumerico
+        textoAlfanum = textoAlfanum.toLowerCase(); //sin distincion entre mayusculas y minusculas
+        char[] arrayLetras = textoAlfanum.toCharArray(); //separa el texto caracter por caracter
+        int cont = 0;
+        String letRepet = "";
 
-            for (int i=0; i<arrayList.length;i++){
-                //se crea un aux para comparar
-                char aux= arrayList[i];
-                for (int j=i+1; j<arrayList.length;j++){
-                    if(aux==arrayList[j]){
+        for (int i = 0; i < arrayLetras.length; i++) {
+            for (int j = i + 1; j < arrayLetras.length; j++) {
+                if (arrayLetras[i] == arrayLetras[j]) {
+                    CharSequence aux = new StringBuilder(1).append(arrayLetras[j]);
+                    if (!letRepet.contains(aux)) {
+                        letRepet += arrayLetras[j];
                         cont++;
                     }
                 }
+
             }
-            return cont;
         }
-
-        //distinct case-insensitive
-        public static String distintCaseInsensitive(String text){
-
-        }
-
-
-        public static void main(String []args){
-
-            System.out.println(duplicateCount("aabBcde"));
-        }
+        return cont;
     }
 
+    public static void main(String []args){
+        System.out.println(duplicateCount("indivisibility"));
+        System.out.println(duplicateCount("chamaco"));
+    }
 }
