@@ -13,77 +13,75 @@ public class HungerGames {
         resultado.add(zoo);
 
         while (animals.size() > 1){
-            for (int i = 0; i < animals.size() - 1; i++) {
+            for (int i = 0; i <= animals.size() - 1; i++) {
+                boolean bool=false;
                 switch (animals.get(i)){
                     case "bear": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("big-fish", "cow", "bug", "chicken", "sheep", "leaves"));
-                        come(animals, resultado, i, alimento);
+                        List<String> alimento = new ArrayList<>(Arrays.asList("big-fish", "cow", "bug", "chicken", "sheep", "leaves"));
+                        bool=come(animals, resultado, i, alimento);
                         break;
                     }
                     case "fox": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("chicken","sheeps"));
-                        come(animals, resultado, i, alimento);
+                        List<String> alimento = new ArrayList<>(Arrays.asList("chicken","sheep"));
+                        bool=come(animals, resultado, i, alimento);
                         break;
                     }
                     case "lion":{
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("antelope","cow"));
-                        come(animals, resultado, i, alimento);
+                        List<String> alimento = new ArrayList<>(Arrays.asList("antelope","cow"));
+                        bool=come(animals, resultado, i, alimento);
                         break;
                     }
-                    case "panda": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("leaves"));
-                        come(animals, resultado, i, alimento);
+                    case "panda":
+                    case "bug":
+                    case "giraffe": {
+                        List<String> alimento = new ArrayList<>(List.of("leaves"));
+                        bool=come(animals, resultado, i, alimento);
+                        break;
                     }
                     case "chicken": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("bug"));
-                        come(animals, resultado, i, alimento);
+                        List<String> alimento = new ArrayList<>(List.of("bug"));
+                        bool=come(animals, resultado, i, alimento);
                         break;
                     }
-                    case "bug": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("leaves"));
-                        come(animals, resultado, i, alimento);
-                        break;
-                    }
-                    case "cow": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("grass"));
-                        come(animals, resultado, i, alimento);
+                    case "cow":
+                    case "antelope":
+                    case "sheep": {
+                        List<String> alimento = new ArrayList<>(List.of("grass"));
+                        bool=come(animals, resultado, i, alimento);
                         break;
                     }
                     case "big-fish": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("little-fish"));
-                        come(animals, resultado, i, alimento);
+                        List<String> alimento = new ArrayList<>(List.of("little-fish"));
+                        bool=come(animals, resultado, i, alimento);
                         break;
                     }
-                    case "sheep": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("grass"));
-                        come(animals, resultado, i, alimento);
-                        break;
-                    }
-                    case "giraffe": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("leaves"));
-                        come(animals, resultado, i, alimento);
-                        break;
-                    }
-                    case "antelope": {
-                        List<String> alimento = new ArrayList<String>(Arrays.asList("grass"));
-                        come(animals, resultado, i, alimento);
+                    case "leaves":
+                    case "grass": {
+                        List<String> alimento = new ArrayList<>(List.of("nocome"));
+                        bool=come(animals,resultado,i,alimento);
                         break;
                     }
                 }
+                if(bool){break;}
             }
         }
-
-        return new String[]{zoo, zoo};
+        resultado.add(animals.get(0));
+        bajada=resultado.toArray(bajada);
+        return bajada;
     }
 
-    private static void come(ArrayList<String> animals, ArrayList<String> resultado, int i, List<String> alimento) {
+    private static boolean come(ArrayList<String> animals, ArrayList<String> resultado, int i, List<String> alimento) {
+        boolean bool=false;
         if (i-1 >= 0 && alimento.contains(animals.get(i - 1))) {
             resultado.add(animals.get(i) + " eats " + animals.get(i - 1));
             animals.remove(i - 1);
+            bool=true;
         }
         if (i+1 < animals.size() && alimento.contains(animals.get(i + 1))) {
             resultado.add(animals.get(i) + " eats " + animals.get(i + 1));
             animals.remove(i + 1);
+            bool=true;
         }
+        return bool;
     }
 }
