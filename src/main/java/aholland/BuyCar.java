@@ -9,21 +9,22 @@ public class BuyCar {
         double autoViejo = startPriceOld;
         double autoNuevo = startPriceNew;
 
-        if(puedeComprar(autoViejo, autoNuevo)) { //precio autoviejo mayor a autonuevo
-            return new int[] { meses, (int) Math.round(autoViejo - autoNuevo)}; //lo que sobro luego de comprar el auto
+        if(puedeComprar(autoViejo, autoNuevo)) {         // precio autoviejo mayor a autonuevo se puede comprar
+            return new int[] { meses, (int) Math.round(autoViejo - autoNuevo)};    //lo que sobro luego de comprar el auto,
+                                                                                    // se castea y se redondea
         }
 
         do{
-            ahorrado += savingperMonth; //acumular lo ahorrado por mes
+            ahorrado += savingperMonth;            //acumular lo ahorrado por mes
             meses++; //cuenta los meses
-            if(cada2Meses(meses)){ //si pasaron 2 meses el porcentaje aumenta un 0,5
+            if(cada2Meses(meses)){                //si pasaron 2 meses el porcentaje aumenta un 0,5
                 porcentaje += 0.005;
             }
-            autoViejo -= autoViejo*porcentaje; //formula de perdida de valores de los autos
-            autoNuevo -= autoNuevo*porcentaje;
+            autoViejo -= autoViejo*porcentaje;    //formula de perdida de valores de los autos
+            autoNuevo -= autoNuevo*porcentaje;    //auto viejo o nuevo - (auto viejo o nuevo x porcentaje que ya está dividido en 100
 
         }
-        while (noAlcanza(ahorrado, autoViejo, autoNuevo)); //se va a repetir el bucle mientras no alcance para comprar el auto nuevo
+        while (noAlcanza(ahorrado, autoViejo, autoNuevo));    //se va a repetir el bucle mientras no alcance para comprar el auto nuevo
 
         return new int[] { meses, (int) Math.round(autoViejo + ahorrado - autoNuevo)};
     }
