@@ -1,9 +1,8 @@
-package dleiva;
+package earaya;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-<<<<<<< HEAD
 /*Vives en una ciudad, cuadrícula perfecta.
 aplicación de caminatas, cada vez que presiona el botón,
 le envía una serie de cadenas de una letra que representan direcciones para caminar (por ejemplo, ['n', 's', 'e', 'o']).
@@ -28,7 +27,6 @@ que te da la aplicación te llevará exactamente diez minutos
 
 // validar que el array sea de 10
 // validar que volvi al mismo lugar de partida
->>>>>>> 125bacc030eb9afbbdbf064ab0fffa96a27fd500
 public class TenMinWalkTest {
     @Test
     public void Test() {
@@ -37,4 +35,4 @@ public class TenMinWalkTest {
         assertEquals(false, TenMinWalk.isValid(new char[] {'w'}));
         assertEquals( false, TenMinWalk.isValid(new char[] {'n','n','n','s','n','s','n','s','n','s'}));
     }
-}*/
+}
