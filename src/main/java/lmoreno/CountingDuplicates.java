@@ -1,4 +1,6 @@
-package earaya;
+package lmoreno;
+
+import java.util.Arrays;
 
 /**
  * Contar el número de duplicados
@@ -22,27 +24,26 @@ package earaya;
 public class CountingDuplicates {
 
     public static int duplicateCount(String text) {
-
-
-
-        //tomar el string y guardarlo en un array de char
-        char[] arrayList = text.toCharArray();
-        int contador=0;
-
-        for (int i = 0; i < arrayList.length; i++) {
-            //char auxiliar para comparar
-            char aux = arrayList[i];
-            for (int j = i+1; j < arrayList.length; j++) {
-                if(aux == arrayList[j]){
-                    contador++;
+        String textLower = text.toLowerCase();
+        char[] arrayList = textLower.toCharArray();
+        Arrays.sort(arrayList);
+        //String sortedString = new String(array);
+        //char[] arrayList = sortedString.toCharArray();
+        int cont=0;
+        String repeat="";
+        for (int j = 1; j < arrayList.length; j++) {
+            if(arrayList[j-1] == arrayList[j]){
+                CharSequence aux = new StringBuilder(1).append(arrayList[j]);
+                if(!repeat.contains(aux)){
+                    repeat+=arrayList[j];
+                    cont++;
                 }
             }
         }
-        return contador;
-
+        return cont;
     }
     public static void main(String []args){
-        System.out.println(duplicateCount("aabcc"));
+        System.out.println(duplicateCount("aabbcc"));
     }
 }
 

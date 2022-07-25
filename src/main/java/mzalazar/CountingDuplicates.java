@@ -1,4 +1,4 @@
-package earaya;
+package mzalazar;
 
 /**
  * Contar el número de duplicados
@@ -19,30 +19,51 @@ package earaya;
  * "aA11" -> 2 # 'a' y '1'
  * "ABBA" -> 2 # 'A' y 'B' ocurren dos veces
  */
+
 public class CountingDuplicates {
 
     public static int duplicateCount(String text) {
-
-
-
         //tomar el string y guardarlo en un array de char
         char[] arrayList = text.toCharArray();
         int contador=0;
-
+        String repetidos="";
         for (int i = 0; i < arrayList.length; i++) {
             //char auxiliar para comparar
             char aux = arrayList[i];
             for (int j = i+1; j < arrayList.length; j++) {
                 if(aux == arrayList[j]){
-                    contador++;
+                    CharSequence aux2 = new StringBuilder(1).append(aux);
+                    if(!repetidos.contains(aux2)){contador++;}
+                    repetidos+=aux;
                 }
             }
         }
         return contador;
-
     }
     public static void main(String []args){
-        System.out.println(duplicateCount("aabcc"));
+        System.out.println(duplicateCount("aabbcc"));
     }
 }
 
+
+/* Mejor solucion encontrada internet.
+
+public class CountingDuplicates {
+    public static int duplicateCount(String text) {
+        if (text == null ||text.length() == 0) return 0;
+        int result = 0;
+        int[] count = new int[127];
+        text = text.toUpperCase();
+        String[] arr = text.split("");
+        for (String s : arr) {
+            int index = s.charAt(0);
+            count[index]++;
+        }
+        for (int i : count) {
+            if (i > 1) result++;
+        }
+        return result;
+    }
+}
+
+*/
