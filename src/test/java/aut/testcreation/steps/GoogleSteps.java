@@ -11,7 +11,7 @@ public class GoogleSteps extends GoogleTestRunner implements En{
 
         GoogleHomePage googleHomePage;
 
-        Before(2, GoogleTestRunner::setUp);
+        Before(2, GoogleTestRunner::setUp); //cada vez que ejecute un escenario que ejecute el setup
         After(GoogleTestRunner::tearDown);
 
         Given("que estoy en el Home de Google", () -> Assertions.assertTrue(true));
@@ -27,6 +27,21 @@ public class GoogleSteps extends GoogleTestRunner implements En{
         });
 
         Then("me lleva a la pagina de resultados", () -> {
+            // Write code here that turns the phrase above into concrete actions
+            Assertions.assertTrue(true);
+        });
+
+        Given("today is Sunday", () -> {
+            // Write code here that turns the phrase above into concrete actions
+            Assertions.assertTrue(true);
+        });
+
+        When("I ask whether it's Friday yet", () -> {
+            // Write code here that turns the phrase above into concrete actions
+            Assertions.assertTrue(true);
+        });
+
+        Then("I should be told {string}", (String string) -> {
             // Write code here that turns the phrase above into concrete actions
             Assertions.assertTrue(true);
         });
