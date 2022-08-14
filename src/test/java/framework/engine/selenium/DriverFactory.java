@@ -41,7 +41,7 @@ public class DriverFactory {
             default:
                 throw new RuntimeException("Navegador no configurado: " + browser);
         }
-    }git
+    }
 
     public WebDriver createWebDriver() {
         String webDriver = System.getProperty("browser", "edge");
