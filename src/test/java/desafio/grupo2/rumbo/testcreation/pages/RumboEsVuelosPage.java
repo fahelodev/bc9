@@ -35,9 +35,9 @@ public class RumboEsVuelosPage extends SeleniumWrapper {
     public void ingresarDestino(String Destino){
         write(Destino,inputDestino);
         switch (Destino){
-            case "Buenos Aires":
-                By destinoBuenosAires = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[1] ");
-                click(destinoBuenosAires);
+            case "Lisboa":
+                By destinoLisboa = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[1]");
+                click(destinoLisboa);
                 break;
 
             case "Roma":
@@ -52,7 +52,7 @@ public class RumboEsVuelosPage extends SeleniumWrapper {
     }
     public void desplegarPasajeros(){
         click(botonDesplegarPasajeros);
-        masPasajeros();
+        //masPasajeros();
     }
     public void masPasajeros(){
         By masAdultos = By.xpath("(//button[@class=\"display-1s7lzx-Counter-styled\"])[2]");

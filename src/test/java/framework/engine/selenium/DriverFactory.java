@@ -1,9 +1,12 @@
 package framework.engine.selenium;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
 
@@ -33,7 +36,7 @@ public class DriverFactory {
                 hiloLocal.set(new EdgeDriver());
                 getDriver().manage().deleteAllCookies();
                 getDriver().manage().window().maximize();
-                getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(10000));
+                getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(15000));
                 return getDriver();
             default:
                 throw new RuntimeException("Navegador no configurado: " + browser);
