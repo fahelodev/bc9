@@ -33,7 +33,7 @@ public class DriverFactory {
                 hiloLocal.set(new EdgeDriver());
                 getDriver().manage().deleteAllCookies();
                 getDriver().manage().window().maximize();
-                getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
+                getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(10000));
                 return getDriver();
             default:
                 throw new RuntimeException("Navegador no configurado: " + browser);
