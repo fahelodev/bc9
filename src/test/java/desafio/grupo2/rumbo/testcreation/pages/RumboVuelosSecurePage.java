@@ -36,18 +36,20 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         write("Gonzalez",inputApellido);
         write("lucasgonz98@g",inputEmail);
         sendKeys(Keys.TAB,inputEmail);
-/*        click(inputEmail);
         click(botonDesplegarPrefijos);
-        click(botonDesplegarPrefijos);
-        click(codigoAreaArg);*/
+        click(codigoAreaArg);
         write("3804228169",inputTelefono);
         sendKeys(Keys.TAB,inputTelefono);
-/*        write("Felipe II",inputDireccionPostal);
+        write("Felipe II",inputDireccionPostal);
         write("125",inputNumCalle);
         write("5300",inputCodigoPostal);
         write("La Rioja",inputCiudad);
         click(botonDesplegarPais);
-        click(paisArg);*/
+        By inputBuscarPais = By.xpath("//input[@class=\"search-box\"]");
+        write("Argentina",inputBuscarPais);
+        sendKeys(Keys.ENTER,inputBuscarPais);
+        //sendKeys(Keys.TAB,botonDesplegarPais);
+        //click(paisArg);
 
 
     }
@@ -72,24 +74,24 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
     }
 
     public void opcionesViaje(){
-/*        By botonSinEquipajeIda = By.xpath("(//div[@class=\"radio radio--middle \"])[3]");
-        By botonSinEquipajeVuelta = By.xpath("(//div[@class=\"radio radio--middle \"])[17]");*/
-        By checkBoxProteger = By.xpath("//div[@class=\"checkbox\"]");
-        By BotonSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
+      By botonConEqupiaje = By.xpath("//div[@data-test=\"quick-selection-card\"]");
+      By botonSinEquipaje = By.xpath("(//div[@class=\"radio radio--middle \"])[2]");
+      By checkBoxProteger = By.xpath("//div[@class=\"checkbox\"]");
+      By BotonSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
 
-/*        click(botonSinEquipajeIda);
-        click(botonSinEquipajeVuelta);*/
-        click(checkBoxProteger);
-        click(BotonSiguiente);
+      click(botonConEqupiaje);
+      click(checkBoxProteger);
+      click(BotonSiguiente);
     }
 
     public void servicios(){
-        By radioButtonSinPlus = By.xpath("//span[@data-test=\"radio-membershipProposal-STD-custom-radio\"]");
-        By radioButtonFullFlex = By.xpath("(//div[@class=\"insurance__expandable-upper-box\"])[1]");
+        By radioButtonSinPlus = By.xpath("(//div[@class=\"radio radio--middle sc-fiKUUL cEpWax\"] )[2]");
+        By radioButtonFullFlex = By.xpath("(//div[@class=\"radio radio--middle sc-fiKUUL cEpWax\"] )[1]");
+        By botonSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
 
         click(radioButtonSinPlus);
         click(radioButtonFullFlex);
-
+        click(botonSiguiente);
     }
 
     public void rellanarPago(){
