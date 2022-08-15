@@ -14,7 +14,7 @@ public class RumboEsHomePage extends SeleniumWrapper {
 
     By botonVuelos = By.xpath("(//a[text()=\"Vuelos\"])[1] ");
     By botonHoteles = By.xpath("(//a[text()=\"Hoteles\"])[1]");
-    By botonTrenes = By.xpath("Boton para dirigirse a Trenes: (//a[text()=\"Trenes\"])[1] ");
+    By botonTrenes = By.xpath("(//a[text()=\"Trenes\"])[1] ");
 
     By botonAceptarCookies = By.xpath("//button[@data-context=\"YES\"]");
 
