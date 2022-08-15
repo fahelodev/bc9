@@ -52,7 +52,6 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
     }
     public void desplegarPasajeros(){
         click(botonDesplegarPasajeros);
-        //masPasajeros();
     }
     public void masPasajeros(){
         By masAdultos = By.xpath("(//button[@class=\"display-1s7lzx-Counter-styled\"])[2]");
@@ -75,6 +74,11 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
 
     public void buscarViaje(){click(botonBuscar);}
 
+
+    public String SinResultados(){
+        By sinResultados = By.xpath("//span[@class=\"display-s2q7wx-ValidationMessage-styled-ValidationMessage-styled\"]");
+        return getText(sinResultados);
+    }
 
 
 

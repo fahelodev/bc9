@@ -15,8 +15,8 @@ public class CP001_Hoteles extends SeleniumTestBase {
     void busquedaHoteles() throws InterruptedException{
         rumboEsHotelesPage = new RumboEsHotelesPage(DriverFactory.getDriver());
         rumboEsHotelesPage.ingresarDestino("Chicago");
-        rumboEsHotelesPage.aceptarCookies();
-        rumboEsHotelesPage.buscarHoteles();
+        //rumboEsHotelesPage.aceptarCookies();
+        //rumboEsHotelesPage.buscarHoteles();
     }
 
 
