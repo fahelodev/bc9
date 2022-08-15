@@ -22,7 +22,7 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         click(botonElegirClassic);
     }
 
-    public void rellenarDatosPersonales(){
+    public void rellenarDatosPersonales(String numero){
         By inputNombre = By.xpath("//input[@data-test=\"input-name\"]");
         By inputApellido = By.xpath("//input[@data-test=\"input-surname\"]");
         By inputEmail= By.xpath("//input[@id=\"contact-email\"]");
@@ -42,7 +42,7 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         sendKeys(Keys.TAB,inputEmail);
         click(botonDesplegarPrefijos);
         click(codigoAreaArg);
-        write("3804228169",inputTelefono);
+        write(numero,inputTelefono);
         sendKeys(Keys.TAB,inputTelefono);
         write("Felipe II",inputDireccionPostal);
         write("125",inputNumCalle);
@@ -114,5 +114,10 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
 
     public Boolean ActivacionDeReloj() {
         return findElements(By.xpath("//div[@class=\"panel-body expiry__panel-body\"]")).size() != 0;
+    }
+
+    public String datosInvalidos(){
+        By telefonoInvalido = By.xpath("(//label[@class=\"form-elements-2__error-label  \"])[4]");
+        return getText(telefonoInvalido);
     }
 }

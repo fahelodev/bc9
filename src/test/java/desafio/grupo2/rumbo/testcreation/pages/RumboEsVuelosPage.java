@@ -47,6 +47,7 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
             case "Londres":
                 By destinoLondres = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[2]");
                 click(destinoLondres);
+                break;
         }
 
     }
