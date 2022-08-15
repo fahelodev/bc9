@@ -22,11 +22,22 @@ public class RumboEsVuelosBusquedaPage extends SeleniumWrapper {
 
 
     public void seleccionarViaje() throws InterruptedException {
-        click(filtroIberia);
-        Thread.sleep(5000);
+        //click(filtroIberia);
+        //Thread.sleep(5000);
         By seleccionViaje = By.xpath("(//div[@class=\"FullTripCard__PaymentContainer-sc-z8znd4-3 bjAqvb\"])[1]");
 
         click(seleccionViaje);
+    }
+
+    public String obtenerRutaOri(){
+        By origen = By.xpath("(//span[@class=\"DepartureArrivalLocations__LocationCodeStyled-sc-jx2i6c-1 jruFvB Tooltip___StyledMuiTooltip-sc-ya8k7d-3 jAgUJM\"])[1]");
+        return getText(origen);
+
+    }
+    public String obtenerRutaDes(){
+        By destino = By.xpath("(//span[@class=\"DepartureArrivalLocations__LocationCodeStyled-sc-jx2i6c-1 jruFvB Tooltip___StyledMuiTooltip-sc-ya8k7d-3 jAgUJM\"])[2]");
+       return getText(destino);
+
     }
 
 }

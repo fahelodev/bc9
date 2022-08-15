@@ -14,7 +14,7 @@ public class RumboEsHotelesPage extends SeleniumWrapper {
 
     public void ingresarDestino(String Destino){
         write(Destino, inputDestino);
-        By destinoChicago
+       // By destinoChicago
     }
 
 }

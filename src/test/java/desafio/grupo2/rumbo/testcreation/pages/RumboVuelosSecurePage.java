@@ -1,9 +1,13 @@
 package desafio.grupo2.rumbo.testcreation.pages;
 
+import com.github.javafaker.Bool;
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class RumboVuelosSecurePage extends SeleniumWrapper {
     public RumboVuelosSecurePage(WebDriver driver) {
@@ -108,4 +112,7 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         write("248",inputCVV);
     }
 
+    public Boolean ActivacionDeReloj() {
+        return findElements(By.xpath("//div[@class=\"panel-body expiry__panel-body\"]")).size() != 0;
+    }
 }

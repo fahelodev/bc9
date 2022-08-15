@@ -6,13 +6,15 @@ import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosPage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboVuelosSecurePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
-import gherkin.lexer.Ru;
 import io.qameta.allure.Description;
+import org.codehaus.groovy.ast.expr.BooleanExpression;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 public class CP001_Vuelos extends SeleniumTestBase {
 
@@ -55,4 +57,40 @@ public class CP001_Vuelos extends SeleniumTestBase {
 
 
     }
+
+    @ParameterizedTest
+    @MethodSource
+   // @ValueSource(strings = {"MAD - FCO","MAD - LIS"})
+    @Description("Realizando la prubea CP001 del RF01")
+    void CP001_MultiplesVuelos(String origen,String destino,String Esperado){
+        rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
+        rumboEsHomePage.despegarARumbos();
+        rumboEsHomePage.aceptarCookies();
+        rumboEsHomePage.irAVuelos();
+
+        rumboEsVuelosPage = new RumboEsVuelosPage(DriverFactory.getDriver());
+        rumboEsVuelosPage.ingresarOrigen(origen);
+        rumboEsVuelosPage.ingresarDestino(destino);
+        rumboEsVuelosPage.desplegarPasajeros();
+        rumboEsVuelosPage.desplegarClases();
+        rumboEsVuelosPage.establecerFechaViaje();
+        rumboEsVuelosPage.buscarViaje();
+
+        rumboEsVuelosBusquedaPage = new RumboEsVuelosBusquedaPage(DriverFactory.getDriver());
+        String resultado = rumboEsVuelosBusquedaPage.obtenerRutaOri() + " - " + rumboEsVuelosBusquedaPage.obtenerRutaDes();
+
+        System.out.println(resultado);
+
+        Assertions.assertEquals(Esperado,resultado);
+
+    }
+
+    static Stream<Arguments> CP001_MultiplesVuelos(){
+        return Stream.of(
+                Arguments.arguments("Madrid", "Roma", "MAD - FCO"),
+                Arguments.arguments("Madrid", "Lisboa", "MAD - LIS"),
+                Arguments.arguments("Madrid", "Londres","MAD - LHR")
+        );
+    }
+
 }
