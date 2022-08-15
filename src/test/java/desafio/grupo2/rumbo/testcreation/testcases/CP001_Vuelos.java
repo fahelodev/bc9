@@ -62,7 +62,7 @@ public class CP001_Vuelos extends SeleniumTestBase {
     @MethodSource
    // @ValueSource(strings = {"MAD - FCO","MAD - LIS"})
     @Description("Realizando la prubea CP001 del RF01")
-    void CP001_MultiplesVuelos(String origen,String destino,String Esperado){
+    void CP001_MultiplesVuelos(String origen,String destino,String esperado){
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -81,7 +81,7 @@ public class CP001_Vuelos extends SeleniumTestBase {
 
         System.out.println(resultado);
 
-        Assertions.assertEquals(Esperado,resultado);
+        Assertions.assertEquals(esperado,resultado);
 
     }
 
