@@ -4,7 +4,7 @@ import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class RumboEsVuelosPage extends SeleniumWrapper {
+public class  RumboEsVuelosPage extends SeleniumWrapper {
 
 
     public RumboEsVuelosPage(WebDriver driver) {
@@ -47,12 +47,12 @@ public class RumboEsVuelosPage extends SeleniumWrapper {
             case "Londres":
                 By destinoLondres = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[2]");
                 click(destinoLondres);
+                break;
         }
 
     }
     public void desplegarPasajeros(){
         click(botonDesplegarPasajeros);
-        //masPasajeros();
     }
     public void masPasajeros(){
         By masAdultos = By.xpath("(//button[@class=\"display-1s7lzx-Counter-styled\"])[2]");
@@ -75,6 +75,11 @@ public class RumboEsVuelosPage extends SeleniumWrapper {
 
     public void buscarViaje(){click(botonBuscar);}
 
+
+    public String SinResultados(){
+        By sinResultados = By.xpath("//span[@class=\"display-s2q7wx-ValidationMessage-styled-ValidationMessage-styled\"]");
+        return getText(sinResultados);
+    }
 
 
 
