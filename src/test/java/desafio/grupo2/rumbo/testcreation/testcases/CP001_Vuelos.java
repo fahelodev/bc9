@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CP001_Vuelos extends SeleniumTestBase {
 
@@ -24,7 +25,7 @@ public class CP001_Vuelos extends SeleniumTestBase {
 
     @Test
     @Description("Test de prueba")
-    void irARumbos(){
+    void irARumbos() throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -34,7 +35,7 @@ public class CP001_Vuelos extends SeleniumTestBase {
 
         rumboEsVuelosPage = new RumboEsVuelosPage(DriverFactory.getDriver());
         rumboEsVuelosPage.ingresarOrigen("Madrid");
-        rumboEsVuelosPage.ingresarDestino("Buenos Aires");
+        rumboEsVuelosPage.ingresarDestino("Lisboa");
         rumboEsVuelosPage.desplegarPasajeros();
         rumboEsVuelosPage.desplegarClases();
         rumboEsVuelosPage.establecerFechaViaje();
