@@ -49,7 +49,7 @@ public class CP001_Vuelos extends SeleniumTestBase {
         rumboVuelosSecurePage = new RumboVuelosSecurePage(DriverFactory.getDriver());
 
         rumboVuelosSecurePage.elegirClassic();
-        rumboVuelosSecurePage.rellenarDatosPersonales();
+       // rumboVuelosSecurePage.rellenarDatosPersonales();
         rumboVuelosSecurePage.rellenarQuienViaja();
         rumboVuelosSecurePage.opcionesViaje();
         rumboVuelosSecurePage.servicios();

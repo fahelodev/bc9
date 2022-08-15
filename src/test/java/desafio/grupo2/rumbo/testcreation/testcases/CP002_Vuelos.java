@@ -5,6 +5,7 @@ import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosBusquedaPage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosPage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboVuelosSecurePage;
 import framework.engine.selenium.DriverFactory;
+import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-public class CP002_Vuelos {
+public class CP002_Vuelos extends SeleniumTestBase {
     RumboEsHomePage rumboEsHomePage;
     RumboEsVuelosPage rumboEsVuelosPage;
 
@@ -24,7 +25,7 @@ public class CP002_Vuelos {
     @ParameterizedTest
     @MethodSource
     @Description("Realizando la prubea CP002 del RF01")
-    void CP002_VuelosSinDestinos(String origen,String destino, String esperado){
+    void CP002_VuelosSinDestinos(String origen,String destino, String esperado) {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
