@@ -27,4 +27,32 @@ public class RumboEsTrenesSecurePage extends SeleniumWrapper {
         return getText(datosVacios);
 
     }
+    public void AsistenciaEspecial() throws InterruptedException {
+
+        By btnAsistenciaespecial = By.xpath( "//div[@class=\"special-requests-structured__fieldset-wrapper\"]");
+
+        click(btnAsistenciaespecial);
+        //Thread.sleep(5000);
+        By tipoDeSolicitud = By.xpath("(//select[@class=\"form-control select-input\"])[1]");
+
+        click(tipoDeSolicitud);
+        //Thread.sleep(5000);
+        By selecMovReducida = By.xpath("(//option[@data-test=\"special-request-structured-types-option\"])[2]");
+
+        click(selecMovReducida);
+        //Thread.sleep(5000);
+        By tipoDeAsistencia =By.xpath("(//select[@class=\"form-control select-input\"])[2]");
+
+        click(tipoDeAsistencia);
+        //Thread.sleep(5000);
+        By pasajeroInmovil = By.xpath("(//option[@data-test=\"special-requests-structured-requirements-select-option\"])[3]");
+
+        click(pasajeroInmovil);
+        //Thread.sleep(5000);
+    }
+
+    public boolean desplegadoAsistenciaEspecial(){
+        By divAsistenciaEspecial = By.xpath("//div[@class=\"special-requests-structured-selections css-1wjqq29\"]");
+        return isDisplayed(divAsistenciaEspecial);
+    }
 }
