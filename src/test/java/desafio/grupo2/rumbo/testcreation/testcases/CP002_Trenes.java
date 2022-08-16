@@ -7,15 +7,13 @@ import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-public class CP001_Trenes extends SeleniumTestBase {
-
+public class CP002_Trenes extends SeleniumTestBase {
     RumboEsHomePage rumboEsHomePage;
     RumboEsTrenesPage rumboEsTrenesPage;
 
@@ -24,7 +22,7 @@ public class CP001_Trenes extends SeleniumTestBase {
     @ParameterizedTest
     @MethodSource
     @Description("Test de prueba")
-    void CP001_BusquedadeTren(String Origen,String Destino, String esperado) throws InterruptedException {
+    void CP002_DuracionMenor(String Origen,String Destino, String esperado) throws InterruptedException {
 
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
@@ -46,7 +44,7 @@ public class CP001_Trenes extends SeleniumTestBase {
 
 
     }
-    static Stream<Arguments>CP001_BusquedadeTren(){
+    static Stream<Arguments> CP002_DruracionMenor(){
         return Stream.of(
 
                 Arguments.arguments("Madrid","Barcelona", "XOC - YJB")
