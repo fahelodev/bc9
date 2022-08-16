@@ -33,5 +33,20 @@ public class GoogleSteps extends GoogleTestRunner implements En{
             // Write code here that turns the phrase above into concrete actions
             Assertions.assertTrue("Tsoft - Buscar con Google",ghp.getUrlTitle());
         });
+
+        Given("today is Sunday", () -> {
+            // Write code here that turns the phrase above into concrete actions
+            Assertions.assertTrue(true);
+        });
+
+        When("I ask whether it's Friday yet", () -> {
+            // Write code here that turns the phrase above into concrete actions
+            Assertions.assertTrue(true);
+        });
+
+        Then("I should be told {string}", (String string) -> {
+            // Write code here that turns the phrase above into concrete actions
+            Assertions.assertTrue(true);
+        });
     }
 }
