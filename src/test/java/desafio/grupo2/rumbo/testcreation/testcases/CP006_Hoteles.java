@@ -26,7 +26,6 @@ class CP006_Hoteles extends SeleniumTestBase {
 
         rumboEsHotelesPage = new RumboEsHotelesPage(DriverFactory.getDriver());
         rumboEsHotelesPage.ingresarDestino("Chicago");
-        rumboEsHotelesPage.establecerFechaViaje();
     }
 }
 

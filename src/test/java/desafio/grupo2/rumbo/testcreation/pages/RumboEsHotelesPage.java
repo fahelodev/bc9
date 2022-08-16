@@ -10,24 +10,25 @@ public class RumboEsHotelesPage extends SeleniumWrapper {
         super(driver);
 
     }
-    By inputDestino = By.id("mui-1");
-
-    By BotonCalendarioIda = By.xpath("(//button[@class='display-pc5m51-DateInput-styled'])[1]");
-
-    By botonBuscar = By.xpath("//button[@class=\"display-joffoz-Button\"] ");
 
     public void ingresarDestino(String Destino){
+        By inputDestino = By.id("mui-1");
         write(Destino,inputDestino);
         By origenChicago = By.xpath("//b[@class=\"display-16ky3fq-Autocompleter-styled\"]");
         click(origenChicago);
     }
 
-    public void establecerFechaViaje(){
-        click(BotonCalendarioIda);//prueba spath completo
-        By ida = By.xpath("/div/div[2]/div/form/div/div[2]/div[1]/div/div[3]/div[2]/div[2]/div[2]/div[2]/button[10]");
+
+    public void FechaInicioVuelta(){
+        By ida = By.xpath("(//button[text()='24'])[1]");
         click(ida);
         By vuelta = By.xpath("(//button[text()='31'])[1]");
         click(vuelta);
+    }
+
+    public void buscar(){
+        By botonBuscar = By.xpath("//button[@class=\"display-joffoz-Button\"] ");
+        click(botonBuscar);
     }
 
 }
