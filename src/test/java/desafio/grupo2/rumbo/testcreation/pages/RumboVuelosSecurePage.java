@@ -78,8 +78,8 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
     }
 
     public void opcionesViaje(){
-      By botonConEqupiaje = By.xpath("//div[@data-test=\"quick-selection-card\"]");
-      By botonSinEquipaje = By.xpath("(//div[@class=\"radio radio--middle \"])[2]");
+      By botonConEqupiaje = By.xpath("(//div[@data-testid=\"radio-wrapper\"])[1]");
+      By botonSinEquipaje = By.xpath("(//div[@data-testid=\"radio-wrapper\"])[2]");
       By checkBoxProteger = By.xpath("//div[@class=\"checkbox\"]");
       By BotonSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
 
@@ -119,5 +119,10 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
     public String datosInvalidos(){
         By telefonoInvalido = By.xpath("(//label[@class=\"form-elements-2__error-label  \"])[4]");
         return getText(telefonoInvalido);
+    }
+
+    public String numeroTarjetaInvalido(){
+        By tarjetaInvalida = By.xpath("1538 9021 9009 2119 000");
+        return getText(tarjetaInvalida);
     }
 }
