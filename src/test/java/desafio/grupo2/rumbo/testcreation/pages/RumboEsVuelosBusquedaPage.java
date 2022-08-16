@@ -17,8 +17,6 @@ public class RumboEsVuelosBusquedaPage extends SeleniumWrapper {
 
 
     public void seleccionarViaje() throws InterruptedException {
-        click(filtroIberia);
-        Thread.sleep(5000);
         click(verMasFiltrosEmpresas);
         click(filtroIberia);
         Thread.sleep(3000);
