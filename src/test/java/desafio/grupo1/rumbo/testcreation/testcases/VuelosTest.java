@@ -73,7 +73,14 @@ public class VuelosTest extends SeleniumTestBase {
 
     @Test
     @Description("Comprobar registro de datos de clientes previo al pago")
-    void datosCorrectoCliente(){
+    void datosCorrectoCliente() throws InterruptedException {
+
+        vuelos = new Vuelos((DriverFactory.getDriver()));
+        vuelos.navegarAlHomeWeb();
+        vuelos.aceptarCokies();
+        vuelos.logearseEnPagina();
+
+
 
 
 

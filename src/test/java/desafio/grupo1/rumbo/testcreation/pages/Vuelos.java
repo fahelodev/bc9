@@ -104,6 +104,19 @@ public class Vuelos extends SeleniumWrapper {
     By checkUnaEscala = By.xpath("(//div[@data-e2e='stops-filter'])[1]//span[text()='1 escala']");
     By checkDosMasEscala = By.xpath("(//div[@data-e2e='stops-filter'])[1]//span[text()='2 escalas o más']");
 
+    //***************************************************************************************************
+    //Login
+    By btnMiRumbo = By.xpath("(//button[@class='display-1kl1c3w-HubNavigationProfile-styled esa6j1t10'])[1]");
+    By inputEmail = By.xpath("//input[@name='email']");
+    By inputPassword = By.xpath("//input[@name='password']");
+    By menuLogin = By.xpath("//div[@class='modal-body']");
+    By btnLogin = By.xpath("//button[contains(text(),'Iniciar sesión')]");
+
+
+
+
+
+
     public Vuelos(WebDriver driver) {
         super(driver);
     }
@@ -206,19 +219,26 @@ public class Vuelos extends SeleniumWrapper {
             if (isDisplayed(listaModificarPasajeros)) {
                 click(btnMasAdulto); //aumento adulto
             }
-
-
-
-
-
         }
-
-
     }
 
 
+    public void logearseEnPagina() throws InterruptedException {
+
+        click(btnMiRumbo);
+
+        if(isDisplayed(menuLogin)){
+
+            write("equipo1desafiotsoft@gmail.com",inputEmail);
+            write("equipo1tsoft",inputPassword);
+            click(btnLogin);
+
+        }
+
+        Thread.sleep(4000);
 
 
+    }
 
 
 
