@@ -13,7 +13,7 @@ public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
         click(filtroTipoAlojamiento);
     }
     public void filtroTipoAlojamientoHotel(){
-    By filtroTipoAlojamientoHotel = By.xpath("/html/body/div[4]/div[1]/div/div[5]/div[1]");
+    By filtroTipoAlojamientoHotel = By.xpath("//div[text()='Hotel']");
         click(filtroTipoAlojamientoHotel);
 
     }
@@ -23,4 +23,8 @@ public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
         click(aplicarFiltro);
 
     }
+     public void seleccionarHotel() {
+         By seleccionarHotel = By.xpath("(//div[@class='styled__VerticalContentContainer-sc-14jadqx-4 eCjflM'])[1]");
+         click(seleccionarHotel);
+     }
 }

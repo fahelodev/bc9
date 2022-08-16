@@ -35,6 +35,7 @@ class CP003_Hoteles extends SeleniumTestBase {
         rumboEsHotelesBusquedaPage.filtroTipoAlojamiento();
         rumboEsHotelesBusquedaPage.filtroTipoAlojamientoHotel();
         rumboEsHotelesBusquedaPage.aplicarFiltro();
+        rumboEsHotelesBusquedaPage.seleccionarHotel();
     }
 }
 
