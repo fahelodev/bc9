@@ -76,7 +76,7 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
     public void buscarViaje(){click(botonBuscar);}
 
 
-    public String SinResultados(){
+    public String SinResultados(){         
         By sinResultados = By.xpath("//span[@class=\"display-s2q7wx-ValidationMessage-styled-ValidationMessage-styled\"]");
         return getText(sinResultados);
     }
