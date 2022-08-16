@@ -24,7 +24,7 @@ public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
 
     }
      public void seleccionarHotel() {
-         By seleccionarHotel = By.xpath("(//div[@class='styled__VerticalContentContainer-sc-14jadqx-4 eCjflM'])[1]");
+         By seleccionarHotel = By.xpath("(//div[@class='styled__VerticalContentContainer-sc-14jadqx-4 eCjflM'])[7]");
          click(seleccionarHotel);
      }
 }
