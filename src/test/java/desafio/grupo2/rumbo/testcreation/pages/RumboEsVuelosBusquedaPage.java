@@ -11,12 +11,15 @@ public class RumboEsVuelosBusquedaPage extends SeleniumWrapper {
         super(driver);
     }
     By filtroIberia = By.xpath("//span[text()=\"Iberia\"]");
+    By verMasFiltrosEmpresas = By.xpath("//p[@class=\"providers-filter-view__toggle-others--open js-toggle-others\"]");
+
 
 
 
     public void seleccionarViaje() throws InterruptedException {
-        //click(filtroIberia);
-        //Thread.sleep(5000);
+        click(verMasFiltrosEmpresas);
+        click(filtroIberia);
+        Thread.sleep(3000);
         By seleccionViaje = By.xpath("(//div[@class=\"FullTripCard__PaymentContainer-sc-z8znd4-3 bjAqvb\"])[1]");
 
         click(seleccionViaje);

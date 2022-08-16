@@ -6,6 +6,7 @@ import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosPage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboVuelosSecurePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -23,7 +24,7 @@ public class CP005_Vuelos extends SeleniumTestBase {
 
     @ParameterizedTest
     @MethodSource
-    void CP005_comprobacionNumeroTarjeta(String origen, String destino, List<String> DatosPersonales){
+    void CP005_comprobacionNumeroTarjeta(String origen, String destino, List<String> DatosPersonales, String esperado, Boolean condicion) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -36,13 +37,29 @@ public class CP005_Vuelos extends SeleniumTestBase {
         rumboEsVuelosPage.desplegarClases();
         rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.buscarViaje();
+
+        rumboEsVuelosBusquedaPage = new RumboEsVuelosBusquedaPage(DriverFactory.getDriver());
+        rumboEsVuelosBusquedaPage.seleccionarViaje();
+
+        rumboVuelosSecurePage = new RumboVuelosSecurePage(DriverFactory.getDriver());
+
+        rumboVuelosSecurePage.elegirClassic();
+        rumboVuelosSecurePage.rellenarDatosPersonales(DatosPersonales);
+        rumboVuelosSecurePage.rellenarQuienViaja(DatosPersonales);
+        rumboVuelosSecurePage.opcionesViaje();
+        rumboVuelosSecurePage.servicios(condicion);
+        rumboVuelosSecurePage.rellanarPago(DatosPersonales);
+
+        String Resultado = rumboVuelosSecurePage.numeroTarjetaInvalido();
+
+        Assertions.assertEquals(esperado,Resultado);
     }
 
 
     static Stream<Arguments> CP005_comprobacionNumeroTarjeta(){
         return Stream.of(
-                Arguments.arguments("Madrid", "Roma",List.of(
-                        "Lucas",
+                Arguments.arguments("Madrid", "Roma",List.of("3804228169"
+                        ,"Lucas",
                         "Gonzalez",
                         "lucasgon98@g",
                         "Felipe II",
@@ -54,10 +71,38 @@ public class CP005_Vuelos extends SeleniumTestBase {
                         "1998",
                         "Lucas Gonzalez",
                         "1538 9021 9009 2119 000"
-                )
+                ), "Introduce un número válido", true
                 ),
-                Arguments.arguments("Madrid", "Roma","380444973929002","Introduce un número de teléfono válido"),
-                Arguments.arguments("Madrid", "Roma","180422251789021", "Introduce un número de teléfono válido")
+                Arguments.arguments("Madrid", "Roma",List.of("3804228169"
+                                ,"Lucas",
+                                "Gonzalez",
+                                "lucasgon98@g",
+                                "Felipe II",
+                                "125",
+                                "5300",
+                                "La Rioja",
+                                "Argentina",
+                                "09",
+                                "1998",
+                                "Lucas Gonzalez",
+                                "1538 9021 9009 2119 000"
+                        ), "Introduce un número válido", true
+                ),
+                Arguments.arguments("Madrid", "Roma",List.of("3804228169"
+                                ,"Lucas",
+                                "Gonzalez",
+                                "lucasgon98@g",
+                                "Felipe II",
+                                "125",
+                                "5300",
+                                "La Rioja",
+                                "Argentina",
+                                "09",
+                                "1998",
+                                "Lucas Gonzalez",
+                                "1538 9021 9009 2119 000"
+                        ), "Introduce un número válido",true
+                )
         );
     }
 }
