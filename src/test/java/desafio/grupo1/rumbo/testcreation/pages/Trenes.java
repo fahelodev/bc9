@@ -4,9 +4,9 @@ import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class RumboTrenes extends SeleniumWrapper {
+public class Trenes extends SeleniumWrapper {
 
-    public RumboTrenes(WebDriver driver) {
+    public Trenes(WebDriver driver) {
         super(driver);
     }
 
