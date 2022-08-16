@@ -28,6 +28,12 @@ public class Trenes extends SeleniumWrapper {
     By fechaVuelta= By.xpath("(//div[text()='24'])[1]");
     By listaPasajero= By.xpath("//div[@class=\"lmn-sw-passengersContainer\"]");
     By btnBuscarTren= By.xpath("//div[@class=\"lmn-sw-submitFlightContainer\"]");
+    By ordenarMenorPrecio= By.xpath("(//ul[@role=\"tablist\"])[2]/descendant::li[@data-value=\"price.asc\"]");
+    By leerMasOfertasAve= By.xpath("(//div[@class=\"more-label\"])[1]");
+    By leerMasFuncionaRumbo = By.xpath("(//div[@class=\"more-label\"])[2]");
+    By ofertasRenfe= By.xpath("(//div[@class=\"display-1aslju6-HubFeatureCard-styled e1apqt34\"])[1]");
+    By textoErrorTren= By.xpath("//span[@id=\"noResultsText\"]");
+    By primerViernes= By.xpath("(//div[text()='26'])[1]");
 
 
 
