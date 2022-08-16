@@ -93,15 +93,16 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         By radioButtonFullFlex = By.xpath("(//div[@class=\"radio radio--middle sc-fiKUUL cEpWax\"] )[1]");
         By botonSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
 
+
         if(condicion == true){
             click(radioButtonSinPlus);
             click(radioButtonFullFlex);
             click(botonSiguiente);
         }
         else{
-            click(radioButtonFullFlex);
             click(botonSiguiente);
         }
+
     }
 
     public void rellanarPago(List<String> DatosPersonales){
@@ -133,5 +134,10 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         By tarjetaInvalida = By.xpath("(//label[@class=\"form-elements-2__error-label  \"])[2]");
         //Thread.sleep(1000);
         return getText(tarjetaInvalida);
+    }
+
+    public String sinmienbroplus(){
+        By noeleccion = By.xpath( "//div[@class=\"sc-jcRDWI cgxIDq\"]");
+        return getText(noeleccion);
     }
 }
