@@ -10,10 +10,10 @@ public class RumboEsTrenesPage extends SeleniumWrapper {
         super(driver);
     }
 
-    By btnsoloIda = By.xpath( "//div[@class='trainSwitch trainOneWay active']");
-    By btnorigenTren = By.xpath( "//div[@class=\"select-selected focus\"]");
+    By btnsoloIda = By.xpath( "//div[@data-type=\"one_way\"]");
+    By btnorigenTren = By.xpath( "(//div[@class=\"lmn-sw-select-responsive light custom-select-responsive\"])[1]");
 
-    By btnDestinoTren = By.xpath("//div[@class=\"select-selected focus\"][1]");
+    By btnDestinoTren = By.xpath("(//div[@class=\"select-selected\"])[2]");
     By btnCalendario = By.xpath("//div[@class=\"calendarBox lmn-sw-select-responsive lmn-sw-tooltip-responsive lmn-sw-tooltip-responsive__active\"]");
 
 
@@ -22,21 +22,36 @@ public class RumboEsTrenesPage extends SeleniumWrapper {
     public void seleccionarIda(){
         click(btnsoloIda);
     }
-    public void ingresarOrigen(){
+    public void ingresarOrigen(String origen) throws InterruptedException {
+        Thread.sleep(1000);
         click(btnorigenTren);
-        By origenmadrid =By.xpath("//div[@data-value=\"MAD\"][@class=\"same-as-selected\"]");
+        By origenmadrid =By.xpath("(//div[text()='Madrid'])[1]");
         click(origenmadrid);
+
     }
-    public void ingresarDestino(){
-        click(btnorigenTren);
-        By destinoBarcelona =By.xpath("//div[@data-value=\"YJB\"][@class=\"same-as-selected\"]");
-        click(destinoBarcelona);
+    public void ingresarDestino(String destino){
+        //click(btnDestinoTren);
+        switch(destino){
+            case "Barcelona":
+                By destinoBarcelona =By.xpath("(//div[text()='Barcelona'])[2]");
+                click(destinoBarcelona);
+                break;
+            case "Valencia":
+                By destinoValencia = By.xpath("(//div[text()='Valencia'])[2]");
+                click(destinoValencia);
+                break;
+            case  "Málaga":
+                By destinoMalaga =By.xpath("(//div[text()='Málaga'])[2]");
+                click(destinoMalaga);
+                break;
+
+        }
     }
     public void seleccionarCalendario(){
-        click(btnCalendario);
-        By turnoTren = By.xpath("//div[@class=\"timeSelectionBoxTitle\"][text()='Tarde']");
+        //click(btnCalendario);
+        By turnoTren = By.xpath("(//div[@class=\"timeSelectionBoxTitle\"][text()='Tarde'])[2]");
         click(turnoTren);
-        By fechaTren =By.xpath("//div[@class=\"calendarBoxText lmn-sw-responsive-form-field lmn-sw-tooltip-responsive__text\"][text()=\"Mié, 24 Ago\"]");
+        By fechaTren =By.xpath("(//div[text()=\"24\"])[1]");
         click(fechaTren);
     }
     public void establecerBusqueda(){
