@@ -6,6 +6,7 @@ import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosPage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboVuelosSecurePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -24,6 +25,7 @@ public class CP005_Vuelos extends SeleniumTestBase {
 
     @ParameterizedTest
     @MethodSource
+    @Description("Realizando la prueba CP005 del RF01")
     void CP005_comprobacionNumeroTarjeta(String origen, String destino, List<String> DatosPersonales, String esperado, Boolean condicion) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
