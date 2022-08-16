@@ -12,6 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 public class CP004_Vuelos extends SeleniumTestBase {
@@ -24,7 +25,7 @@ public class CP004_Vuelos extends SeleniumTestBase {
     @ParameterizedTest
     @MethodSource
     @Description("Realizando la prubea CP004 del RF01")
-    void CP004_NumeroTelefonoInvalido(String origen, String destino,String num,String esperado) throws InterruptedException {
+    void CP004_NumeroTelefonoInvalido(String origen, String destino,List<String> num,String esperado) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -51,9 +52,9 @@ public class CP004_Vuelos extends SeleniumTestBase {
     }
     static Stream<Arguments> CP004_NumeroTelefonoInvalido(){
         return Stream.of(
-                Arguments.arguments("Madrid", "Roma","153480219232334","Introduce un número de teléfono válido"),
-                Arguments.arguments("Madrid", "Roma","380444973929002","Introduce un número de teléfono válido"),
-                Arguments.arguments("Madrid", "Roma","180422251789021", "Introduce un número de teléfono válido")
+                Arguments.arguments("Madrid", "Roma", List.of("380444973929002"),"Introduce un número de teléfono válido"),
+                Arguments.arguments("Madrid", "Roma", List.of("180422251789021"),"Introduce un número de teléfono válido"),
+                Arguments.arguments("Madrid", "Roma", List.of("180422223454021"), "Introduce un número de teléfono válido")
         );
     }
 }

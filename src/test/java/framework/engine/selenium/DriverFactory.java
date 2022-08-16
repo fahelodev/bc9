@@ -37,7 +37,6 @@ public class DriverFactory {
                 getDriver().manage().deleteAllCookies();
                 getDriver().manage().window().maximize();
                 getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(30000));
-
                 return getDriver();
             default:
                 throw new RuntimeException("Navegador no configurado: " + browser);

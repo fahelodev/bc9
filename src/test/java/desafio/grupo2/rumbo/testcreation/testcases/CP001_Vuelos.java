@@ -50,10 +50,10 @@ public class CP001_Vuelos extends SeleniumTestBase {
 
         rumboVuelosSecurePage.elegirClassic();
        // rumboVuelosSecurePage.rellenarDatosPersonales();
-        rumboVuelosSecurePage.rellenarQuienViaja();
+        //rumboVuelosSecurePage.rellenarQuienViaja();
         rumboVuelosSecurePage.opcionesViaje();
-        rumboVuelosSecurePage.servicios();
-        rumboVuelosSecurePage.rellanarPago();
+        //umboVuelosSecurePage.servicios();
+       // rumboVuelosSecurePage.rellanarPago();
 
 
     }
