@@ -23,7 +23,7 @@ public class CP001_Trenes extends SeleniumTestBase {
 
     @ParameterizedTest
     @MethodSource
-    @Description("Test de prueba")
+    @Description("Realizar el test CP001 del RF02")
     void CP001_BusquedadeTren(String Origen,String Destino, String esperado) throws InterruptedException {
 
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
