@@ -11,8 +11,16 @@ public class RumboEsTrenesSecurePage extends SeleniumWrapper {
 
     By btnSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
 
+    By filtroDeDuracion = By.xpath("(//div[@class=\"noUi-handle noUi-handle-lower btn btn-default\"])[2]");
+
     public void pasarSiguiente() {
         click(btnSiguiente);
+    }
+
+    public void duracionmenor() throws InterruptedException {
+        click(filtroDeDuracion);
+        Thread.sleep(5000);
+
     }
 
     public String sinDatos() {
