@@ -15,8 +15,8 @@ public class RumboEsVuelosBusquedaPage extends SeleniumWrapper {
 
 
     public void seleccionarViaje() throws InterruptedException {
-        //click(filtroIberia);
-        //Thread.sleep(5000);
+        click(filtroIberia);
+        Thread.sleep(5000);
         By seleccionViaje = By.xpath("(//div[@class=\"FullTripCard__PaymentContainer-sc-z8znd4-3 bjAqvb\"])[1]");
 
         click(seleccionViaje);

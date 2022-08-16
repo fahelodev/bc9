@@ -23,6 +23,10 @@ public class GoogleHomePage extends SeleniumWrapper {
         click(btnBuscarConGoogleLocator);
     }
 
+    public void Buscar(){
+        click(btnBuscarConGoogleLocator);
+    }
+
     public void buscarConBotonVoyATenerSuerte(String busqueda){
         write(busqueda,barraBusquedaLocator);
         click(btnVoyATenerSuerteLocator);
