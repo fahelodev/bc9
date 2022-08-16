@@ -26,6 +26,11 @@ public class RumboEsHotelesPage extends SeleniumWrapper {
         click(vuelta);
     }
 
+    public void pasajeros(){
+        By pasajeros = By.xpath("(//button[@class=\"display-1s7lzx-Counter-styled\"])[1]");
+        click(pasajeros);
+    }
+
     public void buscar(){
         By botonBuscar = By.xpath("//button[@class=\"display-joffoz-Button\"] ");
         click(botonBuscar);
