@@ -3,6 +3,10 @@ package desafio.grupo1.rumbo.testcreation.pages;
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static framework.engine.utils.Constants.BASE_URL_AUT;
 
 public class Trenes extends SeleniumWrapper {
 
@@ -14,8 +18,7 @@ public class Trenes extends SeleniumWrapper {
 
     By textAreaOrigen = By.xpath("//div[text()=\"Origen\"]");
     By opcionOrigenACorunia = By.xpath("//div[@data-value=\"YJC\"]");
-    By btnBuscar = By.xpath("(//div[@tabindex='1'])[2]");
-    By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"validation-error__content\"])[2]");
+    By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"lmn-sw-error-container\"]");
     By btnTrenesMenu= By. xpath("(//a[@title=\"Trenes\"])[1]");
     By btnIdayVuelta= By.xpath("//div[@data-type=\"round_trip\"]");
     By btnIdaSolo= By.xpath("//div[@data-type=\"one_way\"]");
@@ -41,15 +44,31 @@ public class Trenes extends SeleniumWrapper {
 
     //----------METODOS-----------
 
-    public void viajeEnTrenSinDestino(){
-        click(textAreaOrigen);
+    public void navegarAlHome(){
+        navigateTo(BASE_URL_AUT);
+    }
 
+    public void aceptarCookies(){
+        click(btnIdaSolo);
+    }
+
+    public void seccionHoteles(){click(btnTrenesMenu);}
+
+    public void viajeEnTrenSinDestino() throws InterruptedException {
+        //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(textAreaOrigen));
+        Thread.sleep(3000);
+        click(textAreaOrigen);
+        Thread.sleep(3000);
+        //eWait(10).until(ExpectedConditions.elementToBeSelected(textAreaOrigen));
         click(opcionOrigenACorunia);
-        click(btnBuscar);
+        click(btnBuscarTren);
     }
 
     public String msjErrorDestino(){
-        return getText(msjErrorSeleccionaDestino);
+        eWait(10).until(ExpectedConditions.visibilityOfElementLocated(msjErrorSeleccionaDestino));
+        String msjError = "";
+        msjError.contains(getText(msjErrorSeleccionaDestino));
+        return msjError;
     }
 
     public void seccionTrenes(){

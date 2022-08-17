@@ -12,34 +12,32 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TrenesTest extends SeleniumTestBase {
-
-    RumboHomePage rumboHomePage;
+    
     Trenes trenes;
 
     @BeforeEach
     public void inicializar(){
-        rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.navegarAlHome();
-        rumboHomePage.aceptarCookies();
+        trenes = new Trenes(DriverFactory.getDriver());
+        trenes.navegarAlHome();
+        trenes.aceptarCookies();
     }
     @Test
     public void irASeccionTrenes() {
-        rumboHomePage.seccionTrenes();
-
     }
 
     @Test
     @Description ("ID:T03- Crear viaje en Tren, filtrar por el más barato")
     public void viajeMasBarato() {
-        rumboHomePage.seccionTrenes();
+        trenes.seccionTrenes();
         trenes.viajeTrenFiltro();
     }
 
     @Test
     @Description("ID: T01 - Viaje en tren sin destino")
-    public void buscarViajeTren(){
+    public void buscarViajeTren() throws InterruptedException {
+        trenes.seccionTrenes();
         trenes.viajeEnTrenSinDestino();
-        trenes.msjErrorDestino();
+        Assertions.assertEquals("Selecciona ciudad de destino", trenes.msjErrorDestino());
     }
 
 }
