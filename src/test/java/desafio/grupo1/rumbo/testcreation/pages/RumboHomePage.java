@@ -29,4 +29,5 @@ public class RumboHomePage extends SeleniumWrapper {
     public void seccionTrenes(){
         click(btnTrenes);
     }
+
 }
