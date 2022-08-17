@@ -4,21 +4,22 @@ import desafio.grupo1.rumbo.testcreation.pages.Vuelos;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class VuelosTest extends SeleniumTestBase {
     Vuelos vuelos;
 
-
-
-    @Test
-    @Tag("regresion")
-    void busquedaVuelos() throws InterruptedException {
+    @BeforeEach
+    public void inicializar(){
         vuelos = new Vuelos((DriverFactory.getDriver()));
-
         vuelos.navegarAlHomeWeb();
         vuelos.aceptarCokies();
+}  @Test
+    @Tag("regresion")
+    void busquedaVuelos() throws InterruptedException {
+
         vuelos.seleccionarMenuVuelo();
         vuelos.generarVuelo();
 
