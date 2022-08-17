@@ -8,28 +8,36 @@ public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
     public RumboEsHotelesBusquedaPage(WebDriver driver) {
         super(driver);
     }
-    public void filtroTipoAlojamiento(){
+    public void filtroTipoAlojamiento() throws InterruptedException {
+        Thread.sleep(3000);
         By filtroTipoAlojamiento = By.xpath("(//div[contains(@class,'styled__CustomCompStyledLabel-sc-1v205vs-1 izWgpy')])[2]");
         click(filtroTipoAlojamiento);
     }
-    public void filtroTipoAlojamientoHotel(){
+    public void filtroTipoAlojamientoHotel() throws InterruptedException {
+        Thread.sleep(1000);
     By filtroTipoAlojamientoHotel = By.xpath("//div[text()='Hotel']");
         click(filtroTipoAlojamientoHotel);
 
     }
-    public void aplicarFiltro(){
+    public void aplicarFiltro() throws InterruptedException {
+        Thread.sleep(1000);
         //button[text()='Aplicar']
         By aplicarFiltro = By.xpath("//button[@class='styled__ApplyStyled-sc-18vcrz8-4 cHQYkF']");
         click(aplicarFiltro);
 
     }
-     public void seleccionarHotel() {
-         By seleccionarHotel = By.xpath("(//div[@class='styled__VerticalContentContainer-sc-14jadqx-4 eCjflM'])[7]");
+     public void seleccionarHotel() throws InterruptedException {
+         Thread.sleep(2000);
+         By seleccionarHotel = By.xpath("//div[text()='Central Loop Hotel']");
          click(seleccionarHotel);
      }
-    public void seleccionarHotel2() {
-        By seleccionarHotel2 = By.xpath("(//div[@class='styled__VerticalContentContainer-sc-14jadqx-4 eCjflM'])[1]");
+    public void seleccionarHotel04() {
+        By seleccionarHotel2 = By.xpath("//div[text()='Freehand Chicago']");
         click(seleccionarHotel2);
+    }
+    public void internet(){
+        By internet = By.xpath("//div[text()='Internet']");
+        click(internet);
     }
 
 }
