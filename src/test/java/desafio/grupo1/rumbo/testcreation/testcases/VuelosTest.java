@@ -1,5 +1,6 @@
 package desafio.grupo1.rumbo.testcreation.testcases;
 
+import desafio.grupo1.rumbo.testcreation.pages.RumboHomePage;
 import desafio.grupo1.rumbo.testcreation.pages.Vuelos;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
@@ -10,12 +11,13 @@ import org.junit.jupiter.api.Test;
 
 public class VuelosTest extends SeleniumTestBase {
     Vuelos vuelos;
+    RumboHomePage rumboHomePage;
 
     @BeforeEach
     public void inicializar(){
-        vuelos = new Vuelos((DriverFactory.getDriver()));
-        vuelos.navegarAlHomeWeb();
-        vuelos.aceptarCokies();
+        rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
+        rumboHomePage.navegarAlHome();
+        rumboHomePage.aceptarCookies();
 }  @Test
     @Tag("regresion")
     void busquedaVuelos() throws InterruptedException {
@@ -30,9 +32,6 @@ public class VuelosTest extends SeleniumTestBase {
     @Test
     @Description("se modifica el numero de pasajeros")
     void modificarVuelo() throws InterruptedException {
-        vuelos = new Vuelos((DriverFactory.getDriver()));
-        vuelos.navegarAlHomeWeb();
-        vuelos.aceptarCokies();
         vuelos.seleccionarMenuVuelo();
         vuelos.generarVuelo();
 
