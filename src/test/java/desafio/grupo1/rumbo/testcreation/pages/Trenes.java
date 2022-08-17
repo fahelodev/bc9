@@ -57,8 +57,9 @@ public class Trenes extends SeleniumWrapper {
     }
 
     public void viajeEnTrenSinDestino(){
-        click(textAreaOrigen);
-        click(opcionOrigenACorunia);
+        esperaEnSegundosYClick(3,btnTrenes);
+       esperaEnSegundosYClick(5,textAreaOrigen);
+        esperaEnSegundosYClick(5,opcionOrigenACorunia);
         click(btnBuscar);
     }
 
@@ -69,18 +70,15 @@ public class Trenes extends SeleniumWrapper {
 
     public void viajeTrenFiltro() throws InterruptedException {
         esperaEnSegundosYClick(5,textAreaOrigen);
-        //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(origen));
         click(textAreaOrigen);
-        //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(btnIdayVuelta));
-        //click(btnIdayVuelta);
         esperaEnSegundosYClick(5,opcionOrigenAlicante);
         esperaEnSegundosYClick(8,opcionDestinoMadrid);
-        esperaEnSegundosYClick(5,calendarioIzq);
+        esperaEnSegundosYClick(3,calendarioIzq);
         esperaEnSegundosYClick(2,fechaIda);
         esperaEnSegundosYClick(2,fechaVuelta);
-
         click(btnBuscarTren);
         esperaEnSegundosYClick(10,ordenarMenorPrecio);
+
 
 
 
