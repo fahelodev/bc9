@@ -2,6 +2,7 @@ package desafio.grupo2.rumbo.testcreation.testcases;
 
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHotelesBusquedaPage;
+import desafio.grupo2.rumbo.testcreation.pages.RumboEsHotelesDetallesPage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHotelesPage;
 
 import framework.engine.selenium.DriverFactory;
@@ -14,6 +15,7 @@ class CP003_Hoteles extends SeleniumTestBase {
     RumboEsHomePage rumboEsHomePage;
     RumboEsHotelesPage rumboEsHotelesPage;
     RumboEsHotelesBusquedaPage rumboEsHotelesBusquedaPage;
+    RumboEsHotelesDetallesPage rumboEsHotelesDetallesPage;
     @Test
     @Description("Test Caso CP003_Hoteles")
     void CP003_Hoteles() throws InterruptedException {
@@ -35,6 +37,10 @@ class CP003_Hoteles extends SeleniumTestBase {
         rumboEsHotelesBusquedaPage.filtroTipoAlojamiento();
         rumboEsHotelesBusquedaPage.filtroTipoAlojamientoHotel();
         rumboEsHotelesBusquedaPage.aplicarFiltro();
+        rumboEsHotelesBusquedaPage.seleccionarHotel();
+
+        rumboEsHotelesDetallesPage = new RumboEsHotelesDetallesPage(DriverFactory.getDriver());
+        rumboEsHotelesDetallesPage.seleccionarHabitacion(); //ver que pasa aqui, no sigue funcionando
     }
 }
 
