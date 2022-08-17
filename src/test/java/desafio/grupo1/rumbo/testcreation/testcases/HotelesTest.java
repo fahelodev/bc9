@@ -4,15 +4,14 @@ import desafio.grupo1.rumbo.testcreation.pages.Hoteles;
 import desafio.grupo1.rumbo.testcreation.pages.RumboHomePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 
 public class HotelesTest extends SeleniumTestBase {
     RumboHomePage rumboHomePage;
-    Hoteles H01;
+    Hoteles hoteles;
 
     @BeforeEach
     public void inicializar() {
@@ -20,14 +19,15 @@ public class HotelesTest extends SeleniumTestBase {
         rumboHomePage.navegarAlHome();
         rumboHomePage.aceptarCookies();
     }
-
-
     @Test
     public void Test_H01() {
-
         rumboHomePage.seccionHoteles();
-        H01.busquedaHabitacionPorPersona();
-
+        hoteles.busquedaHabitacionPorPersona();
+        Assertions.assertEquals("3 viajeros, 1 habitación", hoteles.busquedaHabitacionPorPersona());
+    @Test
+    public void Test_H02(){
+        rumboHomePage.seccionHoteles();
+        }
     }
 
 }

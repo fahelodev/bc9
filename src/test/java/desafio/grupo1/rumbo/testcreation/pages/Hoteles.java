@@ -10,6 +10,14 @@ public class Hoteles extends SeleniumWrapper {
     public Hoteles(WebDriver driver) {
         super(driver);
     }
+    //----------------LOCALIZADORES PRUEBA ID_H01
+    By btnDestino = By.xpath("//*[@id=\"mui-1\"]");
+    By btnCualquierDestino= By.xpath("//*[@id=\"mui-1-option-0\"]");
+    By btnHabitaciones= By.xpath("//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[3]/div[1]/div/div[1]");
+    By agregarHabitaciones= By.xpath("//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[3]/div[1]/div/div[2]/div/div[2]/button");
+    By filtroHabitacion= By.xpath("//*[@id=\"__next\"]/header/div[1]/div[3]/div[6]/span");
+    //----------------LOCALIZADORES PRUEBA ID_H02
+
 
     //----------------LOCALIZADORES PRUEBA ID_H05
     By txtAreaADondeQuieresIr = By.xpath("//*[@id=\"mui-1\"]");
@@ -22,36 +30,28 @@ public class Hoteles extends SeleniumWrapper {
     By btnElegirTipoDeHabitacion = By.xpath("//button[@data-test-id=\"book-cta\"]");
     By btnTipoHabContinuar = By.xpath("(//button[@data-testid=\"checkout-button\"])[1]");
     By seccionDatosHotel = By.xpath("descendant::div[@class=\"hotel-summary__inner\"]");
-
-
     //----------------LOCALIZADORES PRUEBA ID_H06
-
     By btnHoteles = By.xpath("(//li/div/a[@title=\"Hoteles\"])[1]");
     By desplegarIdeasHotelesEspania = By.xpath ("(//*[@id=\"arrow_down_svg__filled\"])[1]");
     By desplegarDestPopularesExtanj = By.xpath("(//*[@id=\"arrow_down_svg__filled\"])[2]");
     By desplegarHtlesCiudadesEspa = By.xpath ("(//*[@id=\"arrow_down_svg__filled\"])[3]");
     By desplegarIdeasDeViajes = By.xpath("(//*[@id=\"arrow_down_svg__filled\"])[4]");
-
-
-    //Identificar localizadores
-    By btnDestino = By.xpath("//*[@id=\"mui-1\"]");
-    By btnCualquierDestino= By.xpath("//*[@id=\"mui-1-option-0\"]");
-
-    By btnHabitaciones= By.xpath("//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[3]/div[1]/div/div[1]");
-    By agregarHabitaciones= By.xpath("//*[@id=\"hub-csw-container\"]/div/div[2]/div/form/div/div[3]/div[1]/div/div[2]/div/div[2]/button");
-
-    By filtroHabitacion= By.xpath("//*[@id=\"__next\"]/header/div[1]/div[3]/div[6]/span");
-    //---------------------METODOS
+    //---------------------METODOS----------------------
     public void seccionHoteles(){ click(btnHoteles);}
-    public void busquedaHabitacionPorPersona(String filtro){
+    public String busquedaHabitacionPorPersona(){
+        String filtro;
         click(btnDestino);
         if (isDisplayed(btnCualquierDestino)){
         }
         if (isDisplayed(btnHabitaciones)){click(btnHabitaciones);}
-            if (isDisplayed(agregarHabitaciones)){click(agregarHabitaciones);}
-        if (isDisplayed(btnBuscar)){click(btnBuscar);}
-        //getText(filtroHabitacion);
+            if (isDisplayed(agregarHabitaciones)){
+                click(agregarHabitaciones);
+            }
+        if (isDisplayed(btnBuscar)){
+            click(btnBuscar);
+        }
         filtro = getText(filtroHabitacion);
+        return filtro;
     }
 
 
