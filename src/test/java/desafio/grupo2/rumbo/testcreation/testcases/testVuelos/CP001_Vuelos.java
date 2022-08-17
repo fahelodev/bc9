@@ -13,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 public class CP001_Vuelos extends SeleniumTestBase {
@@ -61,34 +62,37 @@ public class CP001_Vuelos extends SeleniumTestBase {
     @MethodSource
    // @ValueSource(strings = {"MAD - FCO","MAD - LIS"})
     @Description("Realizando la prubea CP001 del RF01")
-    void CP001_MultiplesVuelos(String origen,String destino,String esperado){
+    void CP001_MultiplesVuelos(String origen,String destino,String esperado) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
         rumboEsHomePage.irAVuelos();
-
         rumboEsVuelosPage = new RumboEsVuelosPage(DriverFactory.getDriver());
         rumboEsVuelosPage.ingresarOrigen(origen);
         rumboEsVuelosPage.ingresarDestino(destino);
+        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.desplegarPasajeros();
         rumboEsVuelosPage.desplegarClases();
-        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.buscarViaje();
-
+        Thread.sleep(2000);
+        ArrayList<String> pestañas = rumboEsVuelosPage.getWinndowsHandled();
+        if (pestañas.size() > 1){
+            rumboEsVuelosPage.SwitchTo(pestañas.get(1));
+        }
         rumboEsVuelosBusquedaPage = new RumboEsVuelosBusquedaPage(DriverFactory.getDriver());
         String resultado = rumboEsVuelosBusquedaPage.obtenerRutaOri() + " - " + rumboEsVuelosBusquedaPage.obtenerRutaDes();
 
-        System.out.println(resultado);
+            System.out.println(resultado);
 
-        Assertions.assertEquals(esperado,resultado);
+            Assertions.assertEquals(esperado,resultado);
+        }
 
-    }
 
     static Stream<Arguments> CP001_MultiplesVuelos(){
         return Stream.of(
                 Arguments.arguments("Madrid", "Roma", "MAD - FCO"),
                 Arguments.arguments("Madrid", "Lisboa", "MAD - LIS"),
-                Arguments.arguments("Madrid", "Londres","MAD - LHR")
+                Arguments.arguments("Madrid", "Londres","MAD - LGW")
         );
     }
 

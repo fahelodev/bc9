@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SeleniumWrapper {
@@ -76,6 +77,17 @@ public class SeleniumWrapper {
     public void Mover(By locator){
        Actions action = new Actions(driver);
        action.dragAndDropBy(driver.findElement(locator),-50,0).perform();
+    }
+
+    public String getWindowHandled(){
+        return driver.getWindowHandle();
+    }
+    public ArrayList<String> getWinndowsHandled(){
+        return new ArrayList<>(driver.getWindowHandles());
+    }
+
+    public void SwitchTo(String winDowHandled){
+        driver.switchTo().window(winDowHandled);
     }
 
 }

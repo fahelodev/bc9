@@ -35,7 +35,6 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         By inputCiudad = By.xpath("//input[@data-test=\"input-city\"]");
         By botonDesplegarPais= By.xpath("//div[@class=\"form-control text-input flag-dropdown\"]");
         By paisArg = By.xpath("//li[@data-flag-key=\"flag_no_13\"]");
-
         write(DatosPersonales.get(1),inputNombre);
         write(DatosPersonales.get(2),inputApellido);
         write(DatosPersonales.get(3),inputEmail);
@@ -44,14 +43,17 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         click(codigoAreaArg);
         write(DatosPersonales.get(0),inputTelefono);
         sendKeys(Keys.TAB,inputTelefono);
-        write(DatosPersonales.get(4),inputDireccionPostal);
-        write(DatosPersonales.get(5),inputNumCalle);
-        write(DatosPersonales.get(6),inputCodigoPostal);
-        write(DatosPersonales.get(7),inputCiudad);
-        click(botonDesplegarPais);
-        By inputBuscarPais = By.xpath("//input[@class=\"search-box\"]");
-        write(DatosPersonales.get(8),inputBuscarPais);
-        sendKeys(Keys.ENTER,inputBuscarPais);
+        if(isDisplayed(inputDireccionPostal)){
+            write(DatosPersonales.get(4),inputDireccionPostal);
+            write(DatosPersonales.get(5),inputNumCalle);
+            write(DatosPersonales.get(6),inputCodigoPostal);
+            write(DatosPersonales.get(7),inputCiudad);
+            click(botonDesplegarPais);
+            By inputBuscarPais = By.xpath("//input[@class=\"search-box\"]");
+            write(DatosPersonales.get(8),inputBuscarPais);
+            sendKeys(Keys.ENTER,inputBuscarPais);
+        }
+
         //sendKeys(Keys.TAB,botonDesplegarPais);
         //click(paisArg);
 
@@ -114,9 +116,7 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
 
         write(DatosPersonales.get(11),inputTitularTarjeta);
         write(DatosPersonales.get(12),inputNumeroTarjeta);
-        //write("11",inputMesExpiracion);
-        //write("27",inputAnoExpiracion);
-        //write("248",inputCVV);
+
     }
 
     public Boolean ActivacionDeReloj() {
@@ -132,7 +132,7 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         By inputNumeroTarjeta = By.xpath("//input[@data-test=\"input-creditCard.cardNumber\"] ");
         sendKeys(Keys.TAB,inputNumeroTarjeta);
         By tarjetaInvalida = By.xpath("(//label[@class=\"form-elements-2__error-label  \"])[2]");
-        //Thread.sleep(1000);
+        Thread.sleep(3000);
         return getText(tarjetaInvalida);
     }
 

@@ -34,9 +34,9 @@ public class CP004_Vuelos extends SeleniumTestBase {
         rumboEsVuelosPage = new RumboEsVuelosPage(DriverFactory.getDriver());
         rumboEsVuelosPage.ingresarOrigen(origen);
         rumboEsVuelosPage.ingresarDestino(destino);
+        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.desplegarPasajeros();
         rumboEsVuelosPage.desplegarClases();
-        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.buscarViaje();
 
         rumboEsVuelosBusquedaPage = new RumboEsVuelosBusquedaPage(DriverFactory.getDriver());
@@ -46,6 +46,7 @@ public class CP004_Vuelos extends SeleniumTestBase {
 
         rumboVuelosSecurePage.elegirClassic();
         rumboVuelosSecurePage.rellenarDatosPersonales(num);
+        rumboVuelosSecurePage.rellenarQuienViaja(num);
         String resultado = rumboVuelosSecurePage.datosInvalidos();
 
         Assertions.assertEquals(esperado,resultado);

@@ -45,7 +45,7 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
                 click(destinoRoma);
                 break;
             case "Londres":
-                By destinoLondres = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[2]");
+                By destinoLondres = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[3]");
                 click(destinoLondres);
                 break;
         }
@@ -61,7 +61,7 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
 
     public void desplegarClases(){
         click(botonDesplegarClases);
-        By claseTurista = By.xpath("//div[text()=\"Turista\"]\t ");
+        By claseTurista = By.xpath("//div[text()=\"Turista\"]");
         click(claseTurista);
     }
 
