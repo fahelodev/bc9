@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class GoogleSteps extends GoogleTestRunner implements En{
 
+    GoogleHomePage ghp;
     public GoogleSteps(){
 
         GoogleHomePage googleHomePage;
@@ -14,11 +15,13 @@ public class GoogleSteps extends GoogleTestRunner implements En{
         Before(2, GoogleTestRunner::setUp);
         After(GoogleTestRunner::tearDown);
 
-        Given("que estoy en el Home de Google", () -> Assertions.assertTrue(true));
+        Given("que estoy en el Home de Google", () -> {
+            ghp=new GoogleHomePage(driver);
+            ghp.navegarAlHome();
+            Assertions.assertEquals("Google",ghp.getUrlTitle());});
 
         When("busco la palabra {string} en el navegador", (String string) -> {
-            // Write code here that turns the phrase above into concrete actions
-            Assertions.assertTrue(true);
+            ghp.buscarConBotonBuscar(string);
         });
 
         When("presiono el boton buscar", () -> {
