@@ -40,7 +40,7 @@ public class Vuelos extends SeleniumWrapper {
     By btnIdaVuelta = By.xpath("//div[contains(text(),'Ida y vuelta')]");
 
     //seccion pasajeros
-    By btnPasajeros = By.xpath("(//div[@class='display-d3pys1-Dropdown-styled'])[1]"); // ver como cerrar la ventana
+    By btnPasajeros = By.xpath("//div[contains(text(),'1 adulto')]"); // ver como cerrar la ventana
     By btnMinAdulto = By.xpath("(//button[@class='display-1s7lzx-Counter-styled'])[1]");
     By btnMasAdulto = By.xpath("(//button[@class='display-1s7lzx-Counter-styled'])[2]");
     By btnMinNino =  By.xpath("(//button[@class='display-1s7lzx-Counter-styled'])[3]");
@@ -98,6 +98,7 @@ public class Vuelos extends SeleniumWrapper {
 
 //SECCION DE CHECKBOX
 
+    By checkAerolineasArgentina = By.xpath("//span[@class='checkboxlist-filter-view__desc desc']//*[text()='Aerolineas Argentinas']");
     //detectar los check totales de la pagina : //span[@class='check']
 
     //Escalas //funcionan para ida          || PARA USO DE IDA Y VUELTA CAMBIAR EL DATA [2]
@@ -113,9 +114,18 @@ public class Vuelos extends SeleniumWrapper {
     By menuLogin = By.xpath("//div[@class='modal-body']");
     By btnLogin = By.xpath("//button[contains(text(),'Iniciar sesión')]");
 
+    //Seleccion Vuelos del listado despues de generar vuelo **************************************************************
+    By listadoVuelos = By.xpath("//div[@class='content-layout-view__column-right col-md-9']");
+    By primeroDeListaVuelos = By.xpath("(//div[@class='FullTripCard__PaymentContainer-sc-z8znd4-3 bjAqvb'])[1]");
+
+    //*************************************************************************
+    //Seccion servicios
+    By btnPagoFlexible = By.xpath("//div[@id='']//*[text()='Elegir Flexible']");
 
 
-        ArrayList<String>tabs;
+
+
+
 
 
     public Vuelos(WebDriver driver) {
@@ -203,18 +213,12 @@ public class Vuelos extends SeleniumWrapper {
 
 
 
-    public void probando(){
-        click(checkNinguna);
-    }
+
     public void seleccionarModificar(){
         click(btnModificar);
     }
 
 
-    public void handleTabs(){
-
-
-    }
 
 
 
@@ -226,8 +230,11 @@ public class Vuelos extends SeleniumWrapper {
             click(btnModificarPasajeros);
             Thread.sleep(2000);
             if (isDisplayed(listaModificarPasajeros)) {
-                click(btnMasAdulto); //aumento adulto
+                click(btnModificarMasAdulto); //aumento adulto
+                click(btnModificarBuscar);
             }
+
+
         }
     }
 
@@ -251,8 +258,21 @@ public class Vuelos extends SeleniumWrapper {
     }
 
 
+    public void seleccionarPrimerVuelo(){
+
+        if(isDisplayed(listadoVuelos))
+        click(primeroDeListaVuelos);
+
+    }
+
+    public void seleccionarServicio(){
+        click(btnPagoFlexible);
+    }
 
 
+    public void seleccionarCompania(){
+        click(checkAerolineasArgentina);
+    }
 
 
 }

@@ -35,32 +35,45 @@ public class VuelosTest extends SeleniumTestBase {
         System.out.println(vuelos.guardarPag());
         vuelos.seleccionarMenuVuelo();
         vuelos.generarVuelo();
-
-
-
         Thread.sleep(5000);
 
         //comienzo de esta prueba
 
 
-        vuelos.guardarPag();
+        vuelos.guardarPag(); //pagina colada
         System.out.println(vuelos.guardarPag());
 
-        vuelos.switchTo(1); //
-        System.out.println(vuelos.switchTo(1));
 
-        vuelos.probando();
+        vuelos.switchTo(0).close();// cierro pagina anexa
+        Thread.sleep(3000);
+        vuelos.guardarPag(); //guardo pagina actual
+        System.out.println(vuelos.guardarPag());
+        vuelos.switchTo(0); // continuo con el proceso
+
+
 
         vuelos.seleccionarModificar();
+
         Thread.sleep(5000);
+
         vuelos.modificarVuelo();
+
+
+        //agregar assert
 
     }
 
     @Test
     @Description(" comprobar listado de checkbox se encuentren habilitados")
-    void checkboxHabilitados(){
+    void checkboxHabilitados() throws InterruptedException {
+
+        vuelos.guardarPag();
         vuelos.seleccionarMenuVuelo();
+        vuelos.generarVuelo();
+        //continuacion
+        vuelos.guardarPag();
+        vuelos.switchTo(1);
+
 
     }
 
@@ -70,27 +83,55 @@ public class VuelosTest extends SeleniumTestBase {
         vuelos.seleccionarMenuVuelo();
         vuelos.seleccionarMultidestino();
         Thread.sleep(3000);
+        //continuacion
+        vuelos.guardarPag();
+        vuelos.switchTo(1);
+
+
+
+        //agregar assert
 
     }
 
     @Test
     @Description("Filtrar vuelos por 'companias Aerolineas Argentinas' ")
-    void filtrarVuelosCompanias(){
+    void filtrarVuelosCompanias() throws InterruptedException {
+        vuelos.guardarPag();
         vuelos.seleccionarMenuVuelo();
+        vuelos.generarVuelo();
+        Thread.sleep(5000);
+
+        //continuacion
+        vuelos.guardarPag();
+        vuelos.switchTo(1);
+        vuelos.seleccionarCompania();
+
+        Thread.sleep(3000);
+        //agregarAssert COMPROBAR QUE LA LISTA CORRESPONDA A AEROLINEA ARGENTINA
+
 
     }
 
     @Test
     @Description("Comprobar registro de datos de clientes previo al pago")
     void datosCorrectoCliente() throws InterruptedException {
+        vuelos.guardarPag();
 
         vuelos.logearseEnPagina();
         vuelos.seleccionarMenuVuelo();
         vuelos.generarVuelo();
-        Thread.sleep(10000);
-        vuelos.probando();
+        Thread.sleep(5000);
 
+        //continuacion
+        vuelos.guardarPag();
+        vuelos.switchTo(1);
 
+        vuelos.seleccionarPrimerVuelo();
+        Thread.sleep(5000);
+        vuelos.seleccionarServicio();
+        Thread.sleep(3000);
+
+        // desarrollar assert
 
 
     }
