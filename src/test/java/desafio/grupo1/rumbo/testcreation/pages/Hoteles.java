@@ -17,7 +17,7 @@ public class Hoteles extends SeleniumWrapper {
     By filtroHabitacion= By.xpath("//*[@id=\"__next\"]/header/div[1]/div[3]/div[6]/span");
     //---------------------METODOS
     public void seccionHoteles(){ click(btnHoteles);}
-    public void busquedaHabitacionPorPersona(){
+    public void busquedaHabitacionPorPersona(String filtro){
         click(btnDestino);
         if (isDisplayed(btnCualquierDestino)){
         }
@@ -25,7 +25,7 @@ public class Hoteles extends SeleniumWrapper {
             if (isDisplayed(agregarHabitaciones)){click(agregarHabitaciones);}
         if (isDisplayed(btnBuscar)){click(btnBuscar);}
         //getText(filtroHabitacion);
-
+        filtro = getText(filtroHabitacion);
     }
 
 }
