@@ -1,4 +1,4 @@
-package desafio.grupo2.rumbo.testcreation.pages;
+package desafio.grupo2.rumbo.testcreation.pages.Trenes;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;

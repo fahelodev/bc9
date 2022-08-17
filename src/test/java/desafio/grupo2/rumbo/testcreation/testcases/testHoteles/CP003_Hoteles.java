@@ -1,9 +1,9 @@
-package desafio.grupo2.rumbo.testcreation.testcases;
+package desafio.grupo2.rumbo.testcreation.testcases.testHoteles;
 
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsHotelesBusquedaPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsHotelesDetallesPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsHotelesPage;
+import desafio.grupo2.rumbo.testcreation.pages.Hoteles.RumboEsHotelesBusquedaPage;
+import desafio.grupo2.rumbo.testcreation.pages.Hoteles.RumboEsHotelesDetallesPage;
+import desafio.grupo2.rumbo.testcreation.pages.Hoteles.RumboEsHotelesPage;
 
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;

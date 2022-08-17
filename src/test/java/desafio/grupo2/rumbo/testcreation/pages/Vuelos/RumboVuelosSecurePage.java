@@ -1,4 +1,4 @@
-package desafio.grupo2.rumbo.testcreation.pages;
+package desafio.grupo2.rumbo.testcreation.pages.Vuelos;
 
 import com.github.javafaker.Bool;
 import framework.engine.selenium.SeleniumWrapper;

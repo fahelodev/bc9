@@ -1,9 +1,9 @@
-package desafio.grupo2.rumbo.testcreation.testcases;
+package desafio.grupo2.rumbo.testcreation.testcases.testVuelos;
 
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosBusquedaPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboVuelosSecurePage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboEsVuelosBusquedaPage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboEsVuelosPage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboVuelosSecurePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
@@ -12,10 +12,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
 import java.util.stream.Stream;
 
-public class CP004_Vuelos extends SeleniumTestBase {
+public class CP003_Vuelos extends SeleniumTestBase {
     RumboEsHomePage rumboEsHomePage;
     RumboEsVuelosPage rumboEsVuelosPage;
 
@@ -24,8 +23,9 @@ public class CP004_Vuelos extends SeleniumTestBase {
     RumboVuelosSecurePage rumboVuelosSecurePage;
     @ParameterizedTest
     @MethodSource
-    @Description("Realizando la prubea CP004 del RF01")
-    void CP004_NumeroTelefonoInvalido(String origen, String destino,List<String> num,String esperado) throws InterruptedException {
+    @Description("Realizando la prubea CP003 del RF01")
+
+    void CP003_TiempoDeReservaVuelo(String origen,String destino) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -45,16 +45,15 @@ public class CP004_Vuelos extends SeleniumTestBase {
         rumboVuelosSecurePage = new RumboVuelosSecurePage(DriverFactory.getDriver());
 
         rumboVuelosSecurePage.elegirClassic();
-        rumboVuelosSecurePage.rellenarDatosPersonales(num);
-        String resultado = rumboVuelosSecurePage.datosInvalidos();
-
-        Assertions.assertEquals(esperado,resultado);
+        Boolean resultado = rumboVuelosSecurePage.ActivacionDeReloj();
+        Assertions.assertTrue(resultado);
     }
-    static Stream<Arguments> CP004_NumeroTelefonoInvalido(){
+
+    static Stream<Arguments> CP003_TiempoDeReservaVuelo(){
         return Stream.of(
-                Arguments.arguments("Madrid", "Roma", List.of("380444973929002"),"Introduce un número de teléfono válido"),
-                Arguments.arguments("Madrid", "Roma", List.of("180422251789021"),"Introduce un número de teléfono válido"),
-                Arguments.arguments("Madrid", "Roma", List.of("180422223454021"), "Introduce un número de teléfono válido")
+                Arguments.arguments("Madrid", "Roma"),
+                Arguments.arguments("Madrid", "Lisboa"),
+                Arguments.arguments("Madrid", "Londres")
         );
     }
 }

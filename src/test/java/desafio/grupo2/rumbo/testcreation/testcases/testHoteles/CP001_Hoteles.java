@@ -1,6 +1,6 @@
-package desafio.grupo2.rumbo.testcreation.testcases;
+package desafio.grupo2.rumbo.testcreation.testcases.testHoteles;
 
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsHotelesPage;
+import desafio.grupo2.rumbo.testcreation.pages.Hoteles.RumboEsHotelesPage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
