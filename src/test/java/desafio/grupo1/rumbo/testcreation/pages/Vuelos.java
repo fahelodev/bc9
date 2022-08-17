@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -114,24 +115,30 @@ public class Vuelos extends SeleniumWrapper {
 
 
 
-
+        ArrayList<String>tabs;
 
 
     public Vuelos(WebDriver driver) {
         super(driver);
+
     }
 
     //inicio
 
     public void navegarAlHomeWeb(){
         navigateTo(BASE_URL_AUT);
+
     }
+
+
+
 
     public void aceptarCokies(){
         click(btnAceptarCokies);
     }
     public void seleccionarMenuVuelo(){
         click(btnMenuVuelo);
+
     }
 
 
@@ -186,8 +193,10 @@ public class Vuelos extends SeleniumWrapper {
 
     }
 
-
-
+    //Multidestino
+    public void seleccionarMultidestino(){
+        click(btnMultidestino);
+    }
 
 
     //Generar Modificacion
@@ -223,22 +232,24 @@ public class Vuelos extends SeleniumWrapper {
     }
 
 
+
+
+
     public void logearseEnPagina() throws InterruptedException {
-
+       Thread.sleep(5000);
         click(btnMiRumbo);
-
+        Thread.sleep(5000);
         if(isDisplayed(menuLogin)){
-
             write("equipo1desafiotsoft@gmail.com",inputEmail);
             write("equipo1tsoft",inputPassword);
             click(btnLogin);
-
         }
-
         Thread.sleep(4000);
 
 
+
     }
+
 
 
 
