@@ -12,8 +12,17 @@ public class RumboEsHotelesDetallesPage extends SeleniumWrapper {
         Thread.sleep(10000);
         By seleccionarFiltro = By.xpath("//button[text()=\"Desayuno incluido\"]");
         click(seleccionarFiltro);
-
     }
+    public void internet(){
+        By internet = By.xpath("//div[text()='Internet']");
+        click(internet);
+    }
+    public void cancelaciongratuita(){
+        By cancelaciongratuita = By.xpath("(//button[text()='Continuar'])[2]");
+        click(cancelaciongratuita);
+    }
+
+
 }
 
 

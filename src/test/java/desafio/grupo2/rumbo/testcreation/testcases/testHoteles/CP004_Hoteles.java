@@ -1,6 +1,7 @@
 package desafio.grupo2.rumbo.testcreation.testcases.testHoteles;
 
 import desafio.grupo2.rumbo.testcreation.pages.Hoteles.RumboEsHotelesBusquedaPage;
+import desafio.grupo2.rumbo.testcreation.pages.Hoteles.RumboEsHotelesDetallesPage;
 import desafio.grupo2.rumbo.testcreation.pages.Hoteles.RumboEsHotelesPage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
 import framework.engine.selenium.DriverFactory;
@@ -14,6 +15,7 @@ class CP004_Hoteles extends SeleniumTestBase {
     RumboEsHomePage rumboEsHomePage;
     RumboEsHotelesPage rumboEsHotelesPage;
     RumboEsHotelesBusquedaPage rumboEsHotelesBusquedaPage;
+    RumboEsHotelesDetallesPage rumboEsHotelesDetallesPage;
     @Test
     @Description("Test Caso CP004_Hoteles")
     void CP004_Hoteles() throws InterruptedException {
@@ -34,7 +36,7 @@ class CP004_Hoteles extends SeleniumTestBase {
         if (tabs.size() > 1) {
             rumboEsHotelesPage.SwitchTo(tabs.get(1));
         }
-        rumboEsHotelesBusquedaPage.internet();
+        rumboEsHotelesDetallesPage.internet();
 
     }
 }

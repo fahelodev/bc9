@@ -32,12 +32,16 @@ public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
          click(seleccionarHotel);
      }
     public void seleccionarHotel04() {
-        By seleccionarHotel2 = By.xpath("//div[text()='Freehand Chicago']");
-        click(seleccionarHotel2);
+        By seleccionarHotel4 = By.xpath("//div[text()='Freehand Chicago']");
+        click(seleccionarHotel4);
     }
-    public void internet(){
-        By internet = By.xpath("//div[text()='Internet']");
-        click(internet);
+    public void seleccionarHotel05() {
+        By seleccionarHotel5 = By.xpath("//div[text()='Found Hotel Chicago River North']");
+        click(seleccionarHotel5);
+    }
+    public void seleccionarHotel06() {
+        By seleccionarHotel6 = By.xpath("//div[text()='Regal Pacific Hotel Santiago']");
+        click(seleccionarHotel6);
     }
 
 }

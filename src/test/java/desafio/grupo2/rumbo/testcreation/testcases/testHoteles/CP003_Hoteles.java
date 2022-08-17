@@ -42,6 +42,8 @@ class CP003_Hoteles extends SeleniumTestBase {
 
         rumboEsHotelesDetallesPage = new RumboEsHotelesDetallesPage(DriverFactory.getDriver());
         rumboEsHotelesDetallesPage.seleccionarFiltro();
+
+
     }
 }
 

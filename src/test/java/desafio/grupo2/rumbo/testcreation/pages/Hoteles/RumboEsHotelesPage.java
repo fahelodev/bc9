@@ -17,6 +17,13 @@ public class RumboEsHotelesPage extends SeleniumWrapper {
         By origenChicago = By.xpath("//b[@class=\"display-16ky3fq-Autocompleter-styled\"]");
         click(origenChicago);
     }
+    public void ingresarDestino2(String Destino) {
+        By inputDestino2 = By.id("mui-1");
+        write(Destino,inputDestino2);
+        By DestinoSantiago = By.xpath("//span[text()=', Chile']");
+        click(DestinoSantiago);
+    }
+
 
 
     public void FechaInicioVuelta(){
@@ -29,6 +36,11 @@ public class RumboEsHotelesPage extends SeleniumWrapper {
     public void pasajeros(){
         By pasajeros = By.xpath("(//button[@class=\"display-1s7lzx-Counter-styled\"])[1]");
         click(pasajeros);
+
+    }
+    public void habitaciones(){
+        By habitaciones = By.xpath("//button[text()='Añadir habitación']");
+        click(habitaciones);
     }
 
     public void buscar(){
