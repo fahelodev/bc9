@@ -68,23 +68,19 @@ public class Trenes extends SeleniumWrapper {
 
 
     public void viajeTrenFiltro() throws InterruptedException {
+        esperaEnSegundosYClick(5,textAreaOrigen);
         //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(origen));
         click(textAreaOrigen);
         //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(btnIdayVuelta));
         //click(btnIdayVuelta);
-        implicitWait(5);
+        esperaEnSegundosYClick(5,opcionOrigenAlicante);
+        esperaEnSegundosYClick(8,opcionDestinoMadrid);
+        esperaEnSegundosYClick(5,calendarioIzq);
+        esperaEnSegundosYClick(2,fechaIda);
+        esperaEnSegundosYClick(2,fechaVuelta);
 
-        click(opcionOrigenAlicante);
-        click(destino);
-        Thread.sleep(3000);
-        /*click(opcionDestinoMadrid);
-        Thread.sleep(3000);
-        click(calendarioIzq);
-        click(fechaIda);
-        click(fechaVuelta);
-        click(listaPasajero);
         click(btnBuscarTren);
-        click(ordenarMenorPrecio);*/
+        esperaEnSegundosYClick(10,ordenarMenorPrecio);
 
 
 

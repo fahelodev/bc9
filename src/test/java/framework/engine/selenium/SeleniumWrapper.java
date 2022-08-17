@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -46,6 +47,12 @@ public class SeleniumWrapper {
     //time implicit
     public WebDriver.Timeouts implicitWait(int TimeOut){
         return driver.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);
+    }
+
+    public void esperaEnSegundosYClick(int i,By locator) {
+        WebDriverWait espera = new WebDriverWait(driver, i);
+        espera.until(ExpectedConditions.elementToBeClickable(locator)).click();
+
     }
 
 
