@@ -66,7 +66,7 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
     }
 
     public void establecerFechaViaje(){
-        click(BotonCalendarioIda);
+        //click(BotonCalendarioIda);
         By ida = By.xpath("(//button[text()='24'])[1]");
         click(ida);
         By vuelta = By.xpath("(//button[text()='31'])[1]");

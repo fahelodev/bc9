@@ -34,9 +34,9 @@ public class CP003_Vuelos extends SeleniumTestBase {
         rumboEsVuelosPage = new RumboEsVuelosPage(DriverFactory.getDriver());
         rumboEsVuelosPage.ingresarOrigen(origen);
         rumboEsVuelosPage.ingresarDestino(destino);
+        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.desplegarPasajeros();
         rumboEsVuelosPage.desplegarClases();
-        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.buscarViaje();
 
         rumboEsVuelosBusquedaPage = new RumboEsVuelosBusquedaPage(DriverFactory.getDriver());
