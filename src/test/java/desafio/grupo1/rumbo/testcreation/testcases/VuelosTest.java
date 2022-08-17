@@ -16,7 +16,7 @@ public class VuelosTest extends SeleniumTestBase {
         vuelos = new Vuelos((DriverFactory.getDriver()));
         vuelos.navegarAlHomeWeb();
         vuelos.aceptarCokies();
-}  @Test
+}   @Test
     @Tag("regresion")
     void busquedaVuelos() throws InterruptedException {
 
