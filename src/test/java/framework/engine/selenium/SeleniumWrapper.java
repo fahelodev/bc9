@@ -4,14 +4,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SeleniumWrapper {
 
     private final WebDriver driver;
     ArrayList<String> tabs;
+
+
+
 
     //Constructor Base
     public SeleniumWrapper(WebDriver driver){
@@ -21,6 +26,7 @@ public class SeleniumWrapper {
 
     //Wrappers Selenium
 
+
     //guardo las paginas del navegador en un array
     public ArrayList<String> guardarPag(){
         tabs= new ArrayList<String>(driver.getWindowHandles());
@@ -29,6 +35,19 @@ public class SeleniumWrapper {
     public WebDriver switchTo(int i){
        return driver.switchTo().window(tabs.get(i));
     }
+
+
+ //time explicit
+    public WebDriverWait eWait(int i){
+        WebDriverWait ewait = new WebDriverWait(driver,i);
+        return ewait;
+    }
+
+    //time implicit
+    public WebDriver.Timeouts implicitWait(int TimeOut){
+        return driver.manage().timeouts().implicitlyWait(TimeOut, TimeUnit.SECONDS);
+    }
+
 
     public WebElement findElement(By locator){
         return driver.findElement(locator);
