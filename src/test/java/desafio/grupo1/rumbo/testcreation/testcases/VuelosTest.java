@@ -24,6 +24,7 @@ public class VuelosTest extends SeleniumTestBase {
         vuelos.seleccionarMenuVuelo();
         vuelos.generarVuelo();
 
+
         //agregar asssert con paramether
 
     }
@@ -35,6 +36,8 @@ public class VuelosTest extends SeleniumTestBase {
         System.out.println(vuelos.guardarPag());
         vuelos.seleccionarMenuVuelo();
         vuelos.generarVuelo();
+
+
         Thread.sleep(5000);
 
         //comienzo de esta prueba
@@ -45,17 +48,17 @@ public class VuelosTest extends SeleniumTestBase {
 
 
         vuelos.switchTo(0).close();// cierro pagina anexa
+
         Thread.sleep(3000);
         vuelos.guardarPag(); //guardo pagina actual
         System.out.println(vuelos.guardarPag());
-        vuelos.switchTo(0); // continuo con el proceso
+       vuelos.switchTo(0); // continuo con el proceso
 
 
 
         vuelos.seleccionarModificar();
 
         Thread.sleep(5000);
-
         vuelos.modificarVuelo();
 
 

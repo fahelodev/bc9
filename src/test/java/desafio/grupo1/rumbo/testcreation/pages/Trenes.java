@@ -50,4 +50,24 @@ public class Trenes extends SeleniumWrapper {
     public String msjErrorDestino(){
         return getText(msjErrorSeleccionaDestino);
     }
+
+    public void seccionTrenes(){
+        click(btnTrenesMenu);
+    }
+    public void viajeTrenFiltro(){
+        click(btnIdayVuelta);
+        click(textAreaOrigen);
+        click(opcionOrigenAlicante);
+        click(textAreaDestino);
+        click(opcionDestinoMadrid);
+        click(calendarioIzq);
+        click(fechaIda);
+        click(fechaVuelta);
+        click(listaPasajero);
+        click(btnBuscarTren);
+        click(ordenarMenorPrecio);
+
+
+
+    }
 }

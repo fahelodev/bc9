@@ -4,6 +4,7 @@ import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
@@ -135,14 +136,10 @@ public class Vuelos extends SeleniumWrapper {
     }
 
     //inicio
-
     public void navegarAlHomeWeb(){
         navigateTo(BASE_URL_AUT);
 
     }
-
-
-
 
     public void aceptarCokies(){
         click(btnAceptarCokies);
@@ -153,8 +150,12 @@ public class Vuelos extends SeleniumWrapper {
     }
 
 
+
+
     public void generarVuelo() throws InterruptedException {
         Thread.sleep(2000);
+
+
 
         click(btnSoloIda);
         //findElements(listaVueloDestinoRecorrer).get(1).click();
@@ -166,7 +167,10 @@ public class Vuelos extends SeleniumWrapper {
 
             }
 
+
 */// Para correr listas desplegables
+
+
 
         //origen
         click(btnLimpiarOrigen); // apretar en la x
@@ -174,42 +178,48 @@ public class Vuelos extends SeleniumWrapper {
 
            if(isDisplayed(listaVuelosOrigen))
                click(btnOrigenArgentina);
-        Thread.sleep(2000); // MODIFICAR TIEMPO
+       Thread.sleep(2000); // MODIFICAR TIEMPO
 
         //destino
         write("Santiago",inputDestino);
 
         if(isDisplayed(listaVuelosDestino)){// Nose como hacer guardar de 1 el listado AYUDA
             click(btnDestinoSantiago);
-            Thread.sleep(2000);
+         Thread.sleep(2000);
 
         }
 
         //fecha ida
         if (isDisplayed(btnMenuFechaIda)){
             click(btnFechaIda);
-            Thread.sleep(2000);
+        Thread.sleep(4000);
         }
 
         //claseTurista
             click(btnTipoClase);
         if(isDisplayed(listaClase)){
             click(btnTurista);
-            Thread.sleep(2000);
+          Thread.sleep(2000);
         }
 
         //generar busqueda
             click(btnBuscar);
 
+
     }
 
     //Multidestino
     public void seleccionarMultidestino(){
+
+         //eWait(10).until(ExpectedConditions.titleContains("lala"));
+
+
         click(btnMultidestino);
     }
 
 
     //Generar Modificacion
+
 
 
 
@@ -228,7 +238,7 @@ public class Vuelos extends SeleniumWrapper {
 
             //modificar pasajero
             click(btnModificarPasajeros);
-            Thread.sleep(2000);
+          Thread.sleep(2000);
             if (isDisplayed(listaModificarPasajeros)) {
                 click(btnModificarMasAdulto); //aumento adulto
                 click(btnModificarBuscar);

@@ -16,6 +16,8 @@ public class RumboHomePage extends SeleniumWrapper {
     //PAGINA INICIAL
     By btnAceptarCokies = By.xpath("//button[@data-qa='oil-YesButton']");  /*btn cook hacer click*/
     By btnTrenes = By.xpath("(//li/div/a[@title=\"Trenes\"])[1]");
+    By btnHoteles = By.xpath("(//li/div/a[@title=\"Hoteles\"])[1]");
+    By btnVuelos= By.xpath("(//a[@href='https://www.rumbo.es/vuelos/'])[1]");
 
     //-----------METODOS-------------
     public void navegarAlHome(){
@@ -29,5 +31,7 @@ public class RumboHomePage extends SeleniumWrapper {
     public void seccionTrenes(){
         click(btnTrenes);
     }
+    public void seccionHoteles(){click(btnHoteles);}
+    public void seccionVuelos(){click(btnVuelos);}
 
 }
