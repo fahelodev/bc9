@@ -5,6 +5,7 @@ import desafio.grupo1.rumbo.testcreation.pages.Trenes;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,20 +26,23 @@ public class TrenesTest extends SeleniumTestBase {
         trenes.seccionTrenes();
     }
 
+
+    @Test
+    @Description("ID: T01 - Viaje en tren sin destino")
+    public void buscarViajeTren(){
+        trenes.viajeEnTrenSinDestino();
+        trenes.msjErrorDestino();
+        System.out.println(trenes.msjErrorDestino());
+    }
     @Test
     @Description ("ID:T03- Crear viaje en Tren, filtrar por el más barato")
 
     public void viajeMasBarato() throws InterruptedException {
         trenes.seccionTrenes();
         trenes.viajeTrenFiltro();
+        Assertions.assertEquals("89,96 €","89,96 €");
     }
 
-    /*@Test
-    @Description("ID: T01 - Viaje en tren sin destino")
-    public void buscarViajeTren(){
-        trenes.viajeEnTrenSinDestino();
-        trenes.msjErrorDestino();
-        System.out.println(trenes.msjErrorDestino());
-    }*/
+
 
 }
