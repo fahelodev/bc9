@@ -43,6 +43,7 @@ public class Trenes extends SeleniumWrapper {
 
     public void viajeEnTrenSinDestino(){
         click(textAreaOrigen);
+
         click(opcionOrigenACorunia);
         click(btnBuscar);
     }

@@ -24,13 +24,12 @@ public class TrenesTest extends SeleniumTestBase {
     }
     @Test
     public void irASeccionTrenes() {
-
         rumboHomePage.seccionTrenes();
+
     }
 
     @Test
     @Description ("ID:T03- Crear viaje en Tren, filtrar por el más barato")
-
     public void viajeMasBarato() {
         rumboHomePage.seccionTrenes();
         trenes.viajeTrenFiltro();
@@ -41,7 +40,6 @@ public class TrenesTest extends SeleniumTestBase {
     public void buscarViajeTren(){
         trenes.viajeEnTrenSinDestino();
         trenes.msjErrorDestino();
-        System.out.println(trenes.msjErrorDestino());
     }
 
 }
