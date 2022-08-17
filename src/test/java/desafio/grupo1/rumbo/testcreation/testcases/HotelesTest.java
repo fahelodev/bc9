@@ -13,27 +13,21 @@ import org.openqa.selenium.WebElement;
 public class HotelesTest extends SeleniumTestBase {
     RumboHomePage rumboHomePage;
     Hoteles H01;
+
     @BeforeEach
-    public void inicializar(){
+    public void inicializar() {
         rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
         rumboHomePage.navegarAlHome();
         rumboHomePage.aceptarCookies();
     }
+
+
     @Test
-    public void irAHoteles() {
-        rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.navegarAlHome();
-        rumboHomePage.aceptarCookies();
-        H01.seccionHoteles();
-    }
-    @Test
-    public void Test_H01(){
-        rumboHomePage=new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.navegarAlHome();
-        rumboHomePage.aceptarCookies();
-        H01.seccionHoteles();
+    public void Test_H01() {
+
+        rumboHomePage.seccionHoteles();
         H01.busquedaHabitacionPorPersona();
 
     }
 
-
+}
