@@ -121,8 +121,9 @@ public class Vuelos extends SeleniumWrapper {
     //*************************************************************************
     //Seccion servicios
     By btnPagoFlexible = By.xpath("//div[@id='']//*[text()='Elegir Flexible']");
-
-
+    //Seccion Multidestino
+    By btnCerrarPopMultidestino = By.xpath("//div[@class='Modal__ModalWrapperContent-sc-15ie1vv-3 cZmLcP']//button[@data-test=\"ModalCloseButton\"]");
+    By btnAceptarCokiesMultidestino = By.xpath("//button[@id='cookies_accept']");
 
 
 
@@ -156,7 +157,6 @@ public class Vuelos extends SeleniumWrapper {
         Thread.sleep(2000);
 
         click(btnSoloIda);
-
         //findElements(listaVueloDestinoRecorrer).get(1).click();
           /*
             for (WebElement option: findElements(listaVueloDestinoReal)) {
@@ -273,6 +273,17 @@ public class Vuelos extends SeleniumWrapper {
     public void seleccionarCompania(){
         click(checkAerolineasArgentina);
     }
+
+
+    public void cerrarVentanasEmergente() throws InterruptedException {
+
+        click(btnCerrarPopMultidestino);
+        Thread.sleep(3000);
+        click(btnAceptarCokiesMultidestino);
+
+
+    }
+
 
 
 }
