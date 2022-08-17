@@ -5,18 +5,31 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SeleniumWrapper {
 
     private final WebDriver driver;
+    ArrayList<String> tabs;
 
     //Constructor Base
     public SeleniumWrapper(WebDriver driver){
         this.driver = driver;
+
     }
 
     //Wrappers Selenium
+
+    //guardo las paginas del navegador en un array
+    public ArrayList<String> guardarPag(){
+        tabs= new ArrayList<String>(driver.getWindowHandles());
+        return tabs;
+    }
+    public WebDriver switchTo(int i){
+       return driver.switchTo().window(tabs.get(i));
+    }
+
     public WebElement findElement(By locator){
         return driver.findElement(locator);
     }
@@ -70,5 +83,7 @@ public class SeleniumWrapper {
     public String getUrlTitle(){
         return driver.getTitle();
     }
+
+
 
 }
