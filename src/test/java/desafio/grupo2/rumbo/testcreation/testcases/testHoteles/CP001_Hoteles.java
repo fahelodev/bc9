@@ -12,7 +12,7 @@ public class CP001_Hoteles extends SeleniumTestBase {
 
     @Test
     @Description("Test de prueba")
-    void busquedaHoteles() throws InterruptedException{
+    void busquedaHoteles(){
         rumboEsHotelesPage = new RumboEsHotelesPage(DriverFactory.getDriver());
         rumboEsHotelesPage.ingresarDestino("Chicago");
         //rumboEsHotelesPage.aceptarCookies();

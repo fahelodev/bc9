@@ -8,7 +8,9 @@ import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 
@@ -18,16 +20,17 @@ class CP005_Hoteles extends SeleniumTestBase {
     RumboEsHotelesBusquedaPage rumboEsHotelesBusquedaPage;
     RumboEsHotelesDetallesPage rumboEsHotelesDetallesPage;
     RumboEsHotelesSecurePage rumboEsHotelesSecurePage;
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings={"Chicago"})
     @Description("Test Caso CP005_Hoteles")
-    void CP005_Hoteles() throws InterruptedException {
+    void CP005_Hoteles(String Destino) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
         rumboEsHomePage.irAHoteles();
 
         rumboEsHotelesPage = new RumboEsHotelesPage(DriverFactory.getDriver());
-        rumboEsHotelesPage.ingresarDestino("Chicago");
+        rumboEsHotelesPage.ingresarDestino(Destino);
         rumboEsHotelesPage.FechaInicioVuelta();
         rumboEsHotelesPage.pasajeros();
         rumboEsHotelesPage.habitaciones();
@@ -45,6 +48,7 @@ class CP005_Hoteles extends SeleniumTestBase {
         rumboEsHotelesSecurePage = new RumboEsHotelesSecurePage(DriverFactory.getDriver());
         rumboEsHotelesSecurePage.rellenardatos();
 
+        Assertions.assertEquals("Huésped 1", rumboEsHotelesSecurePage.gethuesped());
 
     }
 }

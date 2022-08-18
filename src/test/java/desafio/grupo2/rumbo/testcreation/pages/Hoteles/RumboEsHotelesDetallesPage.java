@@ -13,7 +13,8 @@ public class RumboEsHotelesDetallesPage extends SeleniumWrapper {
         By seleccionarFiltro = By.xpath("//button[text()=\"Desayuno incluido\"]");
         click(seleccionarFiltro);
     }
-    public void internet(){
+    public void internet() throws InterruptedException {
+        Thread.sleep(1000);
         By internet = By.xpath("//div[text()='Internet']");
         click(internet);
     }
@@ -23,6 +24,15 @@ public class RumboEsHotelesDetallesPage extends SeleniumWrapper {
     }
 
 
+    public String getFiltroSeleccionado() {
+        By filtroSeleccionado = By.xpath("//span[@class='RoomPanelMealPlan__MealPlanName-sc-u6tmcf-3 cvZnwc']");
+        return getText(filtroSeleccionado);
+    }
+
+    public String getFiltroSeleccionado2() {
+        By filtroSeleccionado = By.xpath("//div[text()='WiFi gratis']");
+        return getText(filtroSeleccionado);
+    }
 }
 
 
