@@ -145,18 +145,18 @@ public class Vuelos extends SeleniumWrapper {
         click(btnAceptarCokies);
     }
     public void seleccionarMenuVuelo(){
+        eWait(10).until(ExpectedConditions.elementToBeClickable(btnMenuVuelo));
         click(btnMenuVuelo);
-
     }
 
 
 
 
     public void generarVuelo() throws InterruptedException {
-        Thread.sleep(2000);
 
+      //  Thread.sleep(2000);
 
-
+        eWait(10).until(ExpectedConditions.elementToBeClickable(btnSoloIda));
         click(btnSoloIda);
         //findElements(listaVueloDestinoRecorrer).get(1).click();
           /*
@@ -173,35 +173,48 @@ public class Vuelos extends SeleniumWrapper {
 
 
         //origen
+        eWait(10).until(ExpectedConditions.elementToBeClickable(btnLimpiarOrigen));
+
         click(btnLimpiarOrigen); // apretar en la x
+
+       // eWait(10).until(ExpectedConditions.(inputOrigen,"Buenos Aires"));
         write("Buenos Aires",inputOrigen);
 
+        eWait(10).until(ExpectedConditions.elementToBeClickable(btnOrigenArgentina));
            if(isDisplayed(listaVuelosOrigen))
                click(btnOrigenArgentina);
-       Thread.sleep(2000); // MODIFICAR TIEMPO
+      // Thread.sleep(2000); // MODIFICAR TIEMPO
 
         //destino
         write("Santiago",inputDestino);
 
+        eWait(10).until(ExpectedConditions.elementToBeClickable(btnDestinoSantiago));
+
         if(isDisplayed(listaVuelosDestino)){// Nose como hacer guardar de 1 el listado AYUDA
+
             click(btnDestinoSantiago);
-         Thread.sleep(2000);
+       //  Thread.sleep(2000);
 
         }
+
 
         //fecha ida
+        eWait(10).until(ExpectedConditions.elementToBeClickable(btnFechaIda));
         if (isDisplayed(btnMenuFechaIda)){
             click(btnFechaIda);
-        Thread.sleep(4000);
+      //  Thread.sleep(4000);
         }
+
 
         //claseTurista
-            click(btnTipoClase);
+        click(btnTipoClase);
+        eWait(10).until(ExpectedConditions.elementToBeClickable(btnTurista));
         if(isDisplayed(listaClase)){
             click(btnTurista);
-          Thread.sleep(2000);
+        //  Thread.sleep(2000);
         }
 
+        eWait(10).until(ExpectedConditions.elementToBeClickable(btnBuscar));
         //generar busqueda
             click(btnBuscar);
 
@@ -211,7 +224,7 @@ public class Vuelos extends SeleniumWrapper {
     //Multidestino
     public void seleccionarMultidestino(){
 
-         //eWait(10).until(ExpectedConditions.titleContains("lala"));
+
 
 
         click(btnMultidestino);
@@ -286,6 +299,7 @@ public class Vuelos extends SeleniumWrapper {
 
 
     public void cerrarVentanasEmergente() throws InterruptedException {
+
 
         click(btnCerrarPopMultidestino);
         Thread.sleep(3000);

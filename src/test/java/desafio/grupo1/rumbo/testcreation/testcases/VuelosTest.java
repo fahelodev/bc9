@@ -84,15 +84,18 @@ public class VuelosTest extends SeleniumTestBase {
     @Description("Comprobar que se muestre la nueva pestania de destino en vuelos Multidestino")
     void pestanaEmergenteMultidestino() throws InterruptedException {
         vuelos.guardarPag();
-        System.out.println(vuelos.guardarPag());
+
         vuelos.seleccionarMenuVuelo();
+
         vuelos.seleccionarMultidestino();
+
         vuelos.guardarPag();
         Thread.sleep(3000);
         //continuacion
 
         System.out.println(vuelos.guardarPag());
         vuelos.switchTo(1);
+
         vuelos.cerrarVentanasEmergente();
 
         //crear aasert que me compare con titulo de la pagina
