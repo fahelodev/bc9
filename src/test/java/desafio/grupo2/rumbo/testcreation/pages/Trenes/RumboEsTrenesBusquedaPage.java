@@ -30,6 +30,7 @@ public class RumboEsTrenesBusquedaPage extends SeleniumWrapper{
 
     }
 
+
     public void duracionmenor() throws InterruptedException {
         //click(filtroDeDuracion);
         Mover(filtroDeDuracion);
@@ -38,4 +39,35 @@ public class RumboEsTrenesBusquedaPage extends SeleniumWrapper{
         //click(btndeslisar);
 
     }
+
+    public void clickEnPrecio() throws InterruptedException {
+        Thread.sleep(5000);
+        By btnPrecio = By.xpath("(//div [@class=\"FullTripCard__SelectedPriceContainer-sc-z8znd4-4 fpDjbd\"])");
+        click(btnPrecio);
+    }
+    public String precioTarifaInicial(){
+
+        By btnPrecio= By.xpath("(//span[@class=\"TripCardPrice__FinalPrice-sc-1d8mdrx-5 rCnqw Tooltip___StyledMuiTooltip-sc-ya8k7d-3 jAgUJM\"])[1]");
+        return getText(btnPrecio);
+    }
+
+    public String nroInicialString(String pInicial){
+
+        String nroInicial="";
+        for(int i=0; i<pInicial.length()-2;i++){
+
+            if((String.valueOf(pInicial.charAt(i)).equals(","))) {
+
+                nroInicial += ".";
+
+            }else{
+
+                nroInicial += String.valueOf(pInicial.charAt(i));
+
+            }
+        }
+        return nroInicial;
+    }
+
+
 }
