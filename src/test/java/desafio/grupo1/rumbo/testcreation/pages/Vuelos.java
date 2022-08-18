@@ -126,188 +126,133 @@ public class Vuelos extends SeleniumWrapper {
     By btnCerrarPopMultidestino = By.xpath("//div[@class='Modal__ModalWrapperContent-sc-15ie1vv-3 cZmLcP']//button[@data-test=\"ModalCloseButton\"]");
     By btnAceptarCokiesMultidestino = By.xpath("//button[@id='cookies_accept']");
 
+    //=========================================================================================
+    //Cargadores
+    By menuVuelo = By.xpath("(//form)[2]");
+    By menulistaVuelos = By.xpath("//div[@class='content-layout-view__column-right col-md-9']");
+    By menuMultidestino = By.xpath("//div[@class='Modal__ModalWrapperContent-sc-15ie1vv-3 cZmLcP']");
 
+    //Comprobadores
 
-
+    By origenDestino = By.xpath("//div[@class='search-summary__section search-summary__section--place']");
 
     public Vuelos(WebDriver driver) {
         super(driver);
-
     }
-
     //inicio
     public void navegarAlHomeWeb(){
         navigateTo(BASE_URL_AUT);
-
     }
-
     public void aceptarCokies(){
         click(btnAceptarCokies);
     }
     public void seleccionarMenuVuelo(){
-        eWait(10).until(ExpectedConditions.elementToBeClickable(btnMenuVuelo));
-        click(btnMenuVuelo);
+        esperaEnSegundosYClick(3,btnMenuVuelo);
     }
+    public void generarVuelo()  {
 
+        eWait(5).until(ExpectedConditions.visibilityOfElementLocated(menuVuelo)); // espera carga menu
 
-
-
-    public void generarVuelo() throws InterruptedException {
-
-      //  Thread.sleep(2000);
-
-        eWait(10).until(ExpectedConditions.elementToBeClickable(btnSoloIda));
-        click(btnSoloIda);
-        //findElements(listaVueloDestinoRecorrer).get(1).click();
-          /*
-            for (WebElement option: findElements(listaVueloDestinoReal)) {
-                if(option.getText().contentEquals(" (SCL) Arturo Merino Benítez, Chile"));
-                    System.out.println(option.getText());
-                    option.click();
-
-            }
-
-
-*/// Para correr listas desplegables
-
-
+        esperaEnSegundosYClick(3,btnSoloIda); //selecciono solo ida
 
         //origen
-        eWait(10).until(ExpectedConditions.elementToBeClickable(btnLimpiarOrigen));
+        esperaEnSegundosYClick(3,btnLimpiarOrigen); // limpiar texto input origen
 
-        click(btnLimpiarOrigen); // apretar en la x
-
-       // eWait(10).until(ExpectedConditions.(inputOrigen,"Buenos Aires"));
+        esperaEnSegundosYClick(3,inputOrigen);
         write("Buenos Aires",inputOrigen);
 
-        eWait(10).until(ExpectedConditions.elementToBeClickable(btnOrigenArgentina));
-           if(isDisplayed(listaVuelosOrigen))
-               click(btnOrigenArgentina);
-      // Thread.sleep(2000); // MODIFICAR TIEMPO
+
+        if(isDisplayed(listaVuelosOrigen))
+            esperaEnSegundosYClick(3,btnOrigenArgentina);
 
         //destino
+        esperaEnSegundosYClick(3,inputDestino);
         write("Santiago",inputDestino);
 
-        eWait(10).until(ExpectedConditions.elementToBeClickable(btnDestinoSantiago));
-
-        if(isDisplayed(listaVuelosDestino)){// Nose como hacer guardar de 1 el listado AYUDA
-
-            click(btnDestinoSantiago);
-       //  Thread.sleep(2000);
-
-        }
-
+        if(isDisplayed(listaVuelosDestino))
+            esperaEnSegundosYClick(3,btnDestinoSantiago);
 
         //fecha ida
-        eWait(10).until(ExpectedConditions.elementToBeClickable(btnFechaIda));
-        if (isDisplayed(btnMenuFechaIda)){
-            click(btnFechaIda);
-      //  Thread.sleep(4000);
-        }
 
+        if (isDisplayed(btnMenuFechaIda)){
+             esperaEnSegundosYClick(3,btnFechaIda);
+        }
 
         //claseTurista
-        click(btnTipoClase);
-        eWait(10).until(ExpectedConditions.elementToBeClickable(btnTurista));
+        esperaEnSegundosYClick(3,btnTipoClase);
+
         if(isDisplayed(listaClase)){
-            click(btnTurista);
-        //  Thread.sleep(2000);
+           esperaEnSegundosYClick(3,btnTurista);
         }
 
-        eWait(10).until(ExpectedConditions.elementToBeClickable(btnBuscar));
         //generar busqueda
-            click(btnBuscar);
-
-
+        esperaEnSegundosYClick(3,btnBuscar);
     }
 
     //Multidestino
     public void seleccionarMultidestino(){
-
-
-
-
-        click(btnMultidestino);
+       esperaEnSegundosYClick(3,btnMultidestino);
     }
 
-
-    //Generar Modificacion
-
-
-
-
+    //Modificacion de vuelo  proceso
 
     public void seleccionarModificar(){
-        click(btnModificar);
+        eWait(15).until(ExpectedConditions.visibilityOfElementLocated(menulistaVuelos));
+        esperaEnSegundosYClick(3,btnModificar);
     }
 
-
-
-
-
-    public void modificarVuelo() throws InterruptedException {
+    public void modificarVuelo()  {
 
         if(isDisplayed(listaDatosModificar)) {
-
-            //modificar pasajero
-            click(btnModificarPasajeros);
-          Thread.sleep(2000);
+                esperaEnSegundosYClick(3,btnModificarPasajeros);
             if (isDisplayed(listaModificarPasajeros)) {
-                click(btnModificarMasAdulto); //aumento adulto
-                click(btnModificarBuscar);
+                esperaEnSegundosYClick(3,btnModificarMasAdulto);
             }
-
-
+            esperaEnSegundosYClick(3,btnModificarBuscar);
         }
     }
+    public void logearseEnPagina()  {
 
+        esperaEnSegundosYClick(5,btnMiRumbo);
 
-
-
-
-    public void logearseEnPagina() throws InterruptedException {
-       Thread.sleep(5000);
-        click(btnMiRumbo);
-        Thread.sleep(5000);
         if(isDisplayed(menuLogin)){
             write("equipo1desafiotsoft@gmail.com",inputEmail);
             write("equipo1tsoft",inputPassword);
-            click(btnLogin);
+            esperaEnSegundosYClick(5,btnMiRumbo);
         }
-        Thread.sleep(4000);
-
-
 
     }
-
 
     public void seleccionarPrimerVuelo(){
 
         if(isDisplayed(listadoVuelos))
-        click(primeroDeListaVuelos);
+        esperaEnSegundosYClick(10,primeroDeListaVuelos);
 
     }
 
     public void seleccionarServicio(){
-        click(btnPagoFlexible);
+       esperaEnSegundosYClick(10,btnPagoFlexible);
     }
 
 
     public void seleccionarCompania(){
-        click(checkAerolineasArgentina);
+        esperaEnSegundosYClick(10,checkAerolineasArgentina);
     }
 
 
-    public void cerrarVentanasEmergente() throws InterruptedException {
+    public void cerrarVentanasEmergente()  {
 
-
-        click(btnCerrarPopMultidestino);
-        Thread.sleep(3000);
-        click(btnAceptarCokiesMultidestino);
-
+        esperaEnSegundosYClick(5,btnCerrarPopMultidestino);
+        esperaEnSegundosYClick(5,btnAceptarCokiesMultidestino);
+        //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(menuVuelo));
 
     }
 
+    public void resultadoPrueba(){
+        eWait(15).until(ExpectedConditions.visibilityOfElementLocated(menulistaVuelos));
+
+        System.out.println( findElement(origenDestino).getText());
+    }
 
 
 }

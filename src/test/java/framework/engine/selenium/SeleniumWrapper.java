@@ -110,6 +110,7 @@ public class SeleniumWrapper {
         return driver.getTitle();
     }
 
+    public String getUrl(){return driver.getCurrentUrl();}
 
 
 }
