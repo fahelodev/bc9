@@ -8,21 +8,21 @@ import org.junit.jupiter.api.Test;
 
 
 public class HotelesTest extends SeleniumTestBase {
-    Hoteles H01;
+    Hoteles hoteles;
 
     @BeforeEach
     public void inicializar() {
-        H01= new Hoteles(DriverFactory.getDriver());
-        H01.navegarAlHome();
-        H01.aceptarCookies();
+        hoteles= new Hoteles(DriverFactory.getDriver());
+        hoteles.navegarAlHome();
+        hoteles.aceptarCookies();
     }
 
 
     @Test
     public void Test_H01() {
 
-        H01.seccionHoteles();
-        H01.busquedaHabitacionPorPersona();
+        hoteles.seccionHoteles();
+        hoteles.busquedaHabitacionPorPersona();
 
     }
 
