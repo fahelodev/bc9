@@ -71,7 +71,8 @@ public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
          By seleccionarHotel = By.xpath("//div[text()='Central Loop Hotel']");
          click(seleccionarHotel);
      }
-    public void seleccionarHotel04() {
+    public void seleccionarHotel04() throws InterruptedException {
+        Thread.sleep(2000);
         By seleccionarHotel4 = By.xpath("//div[text()='Freehand Chicago']");
         click(seleccionarHotel4);
     }

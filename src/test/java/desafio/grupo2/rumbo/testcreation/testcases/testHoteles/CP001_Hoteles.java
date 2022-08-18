@@ -23,6 +23,7 @@ public class CP001_Hoteles extends SeleniumTestBase {
         rumboEsHomePage.aceptarCookies();
         rumboEsHomePage.irAHoteles();
 
+
         rumboEsHotelesPage = new RumboEsHotelesPage(DriverFactory.getDriver());
         rumboEsHotelesPage.ingresarDestino("Chicago");
         rumboEsHotelesPage.FechaInicioVuelta();

@@ -8,7 +8,9 @@ import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 
@@ -18,16 +20,17 @@ class CP006_Hoteles extends SeleniumTestBase {
     RumboEsHotelesBusquedaPage rumboEsHotelesBusquedaPage;
     RumboEsHotelesDetallesPage rumboEsHotelesDetallesPage;
     RumboEsHotelesSecurePage rumboEsHotelesSecurePage;
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings={"Santiago"})
     @Description("Test Caso CP006_Hoteles")
-    void CP006_Hoteles() throws InterruptedException {
+    void CP006_Hoteles(String Destino){
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
         rumboEsHomePage.irAHoteles();
 
         rumboEsHotelesPage = new RumboEsHotelesPage(DriverFactory.getDriver());
-        rumboEsHotelesPage.ingresarDestino2("Santiago");
+        rumboEsHotelesPage.ingresarDestino2(Destino);
         rumboEsHotelesPage.FechaInicioVuelta();
         rumboEsHotelesPage.pasajeros();
         rumboEsHotelesPage.buscar();
@@ -45,6 +48,8 @@ class CP006_Hoteles extends SeleniumTestBase {
         rumboEsHotelesSecurePage.rellenardatos06();
         rumboEsHotelesSecurePage.tarjeta();
         rumboEsHotelesSecurePage.continuarpago();
+
+        Assertions.assertEquals("Introduce un número válido", rumboEsHotelesSecurePage.Ninvalido());
 
 
     }
