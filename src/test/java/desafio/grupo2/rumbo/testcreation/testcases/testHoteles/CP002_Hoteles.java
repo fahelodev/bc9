@@ -9,15 +9,15 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CP001_Hoteles extends SeleniumTestBase {
-
+public class CP002_Hoteles extends SeleniumTestBase {
     RumboEsHomePage rumboEsHomePage;
     RumboEsHotelesPage rumboEsHotelesPage;
     RumboEsHotelesBusquedaPage rumboEsHotelesBusquedaPage;
 
+
     @Test
-    @Description("CP001_Hoteles")
-    void CP001_Hoteles() throws InterruptedException {
+    @Description("CP002_Hoteles")
+    void CP002_Hoteles() throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -31,8 +31,11 @@ public class CP001_Hoteles extends SeleniumTestBase {
         rumboEsHotelesPage.buscar();
 
         rumboEsHotelesBusquedaPage = new RumboEsHotelesBusquedaPage(DriverFactory.getDriver());
-        Assertions.assertTrue(rumboEsHotelesBusquedaPage.hayResultados());
+         rumboEsHotelesBusquedaPage.clickEnWifiGratis();
+        rumboEsHotelesBusquedaPage.clickEnCancelacionGratuita();
+        boolean FreeHanceEncontrado = rumboEsHotelesBusquedaPage.estaHotelFreeHand();
+
+        Assertions.assertTrue(FreeHanceEncontrado);
 
     }
-
 }
