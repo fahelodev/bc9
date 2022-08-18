@@ -35,7 +35,7 @@ class CP003_Hoteles extends SeleniumTestBase {
         rumboEsHotelesBusquedaPage.aplicarFiltro();
         rumboEsHotelesBusquedaPage.seleccionarHotel();
         Thread.sleep(2000);
-        ArrayList<String>  tabs = rumboEsHotelesBusquedaPage.getWinndowsHandled();
+        ArrayList<String>  tabs = rumboEsHotelesBusquedaPage.getWinndowHandleds();
         if (tabs.size() > 1) {
             rumboEsHotelesBusquedaPage.SwitchTo(tabs.get(1));
         }
