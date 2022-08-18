@@ -43,7 +43,7 @@ public class Trenes extends SeleniumWrapper {
     By btnModificar = By.xpath("//span[text()=\"Modificar\"]");
     By seccionModifDespleg = By.xpath("//div[@class=\"search-summary__search-widget-bar with-animation--open\"]");
     By seccionViajeTren = By.xpath("//div[@class=\"lmn-sw-train searchContainer lmn-sw-trainContainer\"]");
-    By nuevoOrigen = By.xpath("(//div[@data-value=\"\"])[1]");
+    By nuevoOrigen = By.xpath("//div[@class=\"select-selected\"]");
     By nuevoDestino = By.xpath("(//div[@data-value=\"\"])[2]");
     By opcionOrigenAgde = By.xpath("//div[@data-value=\"XAG\"]");
     By opcionDestinoGirona = By.xpath("(//div[text()=\"Girona\"])[2]");
@@ -63,6 +63,8 @@ public class Trenes extends SeleniumWrapper {
     By buscarSoloIda= By.xpath("(//div[@class=\"lmn-sw-submitFlightContainer\"])");
     By listaDesplegadaOrigen= By.xpath("//div[@class=\"select-items\"]");
     By datoFecha = By.xpath("//div[@class=\"search-summary__date\"]");
+    By seleccionFechaIda = By.xpath("//div[@data-date=\"28-7-2022\"]");
+    By seleccionFechaVuelta = By.xpath("//div[@data-date=\"31-7-2022\"]");
 
 
 
@@ -81,9 +83,8 @@ public class Trenes extends SeleniumWrapper {
     }
 
     public void viajeEnTrenSinDestino() {
-        eWait(15).until(ExpectedConditions.visibilityOfElementLocated(menuOrigenDestino));
         esperaEnSegundosYClick(15, origen);
-        if(isDisplayed(listaOrigenDespleg)){
+        if(isDisplayed(origen)){
             esperaEnSegundosYClick(15,opcionOrigenACorunia);
         }
         esperaEnSegundosYClick(10, btnBuscarTren);
@@ -98,7 +99,7 @@ public class Trenes extends SeleniumWrapper {
     public void buscarViajeTren(){
         eWait(15).until(ExpectedConditions.visibilityOfElementLocated(menuTrenes));
         esperaEnSegundosYClick(3, btnIdayVuelta);
-        esperaEnSegundosYClick(5, textAreaOrigen);
+        esperaEnSegundosYClick(5, origen);
         esperaEnSegundosYClick(15, opcionOrigenACorunia);
         esperaEnSegundosYClick(10, opcionDestinoMadrid);
         if (isDisplayed(calDesplegado)) {
@@ -109,12 +110,12 @@ public class Trenes extends SeleniumWrapper {
     }
 
     public void modificarViajeTren(){
-        esperaEnSegundosYClick(3, btnModificar);
+        esperaEnSegundosYClick(5, btnModificar);
         eWait(15).until(ExpectedConditions.visibilityOfElementLocated(seccionModifDespleg));
         if (isDisplayed(seccionViajeTren)){
-            esperaEnSegundosYClick(8, nuevoOrigen);
+            esperaEnSegundosYClick(8, origen);
             esperaEnSegundosYClick(8, opcionOrigenAgde);
-            esperaEnSegundosYClick(10, opcionDestinoGirona);
+            esperaEnSegundosYClick(8, opcionDestinoGirona);
             esperaEnSegundosYClick(5, btnBuscar);
         }
     }

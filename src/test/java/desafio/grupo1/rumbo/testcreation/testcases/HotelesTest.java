@@ -3,6 +3,8 @@ package desafio.grupo1.rumbo.testcreation.testcases;
 import desafio.grupo1.rumbo.testcreation.pages.Hoteles;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
+import jdk.jfr.Description;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +26,14 @@ public class HotelesTest extends SeleniumTestBase {
         hoteles.seccionHoteles();
         hoteles.busquedaHabitacionPorPersona();
 
+    }
+
+    @Test
+    @Description("ID:H06- Listas desplegables de Hoteles")
+    public void despliegueListas(){
+        hoteles.seccionHoteles();
+        hoteles.desplegarListasHoteles();
+        Assertions.assertTrue(true);
     }
 
 }
