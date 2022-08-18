@@ -74,6 +74,11 @@ public class Hoteles extends SeleniumWrapper {
 
     }
 
+    public void logueoMiRumbo(){
+        eWait(10).until(ExpectedConditions.visibilityOfElementLocated(paginaGral));
+
+    }
+
     public void desplegarListasHoteles(){
         eWait(10).until(ExpectedConditions.visibilityOfElementLocated(paginaGral));
         esperaEnSegundosYClick(20, desplegarIdeasHotelesEspania);
