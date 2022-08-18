@@ -2,12 +2,20 @@ package desafio.grupo2.rumbo.testcreation.pages.Hoteles;
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
 
     public RumboEsHotelesBusquedaPage(WebDriver driver) {
         super(driver);
     }
+
+    public List<WebElement> listaDeHoteles(){
+
+    }
+
     public void filtroTipoAlojamiento() throws InterruptedException {
         Thread.sleep(3000);
         By filtroTipoAlojamiento = By.xpath("(//div[contains(@class,'styled__CustomCompStyledLabel-sc-1v205vs-1 izWgpy')])[2]");
