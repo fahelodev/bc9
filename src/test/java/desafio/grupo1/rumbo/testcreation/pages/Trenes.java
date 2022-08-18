@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static framework.engine.utils.Constants.BASE_URL_AUT;
 
+import static framework.engine.utils.Constants.BASE_URL_AUT;
+
 public class Trenes extends SeleniumWrapper {
 
     public Trenes(WebDriver driver) {
@@ -15,8 +17,11 @@ public class Trenes extends SeleniumWrapper {
     }
 
     //---------LOCALIZADORES-----------
-
+    By btnAceptarCokies = By.xpath("//button[@data-qa='oil-YesButton']");  /*btn cook hacer click*/
+    By btnTrenes = By.xpath("(//li/div/a[@title=\"Trenes\"])[1]");
     By textAreaOrigen = By.xpath("//div[text()=\"Origen\"]");
+    By origen= By.xpath("(//div[@class=\"lmn-sw-select-responsive light custom-select-responsive\"])[1]");
+    By destino= By.xpath("(//div[@class=\"lmn-sw-custom-select left-icon\"])[2]");
     By opcionOrigenACorunia = By.xpath("//div[@data-value=\"YJC\"]");
     By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"lmn-sw-error-container\"]");
     By btnTrenesMenu= By. xpath("(//a[@title=\"Trenes\"])[1]");
@@ -57,37 +62,45 @@ public class Trenes extends SeleniumWrapper {
     public void viajeEnTrenSinDestino() throws InterruptedException {
         //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(textAreaOrigen));
         Thread.sleep(3000);
-        click(textAreaOrigen);
+
+        public void aceptarCookies () {
+            click(btnAceptarCokies);
+        }
+        public void seccionTrenes () {
+            click(btnTrenes);
+        }
+
+        public void viajeEnTrenSinDestino () {
+
+            click(textAreaOrigen);
+            Thread.sleep(3000);
+            //eWait(10).until(ExpectedConditions.elementToBeSelected(textAreaOrigen));
+            click(opcionOrigenACorunia);
+            click(btnBuscarTren);
+        }
+
+
+        public void viajeTrenFiltro () {
+            //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(origen));
+            click(textAreaOrigen);
+            //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(btnIdayVuelta));
+            //click(btnIdayVuelta);
+            implicitWait(5);
+
+            click(opcionOrigenAlicante);
+            click(destino);
+            Thread.sleep(3000);
+        /*click(opcionDestinoMadrid);
         Thread.sleep(3000);
-        //eWait(10).until(ExpectedConditions.elementToBeSelected(textAreaOrigen));
-        click(opcionOrigenACorunia);
-        click(btnBuscarTren);
-    }
-
-    public String msjErrorDestino(){
-        eWait(10).until(ExpectedConditions.visibilityOfElementLocated(msjErrorSeleccionaDestino));
-        String msjError = "";
-        msjError.contains(getText(msjErrorSeleccionaDestino));
-        return msjError;
-    }
-
-    public void seccionTrenes(){
-        click(btnTrenesMenu);
-    }
-    public void viajeTrenFiltro(){
-        click(btnIdayVuelta);
-        click(textAreaOrigen);
-        click(opcionOrigenAlicante);
-        click(textAreaDestino);
-        click(opcionDestinoMadrid);
         click(calendarioIzq);
         click(fechaIda);
         click(fechaVuelta);
         click(listaPasajero);
         click(btnBuscarTren);
-        click(ordenarMenorPrecio);
+        click(ordenarMenorPrecio);*/
 
 
-
+        }
     }
-}
+
+
