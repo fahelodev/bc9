@@ -43,6 +43,21 @@ public class TrenesTest extends SeleniumTestBase {
         Assertions.assertEquals("89,96 €","89,96 €");
     }
 
+    @Test
+    @Description("ID:T04- Listas Desplegables Seccion Trenes")
+
+    public void desplegarListasTrenes(){
+        trenes.seccionTrenes();
+        Assertions.assertEquals("Billetes de AVE más hotel a Madrid",trenes.leerMasListasAve());
+        Assertions.assertEquals("Ventajas del buscador de Rumbo",trenes.leerMasRumbo());
+
+    }
+    @Test
+    @Description("ID:T05- Popup con mensaje de error en sección Renfe")
+    public void mensajeErrorRenfe(){
+        trenes.seccionTrenes();
+        Assertions.assertEquals("No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.",trenes.errorRenfe());
+    }
 
 
 }
