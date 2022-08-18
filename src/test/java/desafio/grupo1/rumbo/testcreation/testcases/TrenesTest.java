@@ -1,40 +1,31 @@
 package desafio.grupo1.rumbo.testcreation.testcases;
 
 
-import desafio.grupo1.rumbo.testcreation.pages.RumboHomePage;
 import desafio.grupo1.rumbo.testcreation.pages.Trenes;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
-import io.restassured.internal.common.assertion.Assertion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TrenesTest extends SeleniumTestBase {
 
-    RumboHomePage rumboHomePage;
+
     Trenes trenes;
 
     @BeforeEach
     public void inicializar(){
-        rumboHomePage = new RumboHomePage(DriverFactory.getDriver());
-        rumboHomePage.navegarAlHome();
-        rumboHomePage.aceptarCookies();
+        trenes = new Trenes(DriverFactory.getDriver());
+        trenes.navegarAlHome();
+        trenes.aceptarCookies();
     }
     @Test
     public void irASeccionTrenes() {
 
-        rumboHomePage.seccionTrenes();
+        trenes.seccionTrenes();
     }
 
-    @Test
-    @Description ("ID:T03- Crear viaje en Tren, filtrar por el más barato")
-
-    public void viajeMasBarato() {
-        rumboHomePage.seccionTrenes();
-        trenes.viajeTrenFiltro();
-    }
 
     @Test
     @Description("ID: T01 - Viaje en tren sin destino")
@@ -43,5 +34,15 @@ public class TrenesTest extends SeleniumTestBase {
         trenes.msjErrorDestino();
         System.out.println(trenes.msjErrorDestino());
     }
+    @Test
+    @Description ("ID:T03- Crear viaje en Tren, filtrar por el más barato")
+
+    public void viajeMasBarato() throws InterruptedException {
+        trenes.seccionTrenes();
+        trenes.viajeTrenFiltro();
+        Assertions.assertEquals("89,96 €","89,96 €");
+    }
+
+
 
 }

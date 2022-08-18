@@ -4,12 +4,15 @@ import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static framework.engine.utils.Constants.BASE_URL_AUT;
+
 public class Hoteles extends SeleniumWrapper {
 
 
     public Hoteles(WebDriver driver) {
         super(driver);
     }
+    By btnAceptarCokies = By.xpath("//button[@data-qa='oil-YesButton']");  /*btn cook hacer click*/
 
     //----------------LOCALIZADORES PRUEBA ID_H05
     By txtAreaADondeQuieresIr = By.xpath("//*[@id=\"mui-1\"]");
@@ -42,6 +45,14 @@ public class Hoteles extends SeleniumWrapper {
 
     By filtroHabitacion= By.xpath("//*[@id=\"__next\"]/header/div[1]/div[3]/div[6]/span");
     //---------------------METODOS
+
+    public void navegarAlHome(){
+        navigateTo(BASE_URL_AUT);
+    }
+    public void aceptarCookies(){
+        click(btnAceptarCokies);
+    }
+
     public void seccionHoteles(){ click(btnHoteles);}
     public void busquedaHabitacionPorPersona(){
         click(btnDestino);

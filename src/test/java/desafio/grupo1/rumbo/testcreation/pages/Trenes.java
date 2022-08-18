@@ -4,6 +4,8 @@ import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static framework.engine.utils.Constants.BASE_URL_AUT;
+
 public class Trenes extends SeleniumWrapper {
 
     public Trenes(WebDriver driver) {
@@ -11,8 +13,11 @@ public class Trenes extends SeleniumWrapper {
     }
 
     //---------LOCALIZADORES-----------
-
+    By btnAceptarCokies = By.xpath("//button[@data-qa='oil-YesButton']");  /*btn cook hacer click*/
+    By btnTrenes = By.xpath("(//li/div/a[@title=\"Trenes\"])[1]");
     By textAreaOrigen = By.xpath("//div[text()=\"Origen\"]");
+    By origen= By.xpath("(//div[@class=\"lmn-sw-select-responsive light custom-select-responsive\"])[1]");
+    By destino= By.xpath("(//div[@class=\"lmn-sw-custom-select left-icon\"])[2]");
     By opcionOrigenACorunia = By.xpath("//div[@data-value=\"YJC\"]");
     By btnBuscar = By.xpath("(//div[@tabindex='1'])[2]");
     By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"validation-error__content\"])[2]");
@@ -41,9 +46,20 @@ public class Trenes extends SeleniumWrapper {
 
     //----------METODOS-----------
 
+    public void navegarAlHome(){
+        navigateTo(BASE_URL_AUT);
+    }
+    public void aceptarCookies(){
+        click(btnAceptarCokies);
+    }
+    public void seccionTrenes(){
+        click(btnTrenes);
+    }
+
     public void viajeEnTrenSinDestino(){
-        click(textAreaOrigen);
-        click(opcionOrigenACorunia);
+        esperaEnSegundosYClick(3,btnTrenes);
+       esperaEnSegundosYClick(5,textAreaOrigen);
+        esperaEnSegundosYClick(5,opcionOrigenACorunia);
         click(btnBuscar);
     }
 
@@ -51,21 +67,18 @@ public class Trenes extends SeleniumWrapper {
         return getText(msjErrorSeleccionaDestino);
     }
 
-    public void seccionTrenes(){
-        click(btnTrenesMenu);
-    }
-    public void viajeTrenFiltro(){
-        click(btnIdayVuelta);
+
+    public void viajeTrenFiltro() throws InterruptedException {
+        esperaEnSegundosYClick(5,textAreaOrigen);
         click(textAreaOrigen);
-        click(opcionOrigenAlicante);
-        click(textAreaDestino);
-        click(opcionDestinoMadrid);
-        click(calendarioIzq);
-        click(fechaIda);
-        click(fechaVuelta);
-        click(listaPasajero);
+        esperaEnSegundosYClick(5,opcionOrigenAlicante);
+        esperaEnSegundosYClick(8,opcionDestinoMadrid);
+        esperaEnSegundosYClick(3,calendarioIzq);
+        esperaEnSegundosYClick(2,fechaIda);
+        esperaEnSegundosYClick(2,fechaVuelta);
         click(btnBuscarTren);
-        click(ordenarMenorPrecio);
+        esperaEnSegundosYClick(10,ordenarMenorPrecio);
+
 
 
 
