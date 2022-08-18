@@ -12,19 +12,19 @@ public class RumboEsHotelesSecurePage extends SeleniumWrapper {
 
     public void rellenardatos() {
         By nombre = By.xpath("//input[@data-test='input-name']");
-        write("Juan", nombre);
+        write("Esteban", nombre);
         By apellido = By.xpath("//input[@data-test='input-surname']");
-        write("Perez", apellido);
+        write("Alvarez", apellido);
         sendKeys(Keys.TAB, apellido);
         By email = By.xpath("(//input[@name='email'])[2]");
-        write("algo@gmail.com", email);
+        write("esteban.46@gmail.com", email);
         sendKeys(Keys.TAB, email);
         By filtropais = By.xpath("//div[@class='arrow down']");
         click(filtropais);
         By pais = By.xpath("//li[@data-country-code='ar']");
         click(pais);
         By telefono = By.xpath("//input[@data-test='input-phone']");
-        write("123456789", telefono);
+        write("3804555846", telefono);
     }
     public void rellenardatos06() {
         By nombre = By.xpath("//input[@data-test='input-name']");
@@ -63,6 +63,21 @@ public class RumboEsHotelesSecurePage extends SeleniumWrapper {
         By continuar = By.xpath("//button[@data-test='submit-button']");
         click(continuar);
     }
+    //div[@class='Switchstyles__Switch-sc-1ym8u79-1 hAYUkV']
+    public void paraotrapersona () {
+        By paraotrapersona = By.xpath("//div[@class='Switchstyles__Switch-sc-1ym8u79-1 hAYUkV']");
+        click(paraotrapersona);
+    }
+
+    public String gethuesped(){
+        By gethuesped = By.xpath("//span[text()='Huésped 1']");
+        return getText(gethuesped);
+    }
+    public String Ninvalido () {
+        By Ninvalido = By.xpath("//label[text()='Introduce un número válido']");
+        return getText(Ninvalido);
+    }
+
     public void rellenarhuesped(){
         By nombre = By.xpath("groups.1.travellers.1.name");
         write("Juan", nombre);
