@@ -1,9 +1,9 @@
-package desafio.grupo2.rumbo.testcreation.testcases;
+package desafio.grupo2.rumbo.testcreation.testcases.testVuelos;
 
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosBusquedaPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboVuelosSecurePage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboEsVuelosBusquedaPage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboEsVuelosPage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboVuelosSecurePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
@@ -12,6 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 public class CP002_Vuelos extends SeleniumTestBase {
@@ -25,7 +26,7 @@ public class CP002_Vuelos extends SeleniumTestBase {
     @ParameterizedTest
     @MethodSource
     @Description("Realizando la prubea CP002 del RF01")
-    void CP002_VuelosSinDestinos(String origen,String destino, String esperado) {
+    void CP002_VuelosSinDestinos(String origen,String destino, String esperado) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();

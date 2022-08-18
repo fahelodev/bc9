@@ -1,9 +1,9 @@
-package desafio.grupo2.rumbo.testcreation.testcases;
+package desafio.grupo2.rumbo.testcreation.testcases.testTrenes;
 
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsTrenesBusquedaPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsTrenesPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsTrenesSecurePage;
+import desafio.grupo2.rumbo.testcreation.pages.Trenes.RumboEsTrenesBusquedaPage;
+import desafio.grupo2.rumbo.testcreation.pages.Trenes.RumboEsTrenesPage;
+import desafio.grupo2.rumbo.testcreation.pages.Trenes.RumboEsTrenesSecurePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;

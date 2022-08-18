@@ -1,4 +1,4 @@
-package desafio.grupo2.rumbo.testcreation.pages;
+package desafio.grupo2.rumbo.testcreation.pages.Vuelos;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
@@ -45,7 +45,7 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
                 click(destinoRoma);
                 break;
             case "Londres":
-                By destinoLondres = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[2]");
+                By destinoLondres = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[3]");
                 click(destinoLondres);
                 break;
         }
@@ -61,12 +61,12 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
 
     public void desplegarClases(){
         click(botonDesplegarClases);
-        By claseTurista = By.xpath("//div[text()=\"Turista\"]\t ");
+        By claseTurista = By.xpath("//div[text()=\"Turista\"]");
         click(claseTurista);
     }
 
     public void establecerFechaViaje(){
-        click(BotonCalendarioIda);
+        //click(BotonCalendarioIda);
         By ida = By.xpath("(//button[text()='24'])[1]");
         click(ida);
         By vuelta = By.xpath("(//button[text()='31'])[1]");

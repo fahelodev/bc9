@@ -1,4 +1,4 @@
-package desafio.grupo2.rumbo.testcreation.pages;
+package desafio.grupo2.rumbo.testcreation.pages.Trenes;
 
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
@@ -11,9 +11,12 @@ public class RumboEsTrenesSecurePage extends SeleniumWrapper {
 
     By btnSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
 
+
     public void pasarSiguiente() {
         click(btnSiguiente);
     }
+
+
 
     public String sinDatos() {
         By datosVacios = By.xpath("(//label[@class=\"form-elements-2__error-label  \"])[1]");

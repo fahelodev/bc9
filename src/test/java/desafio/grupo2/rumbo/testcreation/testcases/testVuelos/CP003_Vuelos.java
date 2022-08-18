@@ -1,9 +1,9 @@
-package desafio.grupo2.rumbo.testcreation.testcases;
+package desafio.grupo2.rumbo.testcreation.testcases.testVuelos;
 
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosBusquedaPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboEsVuelosPage;
-import desafio.grupo2.rumbo.testcreation.pages.RumboVuelosSecurePage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboEsVuelosBusquedaPage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboEsVuelosPage;
+import desafio.grupo2.rumbo.testcreation.pages.Vuelos.RumboVuelosSecurePage;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
@@ -12,6 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 public class CP003_Vuelos extends SeleniumTestBase {
@@ -34,10 +35,15 @@ public class CP003_Vuelos extends SeleniumTestBase {
         rumboEsVuelosPage = new RumboEsVuelosPage(DriverFactory.getDriver());
         rumboEsVuelosPage.ingresarOrigen(origen);
         rumboEsVuelosPage.ingresarDestino(destino);
+        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.desplegarPasajeros();
         rumboEsVuelosPage.desplegarClases();
-        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.buscarViaje();
+        Thread.sleep(2000);
+        ArrayList<String> pestañas = rumboEsVuelosPage.getWinndowHandleds();
+        if (pestañas.size() > 1){
+            rumboEsVuelosPage.SwitchTo(pestañas.get(1));
+        }
 
         rumboEsVuelosBusquedaPage = new RumboEsVuelosBusquedaPage(DriverFactory.getDriver());
         rumboEsVuelosBusquedaPage.seleccionarViaje();

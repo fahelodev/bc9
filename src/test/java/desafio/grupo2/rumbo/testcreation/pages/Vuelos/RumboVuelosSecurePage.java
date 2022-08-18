@@ -1,4 +1,4 @@
-package desafio.grupo2.rumbo.testcreation.pages;
+package desafio.grupo2.rumbo.testcreation.pages.Vuelos;
 
 import com.github.javafaker.Bool;
 import framework.engine.selenium.SeleniumWrapper;
@@ -22,7 +22,7 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         click(botonElegirClassic);
     }
 
-    public void rellenarDatosPersonales(String numero){
+    public void rellenarDatosPersonales(List<String> DatosPersonales){
         By inputNombre = By.xpath("//input[@data-test=\"input-name\"]");
         By inputApellido = By.xpath("//input[@data-test=\"input-surname\"]");
         By inputEmail= By.xpath("//input[@id=\"contact-email\"]");
@@ -35,23 +35,25 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         By inputCiudad = By.xpath("//input[@data-test=\"input-city\"]");
         By botonDesplegarPais= By.xpath("//div[@class=\"form-control text-input flag-dropdown\"]");
         By paisArg = By.xpath("//li[@data-flag-key=\"flag_no_13\"]");
-
-        write("Lucas",inputNombre);
-        write("Gonzalez",inputApellido);
-        write("lucasgonz98@g",inputEmail);
+        write(DatosPersonales.get(1),inputNombre);
+        write(DatosPersonales.get(2),inputApellido);
+        write(DatosPersonales.get(3),inputEmail);
         sendKeys(Keys.TAB,inputEmail);
         click(botonDesplegarPrefijos);
         click(codigoAreaArg);
-        write(numero,inputTelefono);
+        write(DatosPersonales.get(0),inputTelefono);
         sendKeys(Keys.TAB,inputTelefono);
-        write("Felipe II",inputDireccionPostal);
-        write("125",inputNumCalle);
-        write("5300",inputCodigoPostal);
-        write("La Rioja",inputCiudad);
-        click(botonDesplegarPais);
-        By inputBuscarPais = By.xpath("//input[@class=\"search-box\"]");
-        write("Argentina",inputBuscarPais);
-        sendKeys(Keys.ENTER,inputBuscarPais);
+        if(isDisplayed(inputDireccionPostal)){
+            write(DatosPersonales.get(4),inputDireccionPostal);
+            write(DatosPersonales.get(5),inputNumCalle);
+            write(DatosPersonales.get(6),inputCodigoPostal);
+            write(DatosPersonales.get(7),inputCiudad);
+            click(botonDesplegarPais);
+            By inputBuscarPais = By.xpath("//input[@class=\"search-box\"]");
+            write(DatosPersonales.get(8),inputBuscarPais);
+            sendKeys(Keys.ENTER,inputBuscarPais);
+        }
+
         //sendKeys(Keys.TAB,botonDesplegarPais);
         //click(paisArg);
 
@@ -59,7 +61,7 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
     }
 
 
-    public void rellenarQuienViaja(){
+    public void rellenarQuienViaja(List<String> DatosPersonales){
         By botonSr = By.xpath("(//div[@class=\"radio radio--middle \"])[1]");
         By inputNom = By.xpath("//input[@data-test=\"input-groups.1.travellers.1.name\"] ");
         By inputApe= By.xpath("//input[@data-test=\"input-groups.1.travellers.1.surname\"]");
@@ -70,16 +72,16 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         click(botonSr);
 /*        write("Lucas",inputNom);
         write("Gonzalez",inputApe);*/
-        write("09",inputDiaNacimiento);
+        write(DatosPersonales.get(9),inputDiaNacimiento);
         click(botonDesplegarMeses);
         click(seleccionMesNacimiento);
-        write("1998",inputAnoNacimiento);
+        write(DatosPersonales.get(10),inputAnoNacimiento);
 
     }
 
     public void opcionesViaje(){
-      By botonConEqupiaje = By.xpath("//div[@data-test=\"quick-selection-card\"]");
-      By botonSinEquipaje = By.xpath("(//div[@class=\"radio radio--middle \"])[2]");
+      By botonConEqupiaje = By.xpath("(//div[@data-testid=\"radio-wrapper\"])[1]");
+      By botonSinEquipaje = By.xpath("(//div[@data-testid=\"radio-wrapper\"])[2]");
       By checkBoxProteger = By.xpath("//div[@class=\"checkbox\"]");
       By BotonSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
 
@@ -88,28 +90,33 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
       click(BotonSiguiente);
     }
 
-    public void servicios(){
+    public void servicios(Boolean condicion){
         By radioButtonSinPlus = By.xpath("(//div[@class=\"radio radio--middle sc-fiKUUL cEpWax\"] )[2]");
         By radioButtonFullFlex = By.xpath("(//div[@class=\"radio radio--middle sc-fiKUUL cEpWax\"] )[1]");
         By botonSiguiente = By.xpath("//button[@class=\"btn btn-cta lead-generation-submit__btn \"]");
 
-        click(radioButtonSinPlus);
-        click(radioButtonFullFlex);
-        click(botonSiguiente);
+
+        if(condicion == true){
+            click(radioButtonSinPlus);
+            click(radioButtonFullFlex);
+            click(botonSiguiente);
+        }
+        else{
+            click(botonSiguiente);
+        }
+
     }
 
-    public void rellanarPago(){
+    public void rellanarPago(List<String> DatosPersonales){
         By inputTitularTarjeta = By.xpath("//input[@data-test=\"input-creditCard.cardHolder\"]");
         By inputNumeroTarjeta = By.xpath("//input[@data-test=\"input-creditCard.cardNumber\"] ");
         By inputMesExpiracion = By.xpath("(//input[@data-test=\"input-creditCard.expirationDate\"])[1]");
         By inputAnoExpiracion = By.xpath("(//input[@data-test=\"input-creditCard.expirationDate\"])[2]");
         By inputCVV = By.xpath("//input[@data-test=\"input-creditCard.cvv\"]");
 
-        write("Lucas",inputTitularTarjeta);
-        write("125785",inputNumeroTarjeta);
-        write("11",inputMesExpiracion);
-        write("27",inputAnoExpiracion);
-        write("248",inputCVV);
+        write(DatosPersonales.get(11),inputTitularTarjeta);
+        write(DatosPersonales.get(12),inputNumeroTarjeta);
+
     }
 
     public Boolean ActivacionDeReloj() {
@@ -119,5 +126,18 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
     public String datosInvalidos(){
         By telefonoInvalido = By.xpath("(//label[@class=\"form-elements-2__error-label  \"])[4]");
         return getText(telefonoInvalido);
+    }
+
+    public String numeroTarjetaInvalido() throws InterruptedException {
+        By inputNumeroTarjeta = By.xpath("//input[@data-test=\"input-creditCard.cardNumber\"] ");
+        sendKeys(Keys.TAB,inputNumeroTarjeta);
+        By tarjetaInvalida = By.xpath("(//label[@class=\"form-elements-2__error-label  \"])[2]");
+        Thread.sleep(3000);
+        return getText(tarjetaInvalida);
+    }
+
+    public String sinmienbroplus(){
+        By noeleccion = By.xpath( "//div[@class=\"sc-jcRDWI cgxIDq\"]");
+        return getText(noeleccion);
     }
 }
