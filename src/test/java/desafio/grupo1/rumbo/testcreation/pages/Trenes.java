@@ -16,7 +16,7 @@ public class Trenes extends SeleniumWrapper {
     By btnAceptarCokies = By.xpath("//button[@data-qa='oil-YesButton']");  /*btn cook hacer click*/
     By btnTrenes = By.xpath("(//li/div/a[@title=\"Trenes\"])[1]");
     By textAreaOrigen = By.xpath("//div[text()=\"Origen\"]");
-    By origen= By.xpath("(//div[@class=\"lmn-sw-select-responsive light custom-select-responsive\"])[1]");
+    By origen= By.xpath("((//div[@class=\"lmn-sw-custom-select left-icon\"])[1]");
     By destino= By.xpath("(//div[@class=\"lmn-sw-custom-select left-icon\"])[2]");
     By opcionOrigenACorunia = By.xpath("//div[@data-value=\"YJC\"]");
     By btnBuscar = By.xpath("(//div[@tabindex='1'])[2]");
@@ -29,16 +29,18 @@ public class Trenes extends SeleniumWrapper {
     By opcionDestinoMadrid= By.xpath("(//div[@data-value=\"MAD\"])[2]");
     By calendarioIzq= By.xpath("(//div[@class=\"timeBox\"])[1]");
     By calendarioDer= By.xpath("(//div[@class=\"timeBox\"])[2]");
-    By fechaIda= By.xpath("(//div[text()='22'])[1]");
-    By fechaVuelta= By.xpath("(//div[text()='24'])[1]");
+    By fechaIda= By.xpath("//div[@data-date=\"22-7-2022\"]");
+    By fechaVuelta= By.xpath("//div[@data-date=\"24-7-2022\"]");
     By listaPasajero= By.xpath("//div[@class=\"lmn-sw-passengersContainer\"]");
     By btnBuscarTren= By.xpath("//div[@class=\"lmn-sw-submitFlightContainer\"]");
     By ordenarMenorPrecio= By.xpath("(//ul[@role=\"tablist\"])[2]/descendant::li[@data-value=\"price.asc\"]");
-    By leerMasOfertasAve= By.xpath("(//div[@class=\"more-label\"])[1]");
-    By leerMasFuncionaRumbo = By.xpath("(//div[@class=\"more-label\"])[2]");
+    By leerMasOfertasAve= By.xpath("(//span[@class=\"show-more--divided\"])[1]");
+    By leerMasFuncionaRumbo = By.xpath("(//span[@class=\"show-more--divided\"])[2]");
     By ofertasRenfe= By.xpath("(//div[@class=\"display-1aslju6-HubFeatureCard-styled e1apqt34\"])[1]");
-    By textoErrorTren= By.xpath("//span[@id=\"noResultsText\"]");
+    By textoErrorTren= By.xpath("//span[text()='No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.']");
     By primerViernes= By.xpath("(//div[text()='26'])[1]");
+    By chequeoLeerMasAve= By.xpath("//a[text()='Billetes de AVE más hotel a Madrid']");
+    By chequeoLeerMasRumbo= By.xpath("//h3[text()='Ventajas del buscador de Rumbo']");
 
 
 
@@ -69,18 +71,41 @@ public class Trenes extends SeleniumWrapper {
 
 
     public void viajeTrenFiltro() throws InterruptedException {
-        esperaEnSegundosYClick(5,textAreaOrigen);
-        click(textAreaOrigen);
-        esperaEnSegundosYClick(5,opcionOrigenAlicante);
-        esperaEnSegundosYClick(8,opcionDestinoMadrid);
-        esperaEnSegundosYClick(3,calendarioIzq);
-        esperaEnSegundosYClick(2,fechaIda);
-        esperaEnSegundosYClick(2,fechaVuelta);
+        esperaEnSegundosYClick(10,textAreaOrigen);
+
+        esperaEnSegundosYClick(10,opcionOrigenAlicante);
+        esperaEnSegundosYClick(10,opcionDestinoMadrid);
+        esperaEnSegundosYClick(10,calendarioIzq);
+        esperaEnSegundosYClick(8,fechaIda);
+        esperaEnSegundosYClick(8,fechaVuelta);
         click(btnBuscarTren);
         esperaEnSegundosYClick(10,ordenarMenorPrecio);
+    }
 
+    public String leerMasListasAve(){
+        esperaEnSegundosYClick(10,leerMasOfertasAve);
+        String chequeo= getText(chequeoLeerMasAve);
+        System.out.println(chequeo);
+        return chequeo;
+    }
+    public String leerMasRumbo(){
+        esperaEnSegundosYClick(10,leerMasFuncionaRumbo);
+        String chequeo= getText(chequeoLeerMasRumbo);
+        System.out.println(chequeo);
+        return chequeo;
+    }
 
-
+    public String errorRenfe(){
+        //guardarPag();
+        esperaEnSegundosYClick(10,ofertasRenfe);
+        //switchTo(1);
+        String chequeo=getText(textoErrorTren);
+        System.out.println(chequeo);
+        return chequeo;
 
     }
+
+
+
+
 }
