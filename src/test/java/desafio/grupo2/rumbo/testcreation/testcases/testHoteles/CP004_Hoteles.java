@@ -32,7 +32,7 @@ class CP004_Hoteles extends SeleniumTestBase {
 
         rumboEsHotelesBusquedaPage = new RumboEsHotelesBusquedaPage(DriverFactory.getDriver());
         rumboEsHotelesBusquedaPage.seleccionarHotel04();
-        ArrayList<String> tabs = rumboEsHotelesPage.getWinndowsHandled();
+        ArrayList<String> tabs = rumboEsHotelesPage.getWinndowHandleds();
         if (tabs.size() > 1) {
             rumboEsHotelesPage.SwitchTo(tabs.get(1));
         }
