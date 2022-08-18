@@ -48,7 +48,7 @@ public class TrenesTest extends SeleniumTestBase {
     public void viajeMasBarato() throws InterruptedException {
         trenes.seccionTrenes();
         trenes.viajeTrenFiltro();
-        Assertions.assertEquals("89,96 €","89,96 €");
+        Assertions.assertEquals("104,22 €",trenes.chequeoMenorPrecio());
     }
 
     @Test
@@ -63,9 +63,23 @@ public class TrenesTest extends SeleniumTestBase {
     @Test
     @Description("ID:T05- Popup con mensaje de error en sección Renfe")
     public void mensajeErrorRenfe(){
+
         trenes.seccionTrenes();
+        trenes.cambioPag();
+        trenes.guardarPag();
+        trenes.switchTo(1);
         Assertions.assertEquals("No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.",trenes.errorRenfe());
     }
+    @Test
+    @Description("ID:T06- Busqueda de Viaje por tren")
+    public void viajePorTren(){
+        trenes.seccionTrenes();
+        trenes.viajeSoloIda();
+        Assertions.assertEquals("Barcelona YJB Alicante YJE",trenes.datosViajeIda());
+
+
+    }
+
 
 
 }
