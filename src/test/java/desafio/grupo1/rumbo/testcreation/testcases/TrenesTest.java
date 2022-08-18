@@ -5,10 +5,13 @@ import desafio.grupo1.rumbo.testcreation.pages.Trenes;
 import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TrenesTest extends SeleniumTestBase {
+
+
     Trenes trenes;
 
     @BeforeEach
@@ -23,29 +26,38 @@ public class TrenesTest extends SeleniumTestBase {
         trenes.seccionTrenes();
     }
 
+
+    @Test
+    @Description("ID: T01 - Viaje en tren sin destino")
+    public void buscarViajeTren(){
+        trenes.viajeEnTrenSinDestino();
+        trenes.msjErrorDestino();
+        System.out.println(trenes.msjErrorDestino());
+    }
     @Test
     @Description ("ID:T03- Crear viaje en Tren, filtrar por el más barato")
-
-    public void viajeMasBarato() {
-
 
     public void viajeMasBarato() throws InterruptedException {
         trenes.seccionTrenes();
         trenes.viajeTrenFiltro();
+        Assertions.assertEquals("89,96 €","89,96 €");
     }
 
-    /*@Test
-    @Description("ID: T01 - Viaje en tren sin destino")
-    public void buscarViajeTren() throws InterruptedException {
+    @Test
+    @Description("ID:T04- Listas Desplegables Seccion Trenes")
+
+    public void desplegarListasTrenes(){
         trenes.seccionTrenes();
-        trenes.viajeEnTrenSinDestino();
-<<<<<<< HEAD
-        Assertions.assertEquals("Selecciona ciudad de destino", trenes.msjErrorDestino());
+        Assertions.assertEquals("Billetes de AVE más hotel a Madrid",trenes.leerMasListasAve());
+        Assertions.assertEquals("Ventajas del buscador de Rumbo",trenes.leerMasRumbo());
+
     }
-=======
-        trenes.msjErrorDestino();
-        System.out.println(trenes.msjErrorDestino());
-    }*/
+    @Test
+    @Description("ID:T05- Popup con mensaje de error en sección Renfe")
+    public void mensajeErrorRenfe(){
+        trenes.seccionTrenes();
+        Assertions.assertEquals("No hemos encontrado ninguna oferta que se ajuste a los criterios de búsqueda, probablemente por falta de disponibilidad en fechas o destino. Por favor, vuelve a intentarlo seleccionando una fecha diferente.",trenes.errorRenfe());
+    }
 
 
 }
