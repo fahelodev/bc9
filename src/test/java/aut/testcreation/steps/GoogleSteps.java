@@ -13,6 +13,11 @@ public class GoogleSteps extends GoogleTestRunner implements En{
 
     GoogleHomePage ghp;
 
+<<<<<<< HEAD
+    public GoogleSteps(){
+
+        Before(2, GoogleTestRunner::setUp); //cada vez que ejecute un scenario
+=======
 
     public GoogleSteps(){
 
@@ -20,6 +25,7 @@ public class GoogleSteps extends GoogleTestRunner implements En{
 
         Before(2, GoogleTestRunner::setUp); //cada vez que ejecute un escenario que ejecute el setup
 
+>>>>>>> 62efa4ad40e1953d312268ea0f722ba64d20b3bf
 
         After(GoogleTestRunner::tearDown);
 
@@ -31,6 +37,7 @@ public class GoogleSteps extends GoogleTestRunner implements En{
 
         When("busco la palabra {string} en el navegador", (String string) -> {
             ghp.buscarConBotonBuscar(string);
+
 
         });
 
