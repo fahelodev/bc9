@@ -1,4 +1,4 @@
-package desafio.grupo2.rumbo.testcreation.testcases;
+package desafio.grupo2.rumbo.testcreation.testcases.testTrenes;
 
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsHomePage;
 import desafio.grupo2.rumbo.testcreation.pages.RumboEsTrenesBusquedaPage;
@@ -9,10 +9,14 @@ import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.IOException;
+import java.util.stream.Stream;
 
-
-public class CP006_Trenes extends SeleniumTestBase {
+public class CP005_Trenes extends SeleniumTestBase {
 
     RumboEsHomePage rumboEsHomePage;
     RumboEsTrenesPage rumboEsTrenesPage;
@@ -20,8 +24,8 @@ public class CP006_Trenes extends SeleniumTestBase {
     RumboEsTrenesSecurePage rumboEsTrenesSecurePage;
 
     @Test
-    @Description("Realizar el test CP006 del RF02")
-    void CP006_PrecioTarifa() throws InterruptedException {
+    @Description("Realizar el test CP005 del RF02")
+    void CP005_CoberturaFullFlex() throws InterruptedException, IOException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -35,19 +39,16 @@ public class CP006_Trenes extends SeleniumTestBase {
         rumboEsTrenesPage.establecerBusqueda();
 
         rumboEsTrenesBusquedaPage = new RumboEsTrenesBusquedaPage(DriverFactory.getDriver());
-        String precioInicial = rumboEsTrenesBusquedaPage.precioTarifaInicial();
-        String Inicial = rumboEsTrenesBusquedaPage.nroInicialString(precioInicial);
         rumboEsTrenesBusquedaPage.seleccionarViaje();
-        Thread.sleep(5000);
+
         rumboEsTrenesSecurePage = new RumboEsTrenesSecurePage(DriverFactory.getDriver());
-        double aumento = rumboEsTrenesSecurePage.cantidadAumento();
-        String precioFinal = rumboEsTrenesSecurePage.tarifaDetalle();
-        String precioFinalSinAumento = rumboEsTrenesSecurePage.restarAumento(precioFinal, aumento);
+        rumboEsTrenesSecurePage.clickFullFlex();
 
-        Assertions.assertEquals(Inicial,precioFinalSinAumento);
-
-
+        System.out.println(rumboEsTrenesSecurePage.FullFlexSeleccionado());
+        Assertions.assertTrue(rumboEsTrenesSecurePage.FullFlexSeleccionado());
 
     }
+
+
 
 }
