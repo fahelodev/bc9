@@ -25,39 +25,6 @@ public class CP001_Vuelos extends SeleniumTestBase {
 
     RumboVuelosSecurePage rumboVuelosSecurePage;
 
-    @Test
-    @Description("Test de prueba")
-    void irARumbos() throws InterruptedException {
-        rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
-        rumboEsHomePage.despegarARumbos();
-        rumboEsHomePage.aceptarCookies();
-        rumboEsHomePage.irAVuelos();
-
-        Assertions.assertEquals("Vuelos baratos | Buscador de vuelos | Rumbo", rumboEsHomePage.getUrlTitle());
-
-        rumboEsVuelosPage = new RumboEsVuelosPage(DriverFactory.getDriver());
-        rumboEsVuelosPage.ingresarOrigen("Madrid");
-        rumboEsVuelosPage.ingresarDestino("Lisboa");
-        rumboEsVuelosPage.desplegarPasajeros();
-        rumboEsVuelosPage.desplegarClases();
-        rumboEsVuelosPage.establecerFechaViaje();
-        rumboEsVuelosPage.buscarViaje();
-
-        rumboEsVuelosBusquedaPage = new RumboEsVuelosBusquedaPage(DriverFactory.getDriver());
-        rumboEsVuelosBusquedaPage.seleccionarViaje();
-
-        rumboVuelosSecurePage = new RumboVuelosSecurePage(DriverFactory.getDriver());
-
-        rumboVuelosSecurePage.elegirClassic();
-       // rumboVuelosSecurePage.rellenarDatosPersonales();
-        //rumboVuelosSecurePage.rellenarQuienViaja();
-        rumboVuelosSecurePage.opcionesViaje();
-        //umboVuelosSecurePage.servicios();
-       // rumboVuelosSecurePage.rellanarPago();
-
-
-    }
-
     @ParameterizedTest
     @MethodSource
    // @ValueSource(strings = {"MAD - FCO","MAD - LIS"})
@@ -75,7 +42,7 @@ public class CP001_Vuelos extends SeleniumTestBase {
         rumboEsVuelosPage.desplegarClases();
         rumboEsVuelosPage.buscarViaje();
         Thread.sleep(2000);
-        ArrayList<String> pestañas = rumboEsVuelosPage.getWinndowsHandled();
+        ArrayList<String> pestañas = rumboEsVuelosPage.getWinndowHandleds();
         if (pestañas.size() > 1){
             rumboEsVuelosPage.SwitchTo(pestañas.get(1));
         }

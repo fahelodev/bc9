@@ -12,6 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 public class CP002_Vuelos extends SeleniumTestBase {
@@ -25,7 +26,7 @@ public class CP002_Vuelos extends SeleniumTestBase {
     @ParameterizedTest
     @MethodSource
     @Description("Realizando la prubea CP002 del RF01")
-    void CP002_VuelosSinDestinos(String origen,String destino, String esperado) {
+    void CP002_VuelosSinDestinos(String origen,String destino, String esperado) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();

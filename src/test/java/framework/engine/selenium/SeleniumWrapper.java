@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
@@ -82,7 +81,7 @@ public class SeleniumWrapper {
     public String getWindowHandled(){
         return driver.getWindowHandle();
     }
-    public ArrayList<String> getWinndowsHandled(){
+    public ArrayList<String> getWinndowHandleds(){
         return new ArrayList<>(driver.getWindowHandles());
     }
 

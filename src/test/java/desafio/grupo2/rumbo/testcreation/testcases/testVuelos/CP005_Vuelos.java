@@ -12,6 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -35,10 +36,16 @@ public class CP005_Vuelos extends SeleniumTestBase {
         rumboEsVuelosPage = new RumboEsVuelosPage(DriverFactory.getDriver());
         rumboEsVuelosPage.ingresarOrigen(origen);
         rumboEsVuelosPage.ingresarDestino(destino);
+        rumboEsVuelosPage.establecerFechaViaje();
         rumboEsVuelosPage.desplegarPasajeros();
         rumboEsVuelosPage.desplegarClases();
-        rumboEsVuelosPage.establecerFechaViaje();
+        ;
         rumboEsVuelosPage.buscarViaje();
+        Thread.sleep(2000);
+        ArrayList<String> pestañas = rumboEsVuelosPage.getWinndowHandleds();
+        if (pestañas.size() > 1){
+            rumboEsVuelosPage.SwitchTo(pestañas.get(1));
+        }
 
         rumboEsVuelosBusquedaPage = new RumboEsVuelosBusquedaPage(DriverFactory.getDriver());
         rumboEsVuelosBusquedaPage.seleccionarViaje();
