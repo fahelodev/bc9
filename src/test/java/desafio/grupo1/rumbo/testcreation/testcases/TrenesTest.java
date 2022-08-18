@@ -48,7 +48,7 @@ public class TrenesTest extends SeleniumTestBase {
     public void viajeMasBarato() throws InterruptedException {
         trenes.seccionTrenes();
         trenes.viajeTrenFiltro();
-        Assertions.assertEquals("104,22 €",trenes.chequeoMenorPrecio());
+        Assertions.assertEquals(trenes.chequeoMenorPrecioTab(),trenes.chequeoMenorPrecio());
     }
 
     @Test
