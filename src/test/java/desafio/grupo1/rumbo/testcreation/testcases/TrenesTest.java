@@ -29,12 +29,16 @@ public class TrenesTest extends SeleniumTestBase {
 
     @Test
     @Description("ID: T01 - Viaje en tren sin destino")
+
     public void buscarViajeSinDestino(){
         trenes.seccionTrenes();
         trenes.viajeEnTrenSinDestino();
-        Assertions.assertEquals("Selecciona ciudad de destino", trenes.msjErrorDestino());}
+        Assertions.assertEquals("Selecciona ciudad de destino", trenes.msjErrorDestino());
+    }
 
     @Test
+    @Description("ID: T02 - Modificacion viaje tren luego de la busqueda")
+
     public void buscarViajeEnTren(){
         trenes.seccionTrenes();
         trenes.buscarViajeTren();
@@ -79,7 +83,5 @@ public class TrenesTest extends SeleniumTestBase {
 
 
     }
-
-
 
 }

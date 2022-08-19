@@ -34,7 +34,7 @@ public class Trenes extends SeleniumWrapper {
     By btnIdayVuelta= By.xpath("//div[@data-type=\"round_trip\"]");
     By btnIdaSolo= By.xpath("//div[@data-type=\"one_way\"]");
     By btnBuscar = By.xpath("(//div[@tabindex='1'])[2]");
-    By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"validation-error__content\"])[2]");
+    By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"validation-error\"]");
     By btnBuscarTren= By.xpath("//div[@class=\"lmn-sw-submitFlightContainer\"]");
     By listaDesplegadaOrigen= By.xpath("//div[@class=\"select-items\"]");
     By btnModificar = By.xpath("//span[text()=\"Modificar\"]");
@@ -96,10 +96,10 @@ public class Trenes extends SeleniumWrapper {
     }
 
     public void viajeEnTrenSinDestino() {
-        esperaEnSegundosYClick(15, origen);
-        if(isDisplayed(origen)){
-            esperaEnSegundosYClick(15,opcionOrigenACorunia);
+        if(!isDisplayed(listaDesplegadaOrigen)){
+            esperaEnSegundosYClick(15, origen);
         }
+        esperaEnSegundosYClick(15,opcionOrigenACorunia);
         esperaEnSegundosYClick(10, btnBuscarTren);
     }
 
@@ -112,7 +112,9 @@ public class Trenes extends SeleniumWrapper {
     public void buscarViajeTren(){
         eWait(15).until(ExpectedConditions.visibilityOfElementLocated(menuTrenes));
         esperaEnSegundosYClick(3, btnIdayVuelta);
-        esperaEnSegundosYClick(5, origen);
+        if(!isDisplayed(listaDesplegadaOrigen)){
+            esperaEnSegundosYClick(5, origen);
+        }
         esperaEnSegundosYClick(15, opcionOrigenACorunia);
         esperaEnSegundosYClick(10, opcionDestinoMadrid);
         if (isDisplayed(calDesplegado)) {
@@ -125,12 +127,12 @@ public class Trenes extends SeleniumWrapper {
     public void modificarViajeTren(){
         esperaEnSegundosYClick(5, btnModificar);
         eWait(15).until(ExpectedConditions.visibilityOfElementLocated(seccionModifDespleg));
-        if (isDisplayed(seccionViajeTren)){
+        if (!isDisplayed(listaDesplegadaOrigen)){
             esperaEnSegundosYClick(8, origen);
-            esperaEnSegundosYClick(8, opcionOrigenAgde);
-            esperaEnSegundosYClick(8, opcionDestinoGirona);
-            esperaEnSegundosYClick(5, btnBuscar);
         }
+        esperaEnSegundosYClick(8, opcionOrigenAgde);
+        esperaEnSegundosYClick(8, opcionDestinoGirona);
+        esperaEnSegundosYClick(5, btnBuscarTren);
     }
 
     public String datosModificados(){

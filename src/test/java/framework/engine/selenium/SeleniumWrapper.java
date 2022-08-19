@@ -1,5 +1,7 @@
 package framework.engine.selenium;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -54,6 +56,8 @@ public class SeleniumWrapper {
         espera.until(ExpectedConditions.elementToBeClickable(locator)).click();
 
     }
+
+
 
 
     public WebElement findElement(By locator){
