@@ -152,7 +152,7 @@ public class Vuelos extends SeleniumWrapper {
     // COMPROBADORES  INPUT caso login
     //quien reserva
     By inputNombreReserva = By.xpath("//input[@value='Ruben Dario']");
-    By inputApellidoReserva = By.xpath("data-test=\"input-surname\"");
+    By inputApellidoReserva = By.xpath("//input[@data-test=\"input-surname\"]");
     By inputEmailReserva = By.xpath("//input[@id='contact-email']");
     By inputTelefonoReserva = By.xpath("//input[@data-test=\"input-phone\"]");
     By listaInput = By.xpath("id=\"contact\"");
@@ -325,12 +325,81 @@ public class Vuelos extends SeleniumWrapper {
     }
 
 
+
+    //******************************************************************************
+
+    public String getDatoNombreReserva(){
+        String datoNombre = findElement(inputNombreReserva).getAttribute("value") ;
+        System.out.println(datoNombre);
+        return datoNombre;
+    }
+
+    public String getDatoApellidoReserva(){
+        String datoApellido = findElement(inputApellidoReserva).getAttribute("value") ;
+        System.out.println(datoApellido);
+        return datoApellido;
+    }
+
+    //aaa
+    public String getDatoEmailReserva(){
+        String datoEmail  = findElement(inputEmailReserva).getAttribute("value") ;
+        System.out.println(datoEmail);
+        return datoEmail;
+    }
+
+    public String getDatoTelefonoReserva(){
+        String datoTelefono = findElement(inputTelefonoReserva).getAttribute("value") ;
+        System.out.println(datoTelefono);
+        return datoTelefono;
+    }
+
+    public String getDatoNombreQuienViaja(){
+        String datoNombreV = findElement(inputNombreQuienViaja).getAttribute("value") ;
+        System.out.println(datoNombreV);
+
+        return datoNombreV;
+    }
+
+    public String getDatoApellidoQuienViaja(){
+        String datoFechaV = findElement(inputApellidoQuienViaja).getAttribute("value") ;
+        System.out.println(datoFechaV);
+        return datoFechaV;
+    }
+
+    public boolean getCheckQuienViaja(){
+
+        boolean comprobanteCheck;
+        if(isSelected(checkSr)){
+            System.out.println("esta seleccionado");
+            comprobanteCheck=true;
+        }else {
+            System.out.println("no esta seleccionado");
+            comprobanteCheck=false;
+
+        }
+
+        System.out.println(comprobanteCheck);
+        return comprobanteCheck;
+    }
+
+    public String getFecha(){
+        String fechaAnnio = findElement(inputFechaNacimientroQuienViaja).getAttribute("value");
+        System.out.println(fechaAnnio);
+        return fechaAnnio;
+
+    }
+
+/*
     public void resultadoLogin() throws InterruptedException {
 
         Thread.sleep(10000);
 
+
+
         //SECCION QUIEN RESERVA
 
+
+        System.out.println(findElement(inputNombreReserva).getAttribute("value"));
         String nombreReserva = js().executeScript("return document.querySelector('body.step-counter-other:nth-child(2) div.container.obe__outer-container div.obe__container div.obe__wrapper div.obe__main div.widget-wrapper.widget-wrapper--contact:nth-child(5) div.contact.form-elements-2 form.contact__form div.fieldset.fieldset--name:nth-child(1) div.form-group.fieldset__field-wrapper.input-group-sm.form-group.has-success.has-inline-error div.form-control-wrapper > input.form-control.text-input').value;").toString();
         System.out.println(nombreReserva);
         String apellidoReserva = js().executeScript("return document.querySelector('body.step-counter-other:nth-child(2) div.container.obe__outer-container div.obe__container div.obe__wrapper div.obe__main div.widget-wrapper.widget-wrapper--contact:nth-child(5) div.contact.form-elements-2 form.contact__form div.fieldset.fieldset--surname:nth-child(2) div.form-group.fieldset__field-wrapper.input-group-sm.form-group.has-success.has-inline-error div.form-control-wrapper > input.form-control.text-input').value;").toString();
@@ -379,7 +448,7 @@ public class Vuelos extends SeleniumWrapper {
 
     }
 
-
+*/
 
 
 }

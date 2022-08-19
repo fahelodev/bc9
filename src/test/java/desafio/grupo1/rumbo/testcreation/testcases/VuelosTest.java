@@ -131,8 +131,27 @@ public class VuelosTest extends SeleniumTestBase {
         vuelos.seleccionarPrimerVuelo();
         vuelos.seleccionarServicio();
 
+        Thread.sleep(10000);
 
-        vuelos.resultadoLogin();
+        // quien reserva
+        Assertions.assertEquals("Ruben Dario",vuelos.getDatoNombreReserva());
+        Assertions.assertEquals("Chavez Castro",vuelos.getDatoApellidoReserva());
+        Assertions.assertEquals("equipo1desafiotsoft@gmail.com",vuelos.getDatoEmailReserva());
+        Assertions.assertEquals("90884812",vuelos.getDatoTelefonoReserva());
+
+        // quien viaja
+
+        Assertions.assertTrue(vuelos.getCheckQuienViaja());
+        Assertions.assertEquals("Ruben Dario",vuelos.getDatoNombreReserva());
+        Assertions.assertEquals("Chavez Castro",vuelos.getDatoApellidoReserva());
+        Assertions.assertEquals("1995",vuelos.getFecha());
+
+
+
+
+
+
+        //vuelos.resultadoLogin();
 
         //Resultado esperado
         //comprobar el auto completado de los datos de usuario 
