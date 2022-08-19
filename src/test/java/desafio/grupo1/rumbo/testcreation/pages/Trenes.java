@@ -3,7 +3,6 @@ package desafio.grupo1.rumbo.testcreation.pages;
 import framework.engine.selenium.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static framework.engine.utils.Constants.BASE_URL_AUT;
@@ -23,22 +22,19 @@ public class Trenes extends SeleniumWrapper {
     By chequeoLeerMasAve= By.xpath("//a[text()='Billetes de AVE más hotel a Madrid']");
     By chequeoLeerMasRumbo= By.xpath("//h3[text()='Ventajas del buscador de Rumbo']");
     By seccionModifDespleg = By.xpath("//div[@class=\"search-summary__search-widget-bar with-animation--open\"]");
-    By seccionViajeTren = By.xpath("//div[@class=\"lmn-sw-train searchContainer lmn-sw-trainContainer\"]");
     By containerMsjError=By.xpath("//div[@class=\"display-ecv2-HubNoResults-styled e1nej8py3\"]");
 
     //---------SECCION TRENES----------
     By btnTrenes = By.xpath("(//li/div/a[@title=\"Trenes\"])[1]");
     By menuTrenes = By.xpath("//div[@class='lmn-sw-train searchContainer lmn-sw-trainContainer']");
-    By textAreaOrigen = By.xpath("//div[text()=\"Origen\"]");
     By origen= By.xpath("(//div[@class=\"lmn-sw-select-responsive light custom-select-responsive\"])[1]");
     By btnIdayVuelta= By.xpath("//div[@data-type=\"round_trip\"]");
     By btnIdaSolo= By.xpath("//div[@data-type=\"one_way\"]");
-    By btnBuscar = By.xpath("(//div[@tabindex='1'])[2]");
-    By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"validation-error__content\"])[2]");
+    By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"validation-error\"]");
     By btnBuscarTren= By.xpath("//div[@class=\"lmn-sw-submitFlightContainer\"]");
     By listaDesplegadaOrigen= By.xpath("//div[@class=\"select-items\"]");
     By btnModificar = By.xpath("//span[text()=\"Modificar\"]");
-    By nuevoOrigen = By.xpath("(//div[@data-value=\"\"])[1]");
+
 
     //---------CALENDARIO-----------
     By calDesplegado = By.xpath("(//div[@class=\"dropdownContent\"])[1]");
@@ -66,23 +62,6 @@ public class Trenes extends SeleniumWrapper {
 
 
 
-    By destino= By.xpath("(//div[@class=\"lmn-sw-custom-select left-icon\"])[2]");
-    By primerViernes= By.xpath("(//div[text()='26'])[1]");
-    By btnTrenesMenu= By. xpath("(//a[@title=\"Trenes\"])[1]");
-    By textAreaDestino= By.xpath("//div[text()=\"Destino\"]");
-    By calendarioIzq= By.xpath("(//div[@class=\"display-pfh0xi\"])/button");
-    By calendarioDer= By.xpath("(//div[@class=\"timeBox\"])[2]");
-    By listaPasajero= By.xpath("//div[@class=\"lmn-sw-passengersContainer\"]");
-    By nuevoDestino = By.xpath("(//div[@data-value=\"\"])[2]");
-    By seccionDatosModif = By.xpath("//div[@class=\"search-summary__content\"]");
-    By menuSeleccionTrenes= By.xpath("id=\"csw-train-tab\"");
-
-
-
-
-
-
-
     //----------METODOS-----------
 
     public void navegarAlHome(){
@@ -96,10 +75,10 @@ public class Trenes extends SeleniumWrapper {
     }
 
     public void viajeEnTrenSinDestino() {
-        esperaEnSegundosYClick(15, origen);
-        if(isDisplayed(origen)){
-            esperaEnSegundosYClick(15,opcionOrigenACorunia);
+        if(!isDisplayed(listaDesplegadaOrigen)){
+            esperaEnSegundosYClick(15, origen);
         }
+        esperaEnSegundosYClick(15,opcionOrigenACorunia);
         esperaEnSegundosYClick(10, btnBuscarTren);
     }
 
@@ -112,7 +91,9 @@ public class Trenes extends SeleniumWrapper {
     public void buscarViajeTren(){
         eWait(15).until(ExpectedConditions.visibilityOfElementLocated(menuTrenes));
         esperaEnSegundosYClick(3, btnIdayVuelta);
-        esperaEnSegundosYClick(5, origen);
+        if(!isDisplayed(listaDesplegadaOrigen)){
+            esperaEnSegundosYClick(5, origen);
+        }
         esperaEnSegundosYClick(15, opcionOrigenACorunia);
         esperaEnSegundosYClick(10, opcionDestinoMadrid);
         if (isDisplayed(calDesplegado)) {
@@ -125,12 +106,12 @@ public class Trenes extends SeleniumWrapper {
     public void modificarViajeTren(){
         esperaEnSegundosYClick(5, btnModificar);
         eWait(15).until(ExpectedConditions.visibilityOfElementLocated(seccionModifDespleg));
-        if (isDisplayed(seccionViajeTren)){
+        if (!isDisplayed(listaDesplegadaOrigen)){
             esperaEnSegundosYClick(8, origen);
-            esperaEnSegundosYClick(8, opcionOrigenAgde);
-            esperaEnSegundosYClick(8, opcionDestinoGirona);
-            esperaEnSegundosYClick(5, btnBuscar);
         }
+        esperaEnSegundosYClick(8, opcionOrigenAgde);
+        esperaEnSegundosYClick(8, opcionDestinoGirona);
+        esperaEnSegundosYClick(5, btnBuscarTren);
     }
 
     public String datosModificados(){

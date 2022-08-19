@@ -14,19 +14,13 @@ public class SeleniumWrapper {
     ArrayList<String> tabs;
 
 
-
-
     //Constructor Base
     public SeleniumWrapper(WebDriver driver){
         this.driver = driver;
 
     }
 
-
-
     //Wrappers Selenium
-
-
 
     public JavascriptExecutor js(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -99,7 +93,6 @@ public class SeleniumWrapper {
             return driver.findElement(locator).isEnabled();
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
-
         }
     }
 
@@ -118,7 +111,6 @@ public class SeleniumWrapper {
     public String getUrlTitle(){
         return driver.getTitle();
     }
-
 
 
 
