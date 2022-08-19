@@ -9,7 +9,7 @@ public class RumboEsHotelesDetallesPage extends SeleniumWrapper {
         super(driver);
     }
     public void seleccionarFiltro() throws InterruptedException {
-        Thread.sleep(10000);
+        //Thread.sleep(5000);
         By seleccionarFiltro = By.xpath("//button[text()=\"Desayuno incluido\"]");
         click(seleccionarFiltro);
     }

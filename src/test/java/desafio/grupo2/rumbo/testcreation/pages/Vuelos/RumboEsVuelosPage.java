@@ -37,16 +37,16 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
         switch (Destino){
             case "Lisboa":
                 By destinoLisboa = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[1]");
-                click(destinoLisboa);
+                if(isDisplayed(destinoLisboa)){click(destinoLisboa);}
                 break;
 
             case "Roma":
                 By destinoRoma = By.xpath(" (//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[2]");
-                click(destinoRoma);
+                if(isDisplayed(destinoRoma)){click(destinoRoma);}
                 break;
             case "Londres":
                 By destinoLondres = By.xpath("(//b[@class=\"display-16ky3fq-Autocompleter-styled\"])[3]");
-                click(destinoLondres);
+                if(isDisplayed(destinoLondres)){click(destinoLondres);}
                 break;
         }
 
@@ -62,7 +62,10 @@ public class  RumboEsVuelosPage extends SeleniumWrapper {
     public void desplegarClases(){
         click(botonDesplegarClases);
         By claseTurista = By.xpath("//div[text()=\"Turista\"]");
-        click(claseTurista);
+        if(isDisplayed(claseTurista)){
+            click(claseTurista);
+        }
+
     }
 
     public void establecerFechaViaje(){

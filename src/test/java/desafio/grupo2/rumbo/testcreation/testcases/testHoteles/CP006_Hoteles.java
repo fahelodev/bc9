@@ -23,7 +23,7 @@ class CP006_Hoteles extends SeleniumTestBase {
     @ParameterizedTest
     @ValueSource(strings={"Santiago"})
     @Description("Test Caso CP006_Hoteles")
-    void CP006_Hoteles(String Destino){
+    void CP006_Hoteles(String Destino) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
