@@ -1,11 +1,6 @@
 package framework.engine.selenium;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,6 +23,13 @@ public class SeleniumWrapper {
     }
 
     //Wrappers Selenium
+
+
+
+    public JavascriptExecutor js(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return js;
+    }
 
 
     //guardo las paginas del navegador en un array
@@ -56,8 +58,8 @@ public class SeleniumWrapper {
         espera.until(ExpectedConditions.elementToBeClickable(locator)).click();
 
     }
-
-
+        // conseguir url pagina
+    public String getUrl(){return driver.getCurrentUrl();}
 
 
     public WebElement findElement(By locator){

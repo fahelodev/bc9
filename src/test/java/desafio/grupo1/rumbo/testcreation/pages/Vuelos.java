@@ -1,6 +1,7 @@
 package desafio.grupo1.rumbo.testcreation.pages;
 
 import framework.engine.selenium.SeleniumWrapper;
+import gherkin.lexer.Th;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -99,7 +100,7 @@ public class Vuelos extends SeleniumWrapper {
 
 //SECCION DE CHECKBOX
 
-    By checkAerolineasArgentina = By.xpath("//span[@class='checkboxlist-filter-view__desc desc']//*[text()='Aerolineas Argentinas']");
+    By checkAerolineasArgentina = By.xpath("//span[contains(text(),'Aerolineas Argentinas')]");
     //detectar los check totales de la pagina : //span[@class='check']
 
     //Escalas //funcionan para ida          || PARA USO DE IDA Y VUELTA CAMBIAR EL DATA [2]
@@ -126,173 +127,258 @@ public class Vuelos extends SeleniumWrapper {
     By btnCerrarPopMultidestino = By.xpath("//div[@class='Modal__ModalWrapperContent-sc-15ie1vv-3 cZmLcP']//button[@data-test=\"ModalCloseButton\"]");
     By btnAceptarCokiesMultidestino = By.xpath("//button[@id='cookies_accept']");
 
+    //=========================================================================================
+    //Cargadores
+    By menuVuelo = By.xpath("(//form)[2]");
+    By menulistaVuelos = By.xpath("//div[@class='content-layout-view__column-right col-md-9']");
+    By menuMultidestino = By.xpath("//div[@class='Modal__ModalWrapperContent-sc-15ie1vv-3 cZmLcP']");
+    By menuModificar = By.xpath("//div[@class=\"search-summary__search-widget-bar with-animation--open\"]");
 
+    By barraModificar = By.xpath("//div[@class='search-summary__bar']");
 
+    By informacionReservas = By.xpath("//form[@class='contact__form']");
 
+    By cargadorWeb = By.xpath("//div[@id=\"root\"]");
+
+    //Comprobadores
+    By origenDestino = By.xpath("//div[@class='search-summary__section search-summary__section--place']");
+    By numeroPasajeros = By.xpath("//div[@class='search-summary__section search-summary__section--passengers']");
+
+    By tagAerolineasCheck = By.xpath("//img[@alt=\"AR\"]");
+    By listaChecks = By.xpath("//div[@class='checkboxlist-filter-view__option option ']");
+    By checkComprobacion = By.xpath("//div[@data-testid=\"validation-check\"]");
+    By comprobacionMenuLogin = By.xpath("//div[@class='modal-body']");
+
+    // COMPROBADORES  INPUT caso login
+    //quien reserva
+    By inputNombreReserva = By.xpath("//input[@value='Ruben Dario']");
+    By inputApellidoReserva = By.xpath("data-test=\"input-surname\"");
+    By inputEmailReserva = By.xpath("//input[@id='contact-email']");
+    By inputTelefonoReserva = By.xpath("//input[@data-test=\"input-phone\"]");
+    By listaInput = By.xpath("id=\"contact\"");
+    //quien viaja
+    By checkSex = By.xpath("//label[@for=\"radio-groups.1.travellers.1.title-MALE\"]");
+    By inputNombreQuienViaja = By.xpath("//input[@data-test=\"input-groups.1.travellers.1.name\"]");
+    By inputApellidoQuienViaja = By.xpath("//input[@data-test=\"input-groups.1.travellers.1.surname\"]");
+    By inputFechaNacimientroQuienViaja = By.xpath("//div[@class=\"fieldset__date-wrapper\"]");
+    By checkSr = By.xpath("(//span[@class=\'check\'])[3]");
 
     public Vuelos(WebDriver driver) {
         super(driver);
-
     }
-
     //inicio
     public void navegarAlHomeWeb(){
         navigateTo(BASE_URL_AUT);
-
     }
-
     public void aceptarCokies(){
         click(btnAceptarCokies);
     }
     public void seleccionarMenuVuelo(){
-        click(btnMenuVuelo);
-
+        esperaEnSegundosYClick(10,btnMenuVuelo);
     }
+    public void generarVuelo()  {
 
+        eWait(5).until(ExpectedConditions.visibilityOfElementLocated(menuVuelo)); // espera carga menu
 
-
-
-    public void generarVuelo() throws InterruptedException {
-        Thread.sleep(2000);
-
-
-
-        click(btnSoloIda);
-        //findElements(listaVueloDestinoRecorrer).get(1).click();
-          /*
-            for (WebElement option: findElements(listaVueloDestinoReal)) {
-                if(option.getText().contentEquals(" (SCL) Arturo Merino Benítez, Chile"));
-                    System.out.println(option.getText());
-                    option.click();
-
-            }
-
-
-*/// Para correr listas desplegables
-
-
+        esperaEnSegundosYClick(3,btnSoloIda); //selecciono solo ida
 
         //origen
-        click(btnLimpiarOrigen); // apretar en la x
+        esperaEnSegundosYClick(3,btnLimpiarOrigen); // limpiar texto input origen
+
+        esperaEnSegundosYClick(3,inputOrigen);
         write("Buenos Aires",inputOrigen);
 
-           if(isDisplayed(listaVuelosOrigen))
-               click(btnOrigenArgentina);
-       Thread.sleep(2000); // MODIFICAR TIEMPO
+
+        if(isDisplayed(listaVuelosOrigen))
+            esperaEnSegundosYClick(3,btnOrigenArgentina);
 
         //destino
+        esperaEnSegundosYClick(3,inputDestino);
         write("Santiago",inputDestino);
 
-        if(isDisplayed(listaVuelosDestino)){// Nose como hacer guardar de 1 el listado AYUDA
-            click(btnDestinoSantiago);
-         Thread.sleep(2000);
-
-        }
+        if(isDisplayed(listaVuelosDestino))
+            esperaEnSegundosYClick(3,btnDestinoSantiago);
 
         //fecha ida
+
         if (isDisplayed(btnMenuFechaIda)){
-            click(btnFechaIda);
-        Thread.sleep(4000);
+             esperaEnSegundosYClick(3,btnFechaIda);
         }
 
         //claseTurista
-            click(btnTipoClase);
+        esperaEnSegundosYClick(3,btnTipoClase);
+
         if(isDisplayed(listaClase)){
-            click(btnTurista);
-          Thread.sleep(2000);
+           esperaEnSegundosYClick(3,btnTurista);
         }
 
         //generar busqueda
-            click(btnBuscar);
-
-
+        esperaEnSegundosYClick(3,btnBuscar);
     }
 
     //Multidestino
     public void seleccionarMultidestino(){
-
-         //eWait(10).until(ExpectedConditions.titleContains("lala"));
-
-
-        click(btnMultidestino);
+       esperaEnSegundosYClick(3,btnMultidestino);
     }
 
-
-    //Generar Modificacion
-
-
-
-
+    //Modificacion de vuelo  proceso
 
     public void seleccionarModificar(){
-        click(btnModificar);
+        eWait(15).until(ExpectedConditions.visibilityOfElementLocated(barraModificar));
+        esperaEnSegundosYClick(3,btnModificar);
     }
 
-
-
-
-
-    public void modificarVuelo() throws InterruptedException {
-
+    public void modificarVuelo()  {
+        eWait(10).until(ExpectedConditions.visibilityOfElementLocated(listaDatosModificar));
         if(isDisplayed(listaDatosModificar)) {
+                esperaEnSegundosYClick(3,btnModificarPasajeros);
 
-            //modificar pasajero
-            click(btnModificarPasajeros);
-          Thread.sleep(2000);
+            eWait(10).until(ExpectedConditions.visibilityOfElementLocated(listaModificarPasajeros));
             if (isDisplayed(listaModificarPasajeros)) {
-                click(btnModificarMasAdulto); //aumento adulto
-                click(btnModificarBuscar);
+                esperaEnSegundosYClick(3,btnModificarMasAdulto);
+
             }
+           // eWait(10).until(ExpectedConditions.elementToBeClickable(btnModificarBuscar));
+            esperaEnSegundosYClick(3,btnModificarBuscar);
 
-
+            eWait(15).until(ExpectedConditions.visibilityOfElementLocated(numeroPasajeros));
         }
     }
-
-
-
-
-
     public void logearseEnPagina() throws InterruptedException {
-       Thread.sleep(5000);
-        click(btnMiRumbo);
-        Thread.sleep(5000);
+
+
+      Thread.sleep(5000);
+
+        esperaEnSegundosYClick(3,btnMiRumbo);
+
+  //  eWait(10).until(ExpectedConditions.elementToBeClickable(btnMiRumbo));
+
         if(isDisplayed(menuLogin)){
             write("equipo1desafiotsoft@gmail.com",inputEmail);
             write("equipo1tsoft",inputPassword);
-            click(btnLogin);
+           Thread.sleep(3000);
+            esperaEnSegundosYClick(5,btnLogin);
         }
-        Thread.sleep(4000);
 
-
+       Thread.sleep(7000);
 
     }
 
-
     public void seleccionarPrimerVuelo(){
-
+        eWait(10).until(ExpectedConditions.visibilityOfElementLocated(listadoVuelos));
         if(isDisplayed(listadoVuelos))
-        click(primeroDeListaVuelos);
+        esperaEnSegundosYClick(10,primeroDeListaVuelos);
 
     }
 
     public void seleccionarServicio(){
-        click(btnPagoFlexible);
+       esperaEnSegundosYClick(10,btnPagoFlexible);
     }
 
 
     public void seleccionarCompania(){
-        click(checkAerolineasArgentina);
+        esperaEnSegundosYClick(10,checkAerolineasArgentina);
+        eWait(10).until(ExpectedConditions.visibilityOfElementLocated(listadoVuelos));
     }
 
 
-    public void cerrarVentanasEmergente() throws InterruptedException {
+    public void cerrarVentanasEmergente()  {
 
-        click(btnCerrarPopMultidestino);
-        Thread.sleep(3000);
-        click(btnAceptarCokiesMultidestino);
+        esperaEnSegundosYClick(5,btnCerrarPopMultidestino);
+        esperaEnSegundosYClick(5,btnAceptarCokiesMultidestino);
+        //eWait(10).until(ExpectedConditions.visibilityOfElementLocated(menuVuelo));
+
+    }
+
+    public String resultadoPruebaBuscarVuelo(){
+        eWait(15).until(ExpectedConditions.visibilityOfElementLocated(menulistaVuelos));
+        String comprobante;
+        comprobante = findElement(origenDestino).getText();
+        return comprobante;
+    }
+
+
+    public String resultadoPrubaModificar(){
+        eWait(10).until(ExpectedConditions.visibilityOfElementLocated(barraModificar));
+        String comprobante;
+        comprobante = findElement(numeroPasajeros).getText();
+        System.out.println(comprobante);
+
+        return comprobante;
+
+    }
+
+    public String resultadoFiltroCheckbox(){
+        String comprobante;
+        comprobante = findElement(tagAerolineasCheck).getAccessibleName();
+        System.out.println(comprobante); //TAG DE LA AEROLINEA
+        return comprobante;
+    }
+
+
+
+    public boolean resultadoCheckboxHabilitados(){
+        if(isEnabled(listaChecks)&&(!isSelected(listaChecks))) {
+            return true;
+        }else
+            return false;
+    }
+
+
+    public void resultadoLogin() throws InterruptedException {
+
+        Thread.sleep(10000);
+
+        //SECCION QUIEN RESERVA
+
+        String nombreReserva = js().executeScript("return document.querySelector('body.step-counter-other:nth-child(2) div.container.obe__outer-container div.obe__container div.obe__wrapper div.obe__main div.widget-wrapper.widget-wrapper--contact:nth-child(5) div.contact.form-elements-2 form.contact__form div.fieldset.fieldset--name:nth-child(1) div.form-group.fieldset__field-wrapper.input-group-sm.form-group.has-success.has-inline-error div.form-control-wrapper > input.form-control.text-input').value;").toString();
+        System.out.println(nombreReserva);
+        String apellidoReserva = js().executeScript("return document.querySelector('body.step-counter-other:nth-child(2) div.container.obe__outer-container div.obe__container div.obe__wrapper div.obe__main div.widget-wrapper.widget-wrapper--contact:nth-child(5) div.contact.form-elements-2 form.contact__form div.fieldset.fieldset--surname:nth-child(2) div.form-group.fieldset__field-wrapper.input-group-sm.form-group.has-success.has-inline-error div.form-control-wrapper > input.form-control.text-input').value;").toString();
+        System.out.println(apellidoReserva);
+        String emailReserva = js().executeScript("return document.querySelector('#contact-email').value;").toString();
+        System.out.println(emailReserva);
+        String telefonoReserva = js().executeScript("return document.querySelector('body.step-counter-other:nth-child(2) div.container.obe__outer-container div.obe__container div.obe__wrapper div.obe__main div.widget-wrapper.widget-wrapper--contact:nth-child(5) div.contact.form-elements-2 form.contact__form div.fieldset.fieldset--phone:nth-child(4) div.form-group.fieldset__field-wrapper.fieldset__field-wrapper--large.input-group-sm.has-success.has-inline-error div.form-control-wrapper div.phone-input div.phone-input__inner-wrapper div.allow-dropdown.separate-dial-code.iti-sdc-3.intl-tel-input > input.form-control').value;").toString();
+        System.out.println(telefonoReserva);
+
+        System.out.println(findElement(inputNombreQuienViaja).getText());
+
+        // SECCION quien viaja
+
+        String nombreViaja =  js().executeScript("return document.querySelector('#root > div > div.container.obe__outer-container > div > div > div.obe__main > div.widget-wrapper.widget-wrapper--traveller_info > div > div > div.travellers-group > div > div > form > div > div > div.panel-body > div > div > div.fieldset.fieldset--groups\\\\.1\\\\.travellers\\\\.1\\\\.name > div.form-group.fieldset__field-wrapper.input-group-sm.form-group.has-success.has-inline-error > div > input').value;").toString();
+        System.out.println(nombreViaja);
+        String apellidoViaja =  js().executeScript("return document.querySelector(\"#root > div > div.container.obe__outer-container > div > div > div.obe__main > div.widget-wrapper.widget-wrapper--traveller_info > div > div > div.travellers-group > div > div > form > div > div > div.panel-body > div > div > div.fieldset.fieldset--groups\\\\.1\\\\.travellers\\\\.1\\\\.surname > div.form-group.fieldset__field-wrapper.input-group-sm.form-group.has-success.has-inline-error > div > input\").value;").toString();
+        System.out.println(apellidoViaja);
+        String fechaViaja =  js().executeScript("return document.querySelector(\"#root > div > div.container.obe__outer-container > div > div > div.obe__main > div.widget-wrapper.widget-wrapper--traveller_info > div > div > div.travellers-group > div > div > form > div > div > div.panel-body > div > div > div.fieldset.fieldset--groups\\\\.1\\\\.travellers\\\\.1\\\\.dateOfBirth > div > div > div:nth-child(3) > input\").value;").toString();
+        System.out.println(fechaViaja); //fecha solo captura anio
+
+
+        // COMPROBANTE CHECK Sr SI ESTA O NO SELECCIONADO
+        boolean comprobanteCheck;
+        if(isSelected(checkSr)){
+            System.out.println("esta seleccionado");
+            comprobanteCheck=true;
+        }else {
+            System.out.println("no esta seleecionado");
+            comprobanteCheck=false;
+
+        }
+
+
+        // variables para comprobar
+
+        String nombreEsperado="Ruben Dario";
+        String apellidoEsperado="Chavez Castro";
+        String emailEsperado="equipo1desafiotsoft@gmail.com";
+        String numeroEsperado="90884812";
+        String fechaEsperada="1995";
+        boolean checkEsperado = true;
+
+
+
 
 
     }
+
 
 
 
