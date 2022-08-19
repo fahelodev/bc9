@@ -65,6 +65,9 @@ public class Hoteles extends SeleniumWrapper {
     By desplegarIdeasDeViajes = By.xpath("//button/h5[text()=\"Ideas de viaje\"]");
     By datosIdeasViajes = By.xpath("(//div/ul[@class=\"display-6yr8km-HubLinkList-styles ee89y333\"])[4]");
     By nombreUser = By.xpath("//input[@name=\"name\"]");
+    By apellidoUser = By.xpath("//input[@name=\"surname\"]");
+    By emailUser = By.xpath("//input[@name=\"email\"]");
+    By telefonoUser = By.xpath("//input[@name=\"phone\"]");
 
 
     //---------------------METODOS---------------------
@@ -145,6 +148,7 @@ public class Hoteles extends SeleniumWrapper {
         if(isDisplayed(calDesplegado)){
             esperaEnSegundosYClick(10, seleccionFechaIda);
         }
+        Thread.sleep(5000);
         if(isDisplayed(calDesplegado)){
             esperaEnSegundosYClick(15, seleccionFechaVuelta);
         }
@@ -162,10 +166,25 @@ public class Hoteles extends SeleniumWrapper {
         return datos;
     }
 
-    public String datosUsuario(){
-        String dato = getText(nombreUser);
-        System.out.println(dato);
-        return dato;
+    public String datoNombre() {
+        String nombreUsuario = findElement(nombreUser).getAttribute("value");
+        System.out.println(nombreUsuario);
+        return nombreUsuario;
+    }
+    public String datoApellido() {
+        String apellidoUsuario = findElement(apellidoUser).getAttribute("value");
+        System.out.println(apellidoUsuario);
+        return apellidoUsuario;
+    }
+    public String datoEmail() {
+        String emailUsuario = findElement(emailUser).getAttribute("value");
+        System.out.println(emailUsuario);
+        return emailUsuario;
+    }
+   public String datoTelefono(){
+        String telefonoUsuario = findElement(telefonoUser).getAttribute("value");
+        System.out.println(telefonoUsuario);
+        return telefonoUsuario;
     }
 
 
@@ -182,6 +201,8 @@ public class Hoteles extends SeleniumWrapper {
         isDisplayed(datosIdeasViajes);
 
     }
+
+
 
 
 

@@ -66,9 +66,10 @@ public class HotelesTest extends SeleniumTestBase {
                 "Deluxe Pure Wellness double\n" +
                 "3 NochesTodo Incluido\n" +
                 "2 Adultos", hoteles.datosHotel());
-
-
-        //Assertions.assertEquals("123", hoteles.datosUsuario());
+        Assertions.assertEquals("Ruben Dario", hoteles.datoNombre());
+        Assertions.assertEquals("Chavez Castro", hoteles.datoApellido());
+        Assertions.assertEquals("equipo1desafiotsoft@gmail.com",hoteles.datoEmail());
+        Assertions.assertEquals("90884812", hoteles.datoTelefono());
 
     }
 

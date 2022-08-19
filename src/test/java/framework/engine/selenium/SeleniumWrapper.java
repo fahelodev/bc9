@@ -24,8 +24,6 @@ public class SeleniumWrapper {
 
     //Wrappers Selenium
 
-
-
     public JavascriptExecutor js(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return js;
