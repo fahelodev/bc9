@@ -81,7 +81,6 @@ public class TrenesTest extends SeleniumTestBase {
         trenes.viajeSoloIda();
         Assertions.assertEquals("Barcelona YJB Alicante YJE",trenes.datosViajeIda());
 
-
     }
 
 }

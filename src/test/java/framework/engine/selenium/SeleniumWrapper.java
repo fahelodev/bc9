@@ -14,8 +14,6 @@ public class SeleniumWrapper {
     ArrayList<String> tabs;
 
 
-
-
     //Constructor Base
     public SeleniumWrapper(WebDriver driver){
         this.driver = driver;

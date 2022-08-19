@@ -5,7 +5,6 @@ import framework.engine.selenium.DriverFactory;
 import framework.engine.selenium.SeleniumTestBase;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,34 +21,48 @@ public class HotelesTest extends SeleniumTestBase {
 
 
     @Test
-    @Description("Búsqueda de hotel agregando una habitación para cada persona. ")
-    public void Test_H01() {
+    @Description("ID: H01 - Busqueda de hotel agregando una habitacion para cada persona ")
+
+    public void personaPorHabitacion() {
         hoteles.seccionHoteles();
         Assertions.assertEquals("3 viajeros, 1 habitación", hoteles.busquedaHabitacionPorPersona());
     }
+
+
     @Test
-    @Description("Filtrar Hotel Nro de estrellas")
-    public void Test_H02() throws InterruptedException {
+    @Description("ID: H02 - Filtrar Hotel Nro de estrellas")
+
+    public void filtradoPorEstrellas() throws InterruptedException {
         hoteles.seccionHoteles();
         Assertions.assertEquals("4 estrellas",hoteles.busquedaFiltroEstrellas());
     }
+
+
     @Test
-    @Description("Filtrar hoteles por rango de precio. ")
-    public void Test_H03() throws InterruptedException {
+    @Description("ID: H03 - Filtrar hoteles por rango de precio")
+
+    public void filtradoPorPrecio() throws InterruptedException {
         hoteles.seccionHoteles();
         Assertions.assertEquals("Hasta 300 €",hoteles.busquedaFiltroRangoDePrecio());
     }
+
+
     @Test
-    @Description("Acceder a categoría hoteles rurales ")
-    public void Test_H04() {
+    @Description("ID: H04 - Acceder a categoría hoteles rurales")
+
+    public void hotelesRurales() {
         hoteles.seccionHoteles();
         hoteles.tituloHoteleresRurales();
         hoteles.guardarPag();
         hoteles.switchTo(1);
         Assertions.assertEquals("Hoteles Rurales",hoteles.getHoteles());
     }
+
+
     @Test
-    public void Logueo() throws InterruptedException {
+    @Description("ID: H05 - Apartado de pago en seccion hoteles")
+
+    public void logueoBusquedaDatos() throws InterruptedException {
         hoteles.seccionHoteles();
         hoteles.logueoMiRumbo();
         Thread.sleep(5000);
@@ -73,8 +86,10 @@ public class HotelesTest extends SeleniumTestBase {
 
     }
 
+
     @Test
-    @Description("ID:H06- Listas desplegables de Hoteles")
+    @Description("ID:H06 - Listas desplegables de Hoteles")
+
     public void despliegueListas(){
         hoteles.seccionHoteles();
         hoteles.desplegarListasHoteles();
