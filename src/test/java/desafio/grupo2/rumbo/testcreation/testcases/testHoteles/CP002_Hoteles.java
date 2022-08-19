@@ -8,6 +8,8 @@ import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CP002_Hoteles extends SeleniumTestBase {
     RumboEsHomePage rumboEsHomePage;
@@ -15,16 +17,16 @@ public class CP002_Hoteles extends SeleniumTestBase {
     RumboEsHotelesBusquedaPage rumboEsHotelesBusquedaPage;
 
 
-    @Test
-    @Description("CP002_Hoteles")
-    void CP002_Hoteles() throws InterruptedException {
+    @ParameterizedTest
+    @ValueSource(strings = {"Chicago"})
+    void CP002_Hoteles(String destino) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
         rumboEsHomePage.irAHoteles();
 
         rumboEsHotelesPage = new RumboEsHotelesPage(DriverFactory.getDriver());
-        rumboEsHotelesPage.ingresarDestino("Chicago");
+        rumboEsHotelesPage.ingresarDestino(destino);
         rumboEsHotelesPage.FechaInicioVuelta();
         rumboEsHotelesPage.pasajeros();
         rumboEsHotelesPage.habitaciones();
