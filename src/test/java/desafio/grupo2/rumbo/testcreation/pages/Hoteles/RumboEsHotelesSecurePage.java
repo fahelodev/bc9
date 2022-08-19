@@ -63,7 +63,7 @@ public class RumboEsHotelesSecurePage extends SeleniumWrapper {
         By continuar = By.xpath("//button[@data-test='submit-button']");
         click(continuar);
     }
-    //div[@class='Switchstyles__Switch-sc-1ym8u79-1 hAYUkV']
+
     public void paraotrapersona () {
         By paraotrapersona = By.xpath("//div[@class='Switchstyles__Switch-sc-1ym8u79-1 hAYUkV']");
         click(paraotrapersona);

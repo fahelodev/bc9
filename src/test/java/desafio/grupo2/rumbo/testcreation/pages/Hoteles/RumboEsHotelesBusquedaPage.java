@@ -61,7 +61,6 @@ public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
     }
     public void aplicarFiltro() throws InterruptedException {
         Thread.sleep(2000);
-        //button[text()='Aplicar']
         By aplicarFiltro = By.xpath("//button[@class='styled__ApplyStyled-sc-18vcrz8-4 cHQYkF']");
         click(aplicarFiltro);
 

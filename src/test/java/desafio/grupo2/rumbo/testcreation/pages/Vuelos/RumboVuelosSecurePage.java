@@ -54,8 +54,6 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
             sendKeys(Keys.ENTER,inputBuscarPais);
         }
 
-        //sendKeys(Keys.TAB,botonDesplegarPais);
-        //click(paisArg);
 
 
     }
@@ -70,8 +68,6 @@ public class RumboVuelosSecurePage extends SeleniumWrapper {
         By seleccionMesNacimiento= By.xpath("//option[@value=\"11\"]");
         By inputAnoNacimiento = By.xpath("//input[@data-test=\"input-groups.1.travellers.1.dateOfBirth-year\"]");
         click(botonSr);
-/*        write("Lucas",inputNom);
-        write("Gonzalez",inputApe);*/
         write(DatosPersonales.get(9),inputDiaNacimiento);
         click(botonDesplegarMeses);
         click(seleccionMesNacimiento);

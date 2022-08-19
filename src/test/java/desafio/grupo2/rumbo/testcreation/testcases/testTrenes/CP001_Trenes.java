@@ -38,7 +38,6 @@ public class CP001_Trenes extends SeleniumTestBase {
         rumboEsTrenesPage.seleccionarCalendario();
         rumboEsTrenesPage.establecerBusqueda();
         rumboEsTrenesBusquedaPage = new RumboEsTrenesBusquedaPage(DriverFactory.getDriver());
-        rumboEsTrenesBusquedaPage.recargarPagina();
         String Resultado = rumboEsTrenesBusquedaPage.obtenerRutaOri() + " - " + rumboEsTrenesBusquedaPage.obtenerRutaDes();
 
         Assertions.assertEquals(esperado,Resultado);

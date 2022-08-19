@@ -32,11 +32,8 @@ public class RumboEsTrenesBusquedaPage extends SeleniumWrapper{
 
 
     public void duracionmenor() throws InterruptedException {
-        //click(filtroDeDuracion);
         Mover(filtroDeDuracion);
         Thread.sleep(5000);
-        //By btndeslisar = By.xpath("//div[@aria-valuetext=\"180.00\"]");
-        //click(btndeslisar);
 
     }
 
@@ -69,20 +66,7 @@ public class RumboEsTrenesBusquedaPage extends SeleniumWrapper{
         return nroInicial;
     }
 
-    public void recargarPagina() throws InterruptedException {
-        Thread.sleep(2000);
-        By errorPage = By.xpath("//span[@jsselect=\"heading\"]");
-        String error = isDisplayed(errorPage).toString();
-        System.out.println(error);
-        switch (error){
-            case "true":
-                recargarDriver(true);
-                break;
-            case "false":
-                break;
-        }
 
-    }
 
 
 }
