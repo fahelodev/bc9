@@ -76,17 +76,17 @@ public class SeleniumWrapper {
     public void Mover(By locator){
        Actions action = new Actions(driver);
        action.dragAndDropBy(driver.findElement(locator),-50,0).perform();
-    }
+    } //grupo2
 
     public String getWindowHandled(){
         return driver.getWindowHandle();
-    }
+    } //grupo2
     public ArrayList<String> getWinndowHandleds(){
         return new ArrayList<>(driver.getWindowHandles());
-    }
+    } //grupo2
 
     public void SwitchTo(String winDowHandled){
         driver.switchTo().window(winDowHandled);
-    }
+    }//grupo2
 
 }

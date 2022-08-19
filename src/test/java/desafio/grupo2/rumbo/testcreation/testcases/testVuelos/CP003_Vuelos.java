@@ -57,9 +57,9 @@ public class CP003_Vuelos extends SeleniumTestBase {
 
     static Stream<Arguments> CP003_TiempoDeReservaVuelo(){
         return Stream.of(
-                Arguments.arguments("Madrid", "Roma"),
-                Arguments.arguments("Madrid", "Lisboa"),
-                Arguments.arguments("Madrid", "Londres")
+                Arguments.arguments("Madrid", "Roma")
+                //Arguments.arguments("Madrid", "Lisboa"),
+                //Arguments.arguments("Madrid", "Londres")
         );
     }
 }

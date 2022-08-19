@@ -28,13 +28,6 @@ public class RumboEsTrenesSecurePage extends SeleniumWrapper {
 
     public String sinDatos() {
         By datosVacios = By.xpath("(//label[@class=\"form-elements-2__error-label  \"])[1]");
-/*      String texto = getText(datosVacios);
-        String caso = " ";
-        if (texto == "Introduce el nombre") {
-            caso = "Datos incompletos";
-        }
-        return caso;*/
-
         return getText(datosVacios);
 
     }
@@ -43,23 +36,15 @@ public class RumboEsTrenesSecurePage extends SeleniumWrapper {
         By btnAsistenciaespecial = By.xpath( "//div[@class=\"special-requests-structured__fieldset-wrapper\"]");
 
         click(btnAsistenciaespecial);
-        //Thread.sleep(5000);
         By tipoDeSolicitud = By.xpath("(//select[@class=\"form-control select-input\"])[1]");
-
         click(tipoDeSolicitud);
-        //Thread.sleep(5000);
         By selecMovReducida = By.xpath("(//option[@data-test=\"special-request-structured-types-option\"])[2]");
-
         click(selecMovReducida);
-        //Thread.sleep(5000);
         By tipoDeAsistencia =By.xpath("(//select[@class=\"form-control select-input\"])[2]");
-
         click(tipoDeAsistencia);
-        //Thread.sleep(5000);
         By pasajeroInmovil = By.xpath("(//option[@data-test=\"special-requests-structured-requirements-select-option\"])[3]");
-
         click(pasajeroInmovil);
-        //Thread.sleep(5000);
+
     }
 
     public boolean desplegadoAsistenciaEspecial(){

@@ -57,9 +57,9 @@ public class CP001_Vuelos extends SeleniumTestBase {
 
     static Stream<Arguments> CP001_MultiplesVuelos(){
         return Stream.of(
-                Arguments.arguments("Madrid", "Roma", "MAD - FCO"),
-                Arguments.arguments("Madrid", "Lisboa", "MAD - LIS"),
-                Arguments.arguments("Madrid", "Londres","MAD - LGW")
+                Arguments.arguments("Madrid", "Roma", "MAD - FCO")
+                //Arguments.arguments("Madrid", "Lisboa", "MAD - LIS"),
+                //Arguments.arguments("Madrid", "Londres","MAD - LGW")
         );
     }
 

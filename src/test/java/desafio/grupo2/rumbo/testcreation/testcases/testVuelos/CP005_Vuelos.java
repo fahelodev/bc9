@@ -81,8 +81,8 @@ public class CP005_Vuelos extends SeleniumTestBase {
                         "Lucas Gonzalez",
                         "1538 9021 9009 2119 000"
                 ), "Introduce un número válido", true
-                ),
-                Arguments.arguments("Madrid", "Roma",List.of("3804228169"
+                )
+           /*     Arguments.arguments("Madrid", "Roma",List.of("3804228169"
                                 ,"Lucas",
                                 "Gonzalez",
                                 "lucasgon98@g",
@@ -112,6 +112,8 @@ public class CP005_Vuelos extends SeleniumTestBase {
                                 "1538 9021 9009 2119 000"
                         ), "Introduce un número válido",true
                 )
+                */
+
         );
     }
 }

@@ -10,7 +10,11 @@ import framework.engine.selenium.SeleniumTestBase;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.stream.Stream;
 
 
 public class CP006_Trenes extends SeleniumTestBase {
@@ -20,9 +24,10 @@ public class CP006_Trenes extends SeleniumTestBase {
     RumboEsTrenesBusquedaPage rumboEsTrenesBusquedaPage;
     RumboEsTrenesSecurePage rumboEsTrenesSecurePage;
 
-    @Test
+    @ParameterizedTest()
+    @MethodSource
     @Description("Realizar el test CP006 del RF02")
-    void CP006_PrecioTarifa() throws InterruptedException {
+    void CP006_PrecioTarifa(String Origen, String Destino) throws InterruptedException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -30,8 +35,8 @@ public class CP006_Trenes extends SeleniumTestBase {
         Thread.sleep(3000);
         rumboEsTrenesPage = new RumboEsTrenesPage(DriverFactory.getDriver());
         rumboEsTrenesPage.seleccionarIda();
-        rumboEsTrenesPage.ingresarOrigen("Madrid");
-        rumboEsTrenesPage.ingresarDestino("Barcelona");
+        rumboEsTrenesPage.ingresarOrigen(Origen);
+        rumboEsTrenesPage.ingresarDestino(Destino);
         rumboEsTrenesPage.seleccionarCalendario();
         rumboEsTrenesPage.establecerBusqueda();
 
@@ -50,5 +55,9 @@ public class CP006_Trenes extends SeleniumTestBase {
 
 
     }
-
+    static Stream<Arguments> CP006_PrecioTarifa(){
+        return Stream.of(
+                Arguments.arguments("Madrid","Barcelona")
+        );
+    }
 }

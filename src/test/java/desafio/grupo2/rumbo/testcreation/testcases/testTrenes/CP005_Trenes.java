@@ -24,9 +24,10 @@ public class CP005_Trenes extends SeleniumTestBase {
     RumboEsTrenesBusquedaPage rumboEsTrenesBusquedaPage;
     RumboEsTrenesSecurePage rumboEsTrenesSecurePage;
 
-    @Test
+    @ParameterizedTest
+    @MethodSource
     @Description("Realizar el test CP005 del RF02")
-    void CP005_CoberturaFullFlex() throws InterruptedException, IOException {
+    void CP005_CoberturaFullFlex(String Origen, String Destino) throws InterruptedException, IOException {
         rumboEsHomePage = new RumboEsHomePage(DriverFactory.getDriver());
         rumboEsHomePage.despegarARumbos();
         rumboEsHomePage.aceptarCookies();
@@ -34,8 +35,8 @@ public class CP005_Trenes extends SeleniumTestBase {
         Thread.sleep(3000);
         rumboEsTrenesPage = new RumboEsTrenesPage(DriverFactory.getDriver());
         rumboEsTrenesPage.seleccionarIda();
-        rumboEsTrenesPage.ingresarOrigen("Madrid");
-        rumboEsTrenesPage.ingresarDestino("Barcelona");
+        rumboEsTrenesPage.ingresarOrigen(Origen);
+        rumboEsTrenesPage.ingresarDestino(Destino);
         rumboEsTrenesPage.seleccionarCalendario();
         rumboEsTrenesPage.establecerBusqueda();
 
@@ -50,6 +51,11 @@ public class CP005_Trenes extends SeleniumTestBase {
 
     }
 
+    static Stream<Arguments> CP005_CoberturaFullFlex(){
+        return Stream.of(
+                Arguments.arguments("Madrid","Barcelona")
+        );
+    }
 
 
 }

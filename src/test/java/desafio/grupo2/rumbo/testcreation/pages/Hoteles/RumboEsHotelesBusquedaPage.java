@@ -54,25 +54,25 @@ public class RumboEsHotelesBusquedaPage extends SeleniumWrapper {
         click(filtroTipoAlojamiento);
     }
     public void filtroTipoAlojamientoHotel() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     By filtroTipoAlojamientoHotel = By.xpath("//div[text()='Hotel']");
         click(filtroTipoAlojamientoHotel);
 
     }
     public void aplicarFiltro() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         //button[text()='Aplicar']
         By aplicarFiltro = By.xpath("//button[@class='styled__ApplyStyled-sc-18vcrz8-4 cHQYkF']");
         click(aplicarFiltro);
 
     }
      public void seleccionarHotel() throws InterruptedException {
-         Thread.sleep(2000);
+         Thread.sleep(3000);
          By seleccionarHotel = By.xpath("//div[text()='Central Loop Hotel']");
          click(seleccionarHotel);
      }
     public void seleccionarHotel04() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         By seleccionarHotel4 = By.xpath("//div[text()='Freehand Chicago']");
         click(seleccionarHotel4);
     }

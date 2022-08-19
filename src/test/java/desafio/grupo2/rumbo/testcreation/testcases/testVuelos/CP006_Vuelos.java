@@ -81,8 +81,8 @@ public class CP006_Vuelos extends SeleniumTestBase {
                                 "Lucas Gonzalez",
                                 "1538 9021 9009 2119 000"
                         ), "Haz tu selección", false
-                ),
-                Arguments.arguments("Madrid", "Roma",List.of("3804228169"
+                )
+       /*         Arguments.arguments("Madrid", "Roma",List.of("3804228169"
                                 ,"Lucas",
                                 "Gonzalez",
                                 "lucasgon98@g",
@@ -111,7 +111,7 @@ public class CP006_Vuelos extends SeleniumTestBase {
                                 "Lucas Gonzalez",
                                 "1538 9021 9009 2119 000"
                         ), "Haz tu selección",false
-                )
+                )*/
         );
     }
 

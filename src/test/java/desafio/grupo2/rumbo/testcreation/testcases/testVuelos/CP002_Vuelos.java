@@ -42,9 +42,9 @@ public class CP002_Vuelos extends SeleniumTestBase {
     }
     static Stream<Arguments> CP002_VuelosSinDestinos(){
         return Stream.of(
-                Arguments.arguments("Madrid", "Uzbeskitan", "La búsqueda no ha dado resultados"),
-                Arguments.arguments("Madrid", "Lestonia", "La búsqueda no ha dado resultados"),
-                Arguments.arguments("Madrid", "Angola","La búsqueda no ha dado resultados")
+                Arguments.arguments("Madrid", "Uzbeskitan", "La búsqueda no ha dado resultados")
+                //Arguments.arguments("Madrid", "Lestonia", "La búsqueda no ha dado resultados"),
+                //Arguments.arguments("Madrid", "Angola","La búsqueda no ha dado resultados")
         );
     }
 }
