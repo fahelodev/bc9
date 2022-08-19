@@ -30,7 +30,7 @@ public class VuelosTest extends SeleniumTestBase {
         vuelos.generarVuelo();
         // resultado esperado
         // comprobar que la lista que se desplega son buenos de argentina a santiago
-        vuelos.resultadoPrueba();
+        Assert.assertEquals("Buenos Aires BUE Santiago SCL",vuelos.resultadoPruebaBuscarVuelo());
 
 
         //agregar asssert con paramether
@@ -48,6 +48,8 @@ public class VuelosTest extends SeleniumTestBase {
         vuelos.switchTo(0);
         // resultado esperado
         // comprobar que los checks esten disponibles y no tengan checks
+       Assertions.assertTrue(vuelos.resultadoCheckboxHabilitados());
+
 
     }
     @Test
@@ -65,6 +67,8 @@ public class VuelosTest extends SeleniumTestBase {
 
         //Resultado esperado
         //Comprobar que el pasajero agregado se visualice en barra de modificar
+        Assertions.assertEquals("2", vuelos.resultadoPrubaModificar());
+
         //agregar assert
 
     }
@@ -104,6 +108,8 @@ public class VuelosTest extends SeleniumTestBase {
         vuelos.switchTo(0);
         vuelos.seleccionarCompania();
 
+        Assertions.assertEquals("AR", vuelos.resultadoFiltroCheckbox());
+
         //resultado esperado
         //COMPROBAR QUE LA LISTA CORRESPONDA A AEROLINEA ARGENTINA
 
@@ -112,8 +118,8 @@ public class VuelosTest extends SeleniumTestBase {
 
     @Test
     @Tag("regresion")
-    @Description("Comprobar registro de datos de clientes previo al pago")
-    void datosCorrectoCliente()  {
+    @Description("ID_V06 Comprobar registro de datos de clientes previo al pago")
+    void datosCorrectoCliente() throws InterruptedException {
         vuelos.guardarPag();
         vuelos.logearseEnPagina();
         vuelos.seleccionarMenuVuelo();
@@ -124,6 +130,9 @@ public class VuelosTest extends SeleniumTestBase {
         vuelos.switchTo(0);
         vuelos.seleccionarPrimerVuelo();
         vuelos.seleccionarServicio();
+
+
+        vuelos.resultadoLogin();
 
         //Resultado esperado
         //comprobar el auto completado de los datos de usuario 
