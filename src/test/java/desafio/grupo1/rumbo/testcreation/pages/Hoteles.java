@@ -156,7 +156,7 @@ public class Hoteles extends SeleniumWrapper {
         if(isDisplayed(calDesplegado)){
             esperaEnSegundosYClick(10, seleccionFechaIda);
         }
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         if(isDisplayed(calDesplegado)){
             esperaEnSegundosYClick(15, seleccionFechaVuelta);
         }

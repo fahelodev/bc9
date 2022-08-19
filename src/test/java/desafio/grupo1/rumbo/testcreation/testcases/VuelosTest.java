@@ -55,7 +55,7 @@ public class VuelosTest extends SeleniumTestBase {
     @Test
     @Tag("regresion")
     @Description("ID_V03 Modificacion de numero de pasajeros de vuelo")
-    void modificarVuelo() {
+    void modificarVuelo() throws InterruptedException {
         vuelos.guardarPag();
         vuelos.seleccionarMenuVuelo();
         vuelos.generarVuelo();
@@ -141,10 +141,11 @@ public class VuelosTest extends SeleniumTestBase {
 
         // quien viaja
 
-        Assertions.assertTrue(vuelos.getCheckQuienViaja());
         Assertions.assertEquals("Ruben Dario",vuelos.getDatoNombreReserva());
         Assertions.assertEquals("Chavez Castro",vuelos.getDatoApellidoReserva());
         Assertions.assertEquals("1995",vuelos.getFecha());
+        Assertions.assertTrue(vuelos.getCheckQuienViaja());
+
 
 
 

@@ -50,9 +50,12 @@ public class TrenesTest extends SeleniumTestBase {
     @Description ("ID:T03- Crear viaje en Tren, filtrar por el más barato")
 
     public void viajeMasBarato() throws InterruptedException {
+
         trenes.seccionTrenes();
         trenes.viajeTrenFiltro();
-        Assertions.assertEquals(trenes.chequeoMenorPrecioTab(),trenes.chequeoMenorPrecio());
+        Assertions.assertEquals(trenes.chequeoMenorPrecioTab(),trenes.chequeoMenorPrecio());  //"La página puede no tomar correctamente los datos finales"
+
+        //Assertions.assertEquals(trenes.chequeoMenorPrecioTab(),"");
     }
 
     @Test

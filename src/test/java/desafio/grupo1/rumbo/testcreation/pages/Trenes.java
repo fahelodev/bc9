@@ -33,7 +33,8 @@ public class Trenes extends SeleniumWrapper {
     By msjErrorSeleccionaDestino = By.xpath("//div[@class=\"validation-error\"]");
     By btnBuscarTren= By.xpath("//div[@class=\"lmn-sw-submitFlightContainer\"]");
     By listaDesplegadaOrigen= By.xpath("//div[@class=\"select-items\"]");
-    By btnModificar = By.xpath("//span[text()=\"Modificar\"]");
+    By btnModificar = By.xpath("//span[@class=\"search-summary__search\"]");
+
 
 
     //---------CALENDARIO-----------
@@ -135,7 +136,8 @@ public class Trenes extends SeleniumWrapper {
         click(btnBuscarTren);
 
         }
-    public String chequeoMenorPrecio(){
+    public String chequeoMenorPrecio() throws InterruptedException {
+        Thread.sleep(3000);
         String chequeo= getText(trenMasBarato);
         System.out.println(chequeo);
         return chequeo;

@@ -228,7 +228,7 @@ public class Vuelos extends SeleniumWrapper {
         esperaEnSegundosYClick(3,btnModificar);
     }
 
-    public void modificarVuelo()  {
+    public void modificarVuelo() throws InterruptedException {
         eWait(10).until(ExpectedConditions.visibilityOfElementLocated(listaDatosModificar));
         if(isDisplayed(listaDatosModificar)) {
                 esperaEnSegundosYClick(3,btnModificarPasajeros);
@@ -236,11 +236,10 @@ public class Vuelos extends SeleniumWrapper {
             eWait(10).until(ExpectedConditions.visibilityOfElementLocated(listaModificarPasajeros));
             if (isDisplayed(listaModificarPasajeros)) {
                 esperaEnSegundosYClick(3,btnModificarMasAdulto);
-
+                Thread.sleep(3000);
             }
-           // eWait(10).until(ExpectedConditions.elementToBeClickable(btnModificarBuscar));
             esperaEnSegundosYClick(3,btnModificarBuscar);
-
+            Thread.sleep(3000);
             eWait(15).until(ExpectedConditions.visibilityOfElementLocated(numeroPasajeros));
         }
     }
@@ -396,7 +395,7 @@ public class Vuelos extends SeleniumWrapper {
 
 
 
-        //SECCION QUIEN RESERVA
+        //SECCION QUIEN RESERVA - IMPLEMENTACION CON JS
 
 
         System.out.println(findElement(inputNombreReserva).getAttribute("value"));
