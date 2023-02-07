@@ -1,4 +1,4 @@
-package lgonzalez;
+/*package lgonzalez;
 
 public class TenMinWalk {
     public static boolean isValid(char[] chars) {
@@ -20,4 +20,4 @@ public class TenMinWalk {
         }
         return result;
     }
-}
+}*/
